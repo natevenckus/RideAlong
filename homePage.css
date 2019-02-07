@@ -1,0 +1,15 @@
+#toolbar{
+    background-color: #65B1FB;
+    margin: 0px;
+    padding: 2px;
+}
+#input{
+    padding: 10px;
+    margin: 7px;
+    margin-left: 40px;
+    width: 700px;
+    border-color: #0758A6;
+}
+#power{
+    margin-left: 20px;
+}
