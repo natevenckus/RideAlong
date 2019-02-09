@@ -1,10 +1,6 @@
 #toolbar{
-<<<<<<< HEAD
     background-color : rgba(184, 229, 250, 0.2);
     border-color: transparent;
-=======
-    background-color: white;
->>>>>>> be3ab2bbc7799721ad98bd18bff42430cf6f4800
     margin: 0px;
     padding: 2px;
 }
@@ -22,9 +18,9 @@
 #home{
     float:right;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 2px;
     margin-left: 300px;
-    background-color: white;
+    background-color: transparent;
     padding:12px 12px;
     cursor: pointer;
 }
