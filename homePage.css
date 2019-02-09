@@ -4,12 +4,20 @@
     padding: 2px;
 }
 #input{
-    padding: 10px;
-    margin: 7px;
-    margin-left: 40px;
-    width: 700px;
+    padding: 8px; 
+    position: relative;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 700px; 
     border-color: #0758A6;
 }
 #power{
     margin-left: 20px;
 }
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+}
+
