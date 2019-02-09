@@ -14,6 +14,41 @@
 #power{
     margin-left: 20px;
 }
+#home{
+    float:right;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 300px;
+    background-color: white;
+    padding:12px 12px;
+    cursor: pointer;
+}
+.btn{
+    float:right;
+    padding:12px;
+    border: none;
+    width:80px;
+    border-radius: 4px;
+    background-color:#0758A6;
+    color:white;
+    opacity: 70%;
+}
+.btn:hover{
+    background-color:white;
+    opacity: 2;
+    
+}
+#login{
+    margin-top:15px;
+    margin-right:200px;
+}
+#register{
+    margin-top:15px;
+    margin-right: -190px;
+}
+
+
+
 .center{
     margin-left: auto;
     margin-right: auto;
