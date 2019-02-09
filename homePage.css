@@ -1,5 +1,6 @@
 #toolbar{
-    background-color: #65B1FB;
+    background-color : rgba(184, 229, 250, 0.2);
+    border-color: transparent;
     margin: 0px;
     padding: 2px;
 }
