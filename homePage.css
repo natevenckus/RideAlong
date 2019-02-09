@@ -38,6 +38,11 @@
     opacity: 2;
     
 }
+.logo {
+    position: absolute;
+    top: 100px;
+    width: 85%;
+}
 #login{
     margin-top:15px;
     margin-right:200px;
@@ -262,7 +267,7 @@ to { transform:rotate(360deg); }
 .car-top2 {
     border-radius: 100px 200px 0 0;
     background-color: #25659C;
-    */ border: 10px solid #72252F;
+    border: 10px solid #72252F;
     background-color: #9C2535;
     max-width: 100%;
     width: 430px;
