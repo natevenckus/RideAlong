@@ -2,7 +2,7 @@
 
 Initial setup:
 
-1)install pip3
+1)install pip3 and postgres
 
 3)pip3 install virtualenv
 
