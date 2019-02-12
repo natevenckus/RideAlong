@@ -5,8 +5,8 @@
         <link href="homePage.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     </head>
     <body>
@@ -15,10 +15,29 @@
                 <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
                 <input type="text" id="input" placeholder="Search...">
                 <i id="home" class="fa fa-home" style="font-size:40px"></i>
-                <button class="btn" id="login">Login</button>
-                <button class="btn" id="register">Register</button>
+                <button class="btn" id="login" onclick="document.getElementById('popup').style.display='block'">Login</button>
+                <button class="btn" id="register" onclick="document.getElementById('popup2').style.display='block'">Register</button>
             </div>
         </div>
+        <div id="popup" class="w3-modal">
+                <div class="w3-modal-content">
+                    <div class="w3-container">
+                        <span onclick="document.getElementById('popup').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <p>Login Popup Page</p>
+                    </div>
+                </div>
+        </div>
+        
+        <div id="popup2" class="w3-modal">
+            <div class="w3-modal-content">
+                <div class="w3-container">
+                    <span onclick="document.getElementById('popup2').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <p>Register Popup Page</p>
+                </div>
+            </div>
+    </div>
+
+        <div id="background">
                 <div class="moon"></div>
                 <!--
                 <div class="skyline">
@@ -30,7 +49,7 @@
                     </div>
                 </div>
             -->
-                <div class="logo">
+                <div id="rideAlong" class="logo">
                     <img src="logo2.png" class="center">
                 </div>
                 <div class="road">
@@ -68,8 +87,12 @@
                         </div>
                     </div>
                 </div>
+        </div>
         <!-- <div>
             <img src="logo.png" class="center">
         </div> -->
     </body>
+    <script src= "script.js"></script>
+
+
 </html>
