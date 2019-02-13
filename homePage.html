@@ -16,7 +16,7 @@
                 <input type="text" id="input" placeholder="Search...">
                 <i id="home" class="fa fa-home" style="font-size:40px"></i>
                 <button class="btn" id="login" onclick="document.getElementById('popup').style.display='block'">Login</button>
-                <button class="btn" id="register" onclick="document.getElementById('popup2').style.display='block'">Register</button>
+                <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
             </div>
         </div>
         <div id="popup" class="modal">
@@ -38,40 +38,50 @@
                 </div>
         </div>
         
-        <div id="popup2" class="modal">
-            <div class="modal-content">
-                <div class="container">
-                    <span onclick="document.getElementById('popup2').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                    <form>Register
-                        <br>
-                        <br>
-                        <label for="fname">First Name:</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name.." align="right">
-                        <br>
-                        <br>
-                        <label for="lname">Last Name:</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..." align="right">
-                        <br>
-                        <br>
-                        <label for="uni">School:</label>
-                        <input type="text" id="uni" name="university" placeholder="Enter University..." align="right">
-                        <br>
-                        <br>
-                        <label for="uniEmail">University email: </label>
-                        <input type="text" id="uniEmail" name="email" placeholder="Enter your .edu email..." align="right">
-                        <br>
-                        <br>
-                        <label for="password">Password: </label>
-                        <input type="password" id="password" name="pass" placeholder="Enter password" align="right">
-                        <br>
-                        <br>
-                        <input type="button" value="Submit" id="submit" onclick="validate()"/>
-                        <br>
-                </form>
+        <!-- Register Form -->
+        <form method="post" id="registerForm">
+            <div class="modal" id="registerModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 id="myModalLabel">Register here:</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="firstname" class="sr-only">Firstname:</label>
+                                <input class="form-control" type="text" name="firstname" id="firstname" placeholder="First name" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="sr-only">Lastname:</label>
+                                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Last name" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="university" class="sr-only">University:</label>
+                                <input class="form-control" type="text" name="university" id="university" placeholder="University" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email:</label>
+                                <input class="form-control" type="text" name="email" id="email" placeholder="Your .edu e-mail" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="sr-only">Password:</label>
+                                <input class="form-control" type="password" name="password" id="password" placeholder="Choose a password" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="conf_password" class="sr-only">Confirm Password:</label>
+                                <input class="form-control" type="password" name="conf_password" id="conf_password" placeholder="Confirm a password" maxlength="30">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn" name="register" type="submit" value="Register" style="margin:5px;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
+                        
+                        </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
+        </form>
         <div id="background">
                 <div class="moon"></div>
                 <!--
