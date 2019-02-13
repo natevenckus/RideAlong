@@ -22,6 +22,15 @@
         <div id="popup" class="modal">
                 <div class="modal-content">
                     <div class="container">
+                            <form action="/action_page.php">
+                                Username:<br>
+                                <input type="text" name="username" required data-value-missing= "Please enter username!" placeholder="Enter username">
+                                <br>
+                                Password:<br>
+                                <input type="password" name="password" placeholder="Enter password">
+                                <br><br>
+                                <input type="submit" value="Submit">
+                                </form> 
                         <span onclick="document.getElementById('popup').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                         <p>Login Popup Page</p>
                     </div>
