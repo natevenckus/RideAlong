@@ -1,9 +1,6 @@
-
-
-function validate(){
-    var username = document.getElementById("uniEmail").value;
-    var password = document.getElementById("password").value;
-        if(password.length <= 8){
-            alert("Please make sure your password is longer than 8 characters");
-        }
+function storeCreds(){
+    var username = document.getElementById("email").value;
+    var password = document.getElementById("reg_password").value;
+            console.log(username, password);
+    
 }
