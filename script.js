@@ -1,8 +1,3 @@
-var username = document.getElementsByName("username");
-var password = document.getElementsByName("password");
+var username = document.getElementsByName("email").values;
+var password = document.getElementsByName("pass").values;
 
-function checkPass(){
-    if(password.values.length <= 8){
-
-    }
-}
