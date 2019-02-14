@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'ridealong.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'RideAlong',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
+        'NAME': 'ridealong',
+        'USER': 'ridealong',
+        'PASSWORD': 'abc1234',
         'HOST': 'localhost',
         'PORT': '',
     }
