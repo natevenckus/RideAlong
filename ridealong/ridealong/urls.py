@@ -19,6 +19,7 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	#path('pwtest/', include('myapp.urls')),
-	path('pwtest/', views.pwtest, name='pwtest'),
+    #path('pwtest/', include('myapp.urls')),
+    path('pwtest/', views.pwtest, name='pwtest'),
+    path('accounts/',include('accounts.urls')),
 ]

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RideAlong</title>
+        <link href="homePage.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <body>
+        <div id="toolbar">
+            <div class="form-group" align="left">
+                <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
+                <input type="text" id="input" placeholder="Search...">
+                <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                <button class="btn" id="login" onclick="document.getElementById('popup').style.display='block'">Login</button>
+                <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
+            </div>
+        </div>
+        <div id="popup" class="modal">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button class="close" data-dismiss="modal">&times;</button>
+                                <h4 id="myModalLabel">Login here:</h4>
+                            </div>
+                    <div class="container">
+                                Username:<br>
+                                <input type="text" name="username" required data-value-missing= "Please enter username!" placeholder="Enter username">
+                                <br>
+                                Password:<br>
+                                <input type="password" name="password" placeholder="Enter password">
+                                <br><br>
+                                <input type="submit" value="Submit">
+                                </form> 
+                        <span onclick="document.getElementById('popup').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    </div>
+                </div>
+        </div>
+        
+        <!-- Register Form -->
+        <form method="post" id="registerForm">
+            <div class="modal" id="registerModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 id="myModalLabel">Register here:</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="firstname" class="sr-only">Firstname:</label>
+                                <input class="form-control" type="text" name="firstname" id="firstname" placeholder="First name" maxlength="30" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="sr-only">Lastname:</label>
+                                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Last name" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="university" class="sr-only">University:</label>
+                                <input class="form-control" type="text" name="university" id="university" placeholder="University" maxlength="30" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email:</label>
+                                <input class="form-control" type="text" name="email" id="email" placeholder="Your .edu e-mail" maxlength="30" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="sr-only">Password:</label>
+                                <input class="form-control" type="password" name="password" id="reg_password" placeholder="Choose a password" maxlength="30" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="conf_password" class="sr-only">Confirm Password:</label>
+                                <input class="form-control" type="password" name="conf_password" id="conf_password" placeholder="Confirm a password" maxlength="30"required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;" onclick= "storeCreds()"> Register </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
+                        
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        <div id="background">
+                <div class="moon"></div>
+                <!--
+                <div class="skyline">
+                    <div class="building1-shadow"></div>
+                    <div class="building1">
+            
+                        <div class="building-left-half"></div>
+                        <div class="building-right-half"></div>
+                    </div>
+                </div>
+            -->
+                <div id="rideAlong" class="logo">
+                    <img src="logo2.png" class="center">
+                </div>
+                <div class="road">
+                    <div class="road-top-half"></div>
+                    <div class="road-bottom-half"></div>
+                </div>
+            
+                <div class="car-container">
+                    <div class="car-top1">
+                        <div class="window1"></div>
+                        <div class="window2"></div>
+            
+                    </div>
+                    <div class="car-top2">
+                        <div class="door">
+                            <div class="door-knob"></div>
+                        </div>
+                    </div>
+                    <div class="car-bottom">
+                        <div class="wheel1-top"></div>
+                        <div class="wheel1">
+                            <div class="wheel-dot1"></div>
+                            <div class="wheel-dot2"></div>
+                            <div class="wheel-dot3"></div>
+                            <div class="wheel-dot4"></div>
+            
+                        </div>
+            
+                        <div class="wheel2-top"></div>
+                        <div class="wheel2">
+                            <div class="wheel-dot1"></div>
+                            <div class="wheel-dot2"></div>
+                            <div class="wheel-dot3"></div>
+                            <div class="wheel-dot4"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- <div>
+            <img src="logo.png" class="center">
+        </div> -->
+    </body>
+    <script src= "script.js"></script>
+</html>
