@@ -10,6 +10,6 @@ Initial setup:
 
 5)source envname/bin/activate in order to activate env
 
-6)pip install django psycop2
+6)pip install django psycopg2
 
 7)python manage.py runserver in ridealong directory
