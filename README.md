@@ -1,4 +1,14 @@
-# Documention
+# To-Do
+- [ ] Build model for account app
+- [ ] Fix homepage button functionality
+- [ ] Move login/register button to middle
+- [ ] Implement authentication with django templat
+- [ ] emit http request from front end from login/register
+- [ ] Retrieve data from login/register on server side
+
+
+
+# Documentation
 
 Initial setup:
 
