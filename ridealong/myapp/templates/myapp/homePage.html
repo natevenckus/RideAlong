@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		{% load static %}
+	
+        <title>RideAlong</title>
+        <link href="{% static 'myapp/homePage.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <body>
+        <div id="toolbar">
+            <div class="form-group" align="left">
+                <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
+                <input type="text" id="input" placeholder="Search...">
+                <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                <button class="btn" id="login" onclick="document.getElementById('popup').style.display='block'">Login</button>
+                <button class="btn" id="register" onclick="document.getElementById('popup2').style.display='block'">Register</button>
+            </div>
+        </div>
+        <div id="popup" class="modal">
+                <div class="modal-content">
+                    <div class="container">
+                            <form action="/action_page.php">
+                                Username:<br>
+                                <input type="text" name="username" required data-value-missing= "Please enter username!" placeholder="Enter username">
+                                <br>
+                                Password:<br>
+                                <input type="password" name="password" placeholder="Enter password">
+                                <br><br>
+                                <input type="submit" value="Submit">
+                                </form> 
+                        <span onclick="document.getElementById('popup').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <p>Login Popup Page</p>
+                    </div>
+                </div>
+        </div>
+        
+        <div id="popup2" class="modal">
+            <div class="modal-content">
+                <div class="container">
+                    <span onclick="document.getElementById('popup2').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <form>Register Popup Page
+                        <br>
+                        <br>
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Your name.." align="right">
+                        <br>
+                        <br>
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..." align="right">
+                        <br>
+                        <br>
+                        <label for="uni">School:</label>
+                        <input type="text" id="uni" name="university" placeholder="Enter University..." align="right">
+                        <br>
+                        <br>
+                        <label for="uniEmail">University email: </label>
+                        <input type="text" id="uniEmail" name="email" placeholder="Enter your .edu email..." align="right">
+                        <br>
+                        <br>
+                        <label for="password">Password: </label>
+                        <input type="text" id="password" name="pass" placeholder="Enter password" align="right">
+                        <br>
+                        <br>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="background">
+                <div class="moon"></div>
+                <!--
+                <div class="skyline">
+                    <div class="building1-shadow"></div>
+                    <div class="building1">
+            
+                        <div class="building-left-half"></div>
+                        <div class="building-right-half"></div>
+                    </div>
+                </div>
+            -->
+                <div id="rideAlong" class="logo">
+                    <img src="logo2.png" class="center">
+                </div>
+                <div class="road">
+                    <div class="road-top-half"></div>
+                    <div class="road-bottom-half"></div>
+                </div>
+            
+                <div class="car-container">
+                    <div class="car-top1">
+                        <div class="window1"></div>
+                        <div class="window2"></div>
+            
+                    </div>
+                    <div class="car-top2">
+                        <div class="door">
+                            <div class="door-knob"></div>
+                        </div>
+                    </div>
+                    <div class="car-bottom">
+                        <div class="wheel1-top"></div>
+                        <div class="wheel1">
+                            <div class="wheel-dot1"></div>
+                            <div class="wheel-dot2"></div>
+                            <div class="wheel-dot3"></div>
+                            <div class="wheel-dot4"></div>
+            
+                        </div>
+            
+                        <div class="wheel2-top"></div>
+                        <div class="wheel2">
+                            <div class="wheel-dot1"></div>
+                            <div class="wheel-dot2"></div>
+                            <div class="wheel-dot3"></div>
+                            <div class="wheel-dot4"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- <div>
+            <img src="logo.png" class="center">
+        </div> -->
+    </body>
+    <script src= "script.js"></script>
+
+
+</html>
