@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>RideAlong</title>
+        <link rel="stylesheet" href="{% static 'homePage.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <body>
+        <div id="toolbar">
+            <div class="form-group" align="left">
+                <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
+                <input type="text" id="input" placeholder="Search...">
+                <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                <button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'">Login</button>
+                <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
+            </div>
+        </div>
+    </body>
+    <script src="{% static 'script.js' %}"></script>
+</html>
