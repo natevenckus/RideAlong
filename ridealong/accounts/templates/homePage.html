@@ -23,6 +23,7 @@
         <!-- Login Form -->
         <form method="post" id="loginForm">
             {% csrf_token %}
+
             <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -30,26 +31,15 @@
                                 <button class="close" data-dismiss="modal">&times;</button>
                                 <h4 id="myModalLabel">Login here:</h4>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                <label for="loginemail" class="sr-only">Email:</label>
-                                <input class="form-control" type="text" name="loginemail" id="loginemail" placeholder="Your .edu e-mail" maxlength="30">
-                            </div>
-                            <div class="form-group">
-                                <label for="log_password" class="sr-only">Password:</label>
-                                <input class="form-control" type="password" name="log_password" id="log_password" placeholder="Enter a password" maxlength="30">
-                            </div>
-                        </div>
+                            {{formLogin.as_p}}
                         <div class="modal-footer">
                             <button class="btn btn-default" name="login" type="submit" value="Login" style="margin:5px;" onclick= "storeCreds()">Login </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
-                        
                         </div>
                         </div>
                     </div>
                 </div>
         </form>
-        
         <!-- Register Form -->
         <form method="post" id="registerForm">
             {% csrf_token %}
@@ -60,36 +50,10 @@
                             <button class="close" data-dismiss="modal">&times;</button>
                             <h4 id="myModalLabel">Register here:</h4>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="firstname" class="sr-only">Firstname:</label>
-                                <input class="form-control" type="text" name="firstname" id="firstname" placeholder="First name" maxlength="30" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastname" class="sr-only">Lastname:</label>
-                                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Last name" maxlength="30">
-                            </div>
-                            <div class="form-group">
-                                <label for="university" class="sr-only">University:</label>
-                                <input class="form-control" type="text" name="university" id="university" placeholder="University" maxlength="30" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="sr-only">Email:</label>
-                                <input class="form-control" type="text" name="email" id="email" placeholder="Your .edu e-mail" maxlength="30" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="sr-only">Password:</label>
-                                <input class="form-control" type="password" name="password" id="reg_password" placeholder="Choose a password" maxlength="30" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="conf_password" class="sr-only">Confirm Password:</label>
-                                <input class="form-control" type="password" name="conf_password" id="conf_password" placeholder="Confirm a password" maxlength="30"required>
-                            </div>
-                        </div>
+                        {{formRegister.as_p}}
                         <div class="modal-footer">
                             <button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;" onclick= "storeCreds()"> Register </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
-                        
                         </div>
                         </div>
                     </div>
@@ -101,7 +65,6 @@
                 <div class="skyline">
                     <div class="building1-shadow"></div>
                     <div class="building1">
-            
                         <div class="building-left-half"></div>
                         <div class="building-right-half"></div>
                     </div>
@@ -114,12 +77,10 @@
                     <div class="road-top-half"></div>
                     <div class="road-bottom-half"></div>
                 </div>
-            
                 <div class="car-container">
                     <div class="car-top1">
                         <div class="window1"></div>
                         <div class="window2"></div>
-            
                     </div>
                     <div class="car-top2">
                         <div class="door">
@@ -133,9 +94,7 @@
                             <div class="wheel-dot2"></div>
                             <div class="wheel-dot3"></div>
                             <div class="wheel-dot4"></div>
-            
                         </div>
-            
                         <div class="wheel2-top"></div>
                         <div class="wheel2">
                             <div class="wheel-dot1"></div>
@@ -150,6 +109,5 @@
             <img src="logo.png" class="center">
         </div> -->
     </body>
-    <script src= "script.js"></script>
     <script src="{% static 'script.js' %}"></script>
 </html>
