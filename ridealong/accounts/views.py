@@ -26,6 +26,7 @@ def index(request):
             #login(request,user)
             return redirect('loginpage')
         else: 
+            print(formRegister.errors)
             raise Http404
     else:
         formRegister = RegistrationForm()
