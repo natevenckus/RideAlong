@@ -13,9 +13,8 @@ def index(request):
     if request.method == 'POST':
         print("Hello")
         formRegister = RegistrationForm(request.POST)
-        print(request.POST['username'])
-        print(request.POST['password1'])
-        print (request)
+        formLogin = AuthenticationForm(data=request.POST)
+        
         if formRegister.is_valid():
             formRegister.save()
             username = formRegister.cleaned_data.get("username")
@@ -23,11 +22,19 @@ def index(request):
             print(username)
             print(password1)
             user = authenticate(username=username, password=password1)
-            #login(request,user)
-            return redirect('loginpage')
-        else: 
-            print(formRegister.errors)
-            raise Http404
+            login(request,user)
+            return redirect('registerpage')
+
+        if formLogin.is_valid():
+            print("IN")
+            username1 = formRegister.cleaned_data.get("username")
+            password2 = formRegister.cleaned_data.get("password1")
+            user = authenticate(username=username1, password=password2)
+            context = {'form': formLogin}
+            return render(request, 'login.html', context)
+        else:
+            print(formLogin.errors)
+            
     else:
         formRegister = RegistrationForm()
     return render(request,'homePage.html', {'formRegister':formRegister,'formLogin':formLogin })
