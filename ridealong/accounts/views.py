@@ -48,4 +48,7 @@ def loginpage(request):
 def registerPage(request):
     return render(request,'register.html')
 
+def driverpage(request):
+    return render(request,'driver_page.html')
+
 
