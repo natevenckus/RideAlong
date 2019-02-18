@@ -8,7 +8,7 @@ from django.http import Http404
 
 
 def index(request):
-    #formRegister = RegistrationForm()
+    formRegister = RegistrationForm()
     formLogin = AuthenticationForm()
     if request.method == 'POST':
         print("Hello")
@@ -23,7 +23,7 @@ def index(request):
             print(password1)
             user = authenticate(username=username, password=password1)
             login(request,user)
-            return redirect('registerpage')
+            return redirect('regsuccess')
 
         if formLogin.is_valid():
             print("IN")
@@ -47,5 +47,8 @@ def loginpage(request):
 
 def registerPage(request):
     return render(request,'register.html')
+
+def regsuccess(request):
+    return render(request,'regSuccess.html')
 
 
