@@ -19,8 +19,17 @@
                         <button class="btn" id="register">Register</button>
                     </div>
                 </div>
-                <div id="login">   
-                <h1>Welcome Back!</h1>
+                <div id="login"> 
+                      
+                        {% block content %}
+                        {% if user.is_authenticated %}
+                          Hi {{ user.username }}!
+                        {% else %}
+                          {{user.username}}
+                          <p>You are not logged in </p>
+                        {% endif %}
+                        {% endblock %}
+                
                 
                 <form action="/" method="post">
                 
