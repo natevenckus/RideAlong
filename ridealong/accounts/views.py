@@ -1,10 +1,11 @@
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import  UserCreationForm, AuthenticationForm
 from django.shortcuts import render,redirect
 from accounts.forms import RegistrationForm
 from django.http import Http404
+from django.contrib.auth import logout as customLogout
 
 
 def index(request):
@@ -22,16 +23,22 @@ def index(request):
             print(username)
             print(password1)
             user = authenticate(username=username, password=password1)
+            print(user)
             login(request,user)
             return redirect('regsuccess')
 
         if formLogin.is_valid():
             print("IN")
-            username1 = formRegister.cleaned_data.get("username")
-            password2 = formRegister.cleaned_data.get("password1")
-            user = authenticate(username=username1, password=password2)
+            username = formLogin.cleaned_data.get("username")
+            password1 = formLogin.cleaned_data.get("password")
+            print(username)
+            print(password1)
+            user = authenticate(request, username=username, password=password1)
             context = {'form': formLogin}
-            return render(request, 'login.html', context)
+            if user:
+                print("Not none")
+                login(request,user)
+                return render(request, 'login.html', context)
         else:
             print(formLogin.errors)
             
@@ -41,7 +48,7 @@ def index(request):
 
 
 
-#not needed
+
 def loginpage(request):
     return render(request,'login.html')
 
@@ -52,5 +59,9 @@ def driverpage(request):
     return render(request,'driver_page.html')
 def regsuccess(request):
     return render(request,'regSuccess.html')
+def logout(request):
+    print(request)
+    customLogout(request)
+    return redirect('index')
 
 
