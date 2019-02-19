@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+    <title>RideAlong</title>
+    <link rel="stylesheet" href="{% static 'popup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        </head>
+        <body id="hello">
+        <div class="lightbox">
+            <div class="iframeContainer">
+            <div class="toolbarLB">
+                <!-- <span class="closeLB" onclick="lightBoxClose()">x</span> -->
+                <div class="form">
+        
+                        <div class="tab-content">
+                            <form action="/" method="post">
+                            
+                            <div class="top-row">
+                            <div class="field-wrap">
+                                
+                                Enter Departure Location <br>
+                                <span class="req"></span>
+                                
+                                <input type="text" required autocomplete="off" />
+                           
+                        
+                            <div class="field-wrap">
+                               Enter Arrival Location
+                               <br>
+                               <span class="req"></span>
+                                <input type="text"required autocomplete="off"/>
+                            </div>
+                            </div>         
+                            </form>
+            </div>
+                <button id="btn" type="submit"> Find a ride </button>
+            </div>
+        </div>
+        </body>
+       <script src="script.js"></script>    
+</html>

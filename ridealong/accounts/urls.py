@@ -7,7 +7,8 @@ urlpatterns=[
     path('loginpage',views.loginpage, name='loginpage'),
     path('driverpage',views.driverpage,name='driverpage'),
     path('regsuccess', views.regsuccess, name='regsuccess'),
-    path('logout',views.logout, name='logout')
+    path('logout',views.logout, name='logout'),
+    path('ridepopup', views.ridepopup, name='ridepopup')
 
     #path('login',views.loginPage),
     #path('register',views.registerPage),

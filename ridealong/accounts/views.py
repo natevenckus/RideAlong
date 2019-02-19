@@ -63,5 +63,6 @@ def logout(request):
     print(request)
     customLogout(request)
     return redirect('index')
-
+def ridepopup(request):
+    return render(request, 'ridePopup.html')
 
