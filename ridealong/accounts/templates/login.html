@@ -15,8 +15,7 @@
                         <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
                         <input type="text" id="input" placeholder="Search...">
                         <i id="home" class="fa fa-home" style="font-size:40px"></i>
-                        <button class="btn" id="login">Login</button>
-                        <button class="btn" id="register">Register</button>
+                        <button class="btn" id="login">Logout</button>
                     </div>
                 </div>
                 <div id="login"> 
@@ -29,28 +28,5 @@
                           <p>You are not logged in </p>
                         {% endif %}
                         {% endblock %}
-                
-                
-                <form action="/" method="post">
-                
-                <div class="field-wrap">
-                <label>
-                    Email Address<span class="req">*</span>
-                </label>
-                <input type="email"required autocomplete="off"/>
-                </div>
-                
-                <div class="field-wrap">
-                <label>
-                    Password<span class="req">*</span>
-                </label>
-                <input type="password"required autocomplete="off"/>
-                </div>
-                
-                <p class="forgot"><a href="#">Forgot Password?</a></p>
-                
-                <button class="button button-block"/>Log In</button>
-                
-                </form>
 
             </div>
