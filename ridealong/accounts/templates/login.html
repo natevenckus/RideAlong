@@ -3,7 +3,7 @@
     <html>
         <head>
      <title>RideAlong</title>
-     <link href="{% static 'login.css'  %}" rel="stylesheet">
+     <link href="{% static 'login2.css'  %}" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -15,14 +15,17 @@
                         <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
                         <input type="text" id="input" placeholder="Search...">
                         <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                        <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
+                        <img img src="{% static 'tempPic.png' %}" >
                         <button class="btn" id="login">Logout</button>
+
                     </div>
                 </div>
-                <div id="login"> 
+                <div id="loginUsername"> 
                       
                         {% block content %}
                         {% if user.is_authenticated %}
-                          Hi {{ user.username }}!
+                          Welcome {{ user.username }}!
                         {% else %}
                           {{user.username}}
                           <p>You are not logged in </p>

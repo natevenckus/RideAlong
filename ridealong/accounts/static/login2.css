@@ -24,15 +24,37 @@
     background-color: transparent;
     padding:12px 12px;
     cursor: pointer;
+    color: black;
+}
+#bell{
+    color: black;
+    float:right;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 400px;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-left: 500px;
+    cursor: pointer;
+
+    
 }
 .btn{
-    float:right;
     padding:12px;
+    float:right;
     border: none;
     width:80px;
     border-radius: 4px;
     background-color:#0758A6;
     color:white;
+   
 }
 .btn:hover{
     background-color:#65B1FB;
@@ -45,14 +67,18 @@
     width: 85%;
 }
 #login{
-    margin-top:15px;
-    margin-right:200px;
+ margin-top:15px;  
+ margin-right: 5px;
+}
+#loginUsername{
+    color: white;
+    font-size: 60px;
+    align-content: center;
 }
 #register{
     margin-top:15px;
     margin-right: -190px;
 }
-
 
 .center{
     margin-left: auto;
@@ -71,7 +97,7 @@ html {
 body {
 overflow: hidden;
 height: 100vh;
-background: linear-gradient(180deg, #09283d, #1b415c, #29516c, #6e8ea5, #7cadd0, #7cadd0, #7cadd0, #7cadd0, #6e8ea5, #3a6583, #1a4461, #09283d);
+background: linear-gradient(180deg,#29516c, #6e8ea5, #7cadd0, #7cadd0, #7cadd0, #7cadd0, #6e8ea5, #3a6583, #1a4461, #09283d);
 background-size: 2400% 2400%;
 animation: dayNight  60s ease infinite;
 }
