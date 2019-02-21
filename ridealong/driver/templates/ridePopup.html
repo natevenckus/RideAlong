@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+    <title>RideAlong</title>
+    <link rel="stylesheet" href="{% static 'popup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        </head>
+        <body id="hello">
+        <div class="lightbox">
+            <div class="iframeContainer">
+            <div class="toolbarLB">
+                <!-- <span class="closeLB" onclick="lightBoxClose()">x</span> -->
+                <div class="form">
+        
+                        <div class="tab-content">
+                            <form action="/" method="post">
+                            
+                            <div class="top-row">
+                            <div class="field-wrap">
+                                <p>
+                                    <label>
+                                        Enter Departure Location 
+                                    </label>
+                                    <span class="req"></span>
+                                
+                                    <input type="text" required autocomplete="off" />
+                                </p>
+                        
+                            <div class="field-wrap">
+                                <p>
+                                    <label>
+                                    Enter Arrival Location
+                                    </label>    
+                                    <span class="req"></span>
+                                    <input type="text"required autocomplete="off"/>
+                                </p>
+                            
+                            </div>
+                            <div>
+                                <p>
+                               <label> Estimate Pickup Date Time </label>
+                                    <input type = "datetime-local" name = "pickup_time" required>
+                               
+                                </p>
+
+                            </div>
+                            <div>
+                                    <p>
+                                   <label> Estimate DropOff Date Time</label>
+                                        <input type = "datetime-local" name = "pickup_time" required>
+                                    
+                                    </p>
+    
+                            </div>
+                            <div>
+                                <p>
+                                    <label>Special Instructions</label>
+                                    <textarea name="comments" maxlength="500"></textarea>
+                                    
+                                </p>
+
+                            </div>
+                            <div>
+                                 <p>
+                                     <label>Seats Available</label>
+                                     <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >                                     
+                                 </p>    
+                            </div>
+                            <div>
+                                <p>
+                                   <label>Baggage space</label>
+                                   <input type="number" id = "Baggage" name = "Baggage" min = "0" max = "10">
+                                </p>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <legend>Extra Accomodations</legend>
+                                    <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
+                                    <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
+                                </fieldset> 
+                            </div>        
+                            </form>
+            </div>
+                <button id="btn" type="submit"> Find a ride </button>
+            </div>
+        </div>
+        </body>
+       <script src="script.js"></script>    
+</html>
