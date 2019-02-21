@@ -8,6 +8,11 @@ from django.http import Http404
 from django.contrib.auth import logout as customLogout
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.template.loader import render_to_string
+from account.tokens import account_activation_token
 
 def index(request):
     formRegister = RegistrationForm()
@@ -22,15 +27,31 @@ def index(request):
         formLogin = AuthenticationForm(data=request.POST)
         
         if formRegister.is_valid():
-            formRegister.save()
-            username = formRegister.cleaned_data.get("username")
-            password1 = formRegister.cleaned_data.get("password1")
-            print(username)
-            print(password1)
-            user = authenticate(username=username, password=password1)
-            print(user)
-            login(request,user)
+            #my changes start here
+            user = formRegister.save(commit=False)
+            user.is_active = False
+            user.save()
+            current_site = get_current_site(request)
+            subject = 'Activate your RideAlong Account FAAAAM'
+            message = render_to_string('account_activation_email.html', {
+                'user' : user,
+                'domain': current_site.domain,
+                'uid' : urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+            })
+            user.email_user(subject,message)
             return redirect('regsuccess')
+
+       
+
+            #username = formRegister.cleaned_data.get("username")
+            #password1 = formRegister.cleaned_data.get("password1")
+            #print(username)
+            #print(password1)
+            #user = authenticate(username=username, password=password1)
+            #print(user)
+            #login(request,user)
+            #return redirect('regsuccess')
 
         if formLogin.is_valid():
             print("IN")

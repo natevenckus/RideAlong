@@ -15,3 +15,5 @@ class DriveRequest(models.Model):
 	RequestTime = models.DateTimeField()
 	Completed = models.BooleanField()
 	CompleteTime = models.DateTimeField()
+
+# Create your models here.
