@@ -10,12 +10,17 @@
     padding: 10px;
     border-radius: 4px;
     text-align: center;
-    margin-left: 34%;
     border:none;
+    position: relative;
     margin-bottom: 10%;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.747);
 
 }
+textarea {
+  width: 250px;
+  height: 100px;
+}
+
 body {
     margin: 0;
     background-color: #EBB;
@@ -52,4 +57,10 @@ body {
   }
   .lightbox.closed {
     display: none;
+  }
+
+  #formz td, #formz tr{
+    padding: 40px;
+    margin-left: 20px;
+    width: 200px;
   }
