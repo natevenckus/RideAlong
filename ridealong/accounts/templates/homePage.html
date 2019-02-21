@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'homePage.css' %}">
+        <link rel="stylesheet" href="{% static 'homePage2.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -26,7 +26,7 @@
                             </div>
                             {{formLogin.as_p}}
                         <div class="modal-footer">
-                            <button class="btn btn-default" name="login" type="submit" value="Login" style="margin:5px;" onclick= "storeCreds()">Login </button>
+                            <button class="btn btn-default" name="login" type="submit" value="Login" style="margin:5px;" >Login </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
                         </div>
                         </div>
@@ -45,8 +45,8 @@
                         </div>
                         {{formRegister.as_p}}
                         <div class="modal-footer">
-                            <button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;" onclick= "storeCreds()"> Register </button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
+                            <button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;" onclick= "myFunction()"> Register </button>
+                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
                         </div>
                         </div>
                     </div>
@@ -104,5 +104,11 @@
             <img src="logo.png" class="center">
         </div> -->
     </body>
-    <script src="{% static 'script.js'%}"></script>
+    <script>
+            // When the user clicks on div, open the popup
+            function myFunction() {
+                setTimeout(function(){ alert("Please check your email to verify your account!"); });
+                
+            }
+    </script>
 </html>

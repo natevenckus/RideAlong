@@ -5,3 +5,7 @@ function storeCreds(){
             console.log("Password: " + password);
     
 }
+
+function sendEmail(){
+    console.log("here");
+}

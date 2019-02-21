@@ -26,7 +26,7 @@
     cursor: pointer;
 }
 .btn{
-    float:center;
+    float: right;
     border: none;
     width:80px;
     border-radius: 4px;
@@ -49,12 +49,13 @@
 }
 #register{
     margin-top:15px;
+    margin-right: 100px;
 }
 .modal {
     display: none; /*Hidden by default*/
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 10px; /* Location of the box */
     width: 100%; /* Full width */
     color:wheat;
     overflow: visible;
@@ -399,18 +400,19 @@ transform: rotate(-15deg);
 }
 
 .car-top2:after {
-position: absolute;
-bottom: 7px;
-right: -340px;
-content: " ";
-width: 0;
-height: 0;
-border-top: 20px solid transparent;
-border-bottom: 80px solid transparent;
-border-right: 500px solid rgba(191,188,87,0.7);
-z-index: -1;
--webkit-mask-box-image: -webkit-linear-gradient(left, black, transparent);
--webkit-mask-box-image: -o-linear-gradient(left, black, transparent);
--webkit-mask-box-image: linear-gradient(to right, black, transparent);
-transform: rotate(-9deg);
+    position: absolute;
+    bottom: 7px;
+    right: -340px;
+    content: " ";
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 80px solid transparent;
+    border-right: 500px solid rgba(191,188,87,0.7);
+    z-index: -1;
+    -webkit-mask-box-image: -webkit-linear-gradient(left, black, transparent);
+    -webkit-mask-box-image: -o-linear-gradient(left, black, transparent);
+    -webkit-mask-box-image: linear-gradient(to right, black, transparent);
+    transform: rotate(-9deg);
 }
+  
