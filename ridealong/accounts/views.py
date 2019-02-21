@@ -6,11 +6,16 @@ from django.shortcuts import render,redirect
 from accounts.forms import RegistrationForm
 from django.http import Http404
 from django.contrib.auth import logout as customLogout
-
+from django.contrib.sessions.models import Session
+from django.contrib.auth.models import User
 
 def index(request):
     formRegister = RegistrationForm()
     formLogin = AuthenticationForm()
+    
+    if request.user.is_authenticated:
+        return render(request, 'login.html')
+
     if request.method == 'POST':
         print("Hello")
         formRegister = RegistrationForm(request.POST)
@@ -34,6 +39,8 @@ def index(request):
             print(username)
             print(password1)
             user = authenticate(request, username=username, password=password1)
+            if request.POST['remember_me'] == True:
+                request.session.set_expiry(1209600)
             context = {'form': formLogin}
             if user:
                 print("Not none")
@@ -44,7 +51,7 @@ def index(request):
             
     else:
         formRegister = RegistrationForm()
-    return render(request,'homePage.html', {'formRegister':formRegister,'formLogin':formLogin })
+        return render(request,'homePage.html', {'formRegister':formRegister,'formLogin':formLogin })
 
 
 
