@@ -19,63 +19,78 @@
                         <div class="tab-content">
                             <form action="/" method="post">
                             
-                            <div class="top-row">
-                            <div class="field-wrap">
                                 <p>
                                     <label>
                                         Enter Departure Location 
                                     </label>
-                                    <span class="req"></span>
-                                
-                                    <input type="text" required autocomplete="off" />
+                                    <br>
+                                    <input type="text" required autocomplete="off" size="50" />
                                 </p>
                         
-                            <div class="field-wrap">
+                
                                 <p>
                                     <label>
                                     Enter Arrival Location
-                                    </label>    
-                                    <span class="req"></span>
-                                    <input type="text"required autocomplete="off"/>
+                                    </label>  
+                                    <br>  
+                                    
+                                    <input type="text"required autocomplete="off" size="50"/>
                                 </p>
                             
                             </div>
                             <div>
                                 <p>
-                               <label> Estimate Pickup Date Time </label>
-                                    <input type = "datetime-local" name = "pickup_time" required>
+                               <label> Estimate Pickup: Date/Time </label>
+                               <br>
+                                    <input type = "datetime-local" name = "pickup_time"/>
                                
                                 </p>
 
                             </div>
                             <div>
                                     <p>
-                                   <label> Estimate DropOff Date Time</label>
-                                        <input type = "datetime-local" name = "pickup_time" required>
+                                   <label> Estimate DropOff: Date/Time</label>
+                                   <br>
+                                        <input type = "datetime-local" name = "pickup_time" />
                                     
                                     </p>
     
                             </div>
-                            <div>
+                            <!-- <div>
                                 <p>
                                     <label>Special Instructions</label>
-                                    <textarea name="comments" maxlength="500"></textarea>
+                                    <br>
+                                    <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
                                     
                                 </p>
 
-                            </div>
+                            </div> -->
                             <div>
-                                 <p>
-                                     <label>Seats Available</label>
-                                     <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >                                     
-                                 </p>    
+                                <table id="formz">
+                                    <tr>
+                                        <td>
+                                                <p>
+                                                        <label>Seats Available</label>
+                                                        <br>
+                                                     <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >                                     
+                                                </p>  
+                                        </td>
+                                        <td>
+                                            <p><br></p>
+                                        </td>
+                                        <td>
+                                                <p>
+                                                        <label>Baggage space</label>
+                                                        <br>
+                                                        <input type="number" id = "Baggage" name = "Baggage" min = "0" max = "10">
+                                                     </p> 
+                                        </td>
+                                    </tr>
+                                </table>
+                                 
+                                 
                             </div>
-                            <div>
-                                <p>
-                                   <label>Baggage space</label>
-                                   <input type="number" id = "Baggage" name = "Baggage" min = "0" max = "10">
-                                </p>
-                            </div>
+                            
                             <div>
                                 <fieldset>
                                     <legend>Extra Accomodations</legend>
