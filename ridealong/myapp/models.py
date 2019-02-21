@@ -1,5 +1,7 @@
 from django.db import models
 
+#Put models here
+
 class User(models.Model):
 	ID = models.AutoField(primary_key=True)
 	FBID = models.CharField(max_length=50)
@@ -17,4 +19,3 @@ class User(models.Model):
 	ProfilePic = models.BinaryField()
 	EduVerified = models.BooleanField()
 	EduVerifyTime = models.DateTimeField()
-
