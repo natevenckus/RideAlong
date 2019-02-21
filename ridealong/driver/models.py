@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class DriveRequest(models.Model):
 	ID = models.AutoField(primary_key=True)
