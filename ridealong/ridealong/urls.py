@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('pwtest/', include('myapp.urls')),
     path('pwtest/', views.pwtest, name='pwtest'),
-    path('accounts/',include('accounts.urls')),
-	path('',include('accounts.urls')),
+    path('',include('accounts.urls')),
+    path('driver/',include('driver.urls'))
 ]
