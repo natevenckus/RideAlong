@@ -1,0 +1,73 @@
+#toolbar{
+    background-color : rgba(184, 229, 250, 0.2);
+    border-color: transparent;
+    margin: 0px;
+    padding: 2px;
+}
+#input{
+    padding: 8px; 
+    position: relative;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 700px; 
+    border-color: #0758A6;
+}
+#power{
+    margin-left: 20px;
+    cursor: pointer;
+}
+#home{
+    float:right;
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 300px;
+    background-color: transparent;
+    padding:12px 12px;
+    cursor: pointer;
+}
+.btn{
+    float:right;
+    padding:12px;
+    border: none;
+    width:80px;
+    border-radius: 4px;
+    background-color:#0758A6;
+    color:white;
+}
+.btn:hover{
+    background-color:#65B1FB;
+    opacity: 2;
+    
+}
+.logo {
+    position: absolute;
+    top: 100px;
+    width: 85%;
+}
+#login{
+    margin-top:15px;
+    margin-right:200px;
+}
+#register{
+    margin-top:15px;
+    margin-right: -190px;
+}
+.modal {
+    display: none; /*Hidden by default*/
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    width: 100%; /* Full width */
+    color:wheat;
+    overflow: visible;
+  }
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.color{
+    color: blue;
+}
