@@ -21,20 +21,68 @@
                             
                             <div class="top-row">
                             <div class="field-wrap">
+                                <p>
+                                    <label>
+                                        Enter Departure Location 
+                                    </label>
+                                    <span class="req"></span>
                                 
-                                Enter Departure Location <br>
-                                <span class="req"></span>
-                                
-                                <input type="text" required autocomplete="off" />
-                           
+                                    <input type="text" required autocomplete="off" />
+                                </p>
                         
                             <div class="field-wrap">
-                               Enter Arrival Location
-                               <br>
-                               <span class="req"></span>
-                                <input type="text"required autocomplete="off"/>
+                                <p>
+                                    <label>
+                                    Enter Arrival Location
+                                    </label>    
+                                    <span class="req"></span>
+                                    <input type="text"required autocomplete="off"/>
+                                </p>
+                            
                             </div>
-                            </div>         
+                            <div>
+                                <p>
+                               <label> Estimate Pickup Date Time </label>
+                                    <input type = "datetime-local" name = "pickup_time" required>
+                               
+                                </p>
+
+                            </div>
+                            <div>
+                                    <p>
+                                   <label> Estimate DropOff Date Time</label>
+                                        <input type = "datetime-local" name = "pickup_time" required>
+                                    
+                                    </p>
+    
+                            </div>
+                            <div>
+                                <p>
+                                    <label>Special Instructions</label>
+                                    <textarea name="comments" maxlength="500"></textarea>
+                                    
+                                </p>
+
+                            </div>
+                            <div>
+                                 <p>
+                                     <label>Seats Available</label>
+                                     <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >                                     
+                                 </p>    
+                            </div>
+                            <div>
+                                <p>
+                                   <label>Baggage space</label>
+                                   <input type="number" id = "Baggage" name = "Baggage" min = "0" max = "10">
+                                </p>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <legend>Extra Accomodations</legend>
+                                    <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
+                                    <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
+                                </fieldset> 
+                            </div>        
                             </form>
             </div>
                 <button id="btn" type="submit"> Find a ride </button>
