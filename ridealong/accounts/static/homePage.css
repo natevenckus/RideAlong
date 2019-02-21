@@ -26,8 +26,7 @@
     cursor: pointer;
 }
 .btn{
-    float:right;
-    padding:12px;
+    float:center;
     border: none;
     width:80px;
     border-radius: 4px;
@@ -46,11 +45,10 @@
 }
 #login{
     margin-top:15px;
-    margin-right:200px;
+    margin-bottom: 200px;
 }
 #register{
     margin-top:15px;
-    margin-right: -190px;
 }
 .modal {
     display: none; /*Hidden by default*/

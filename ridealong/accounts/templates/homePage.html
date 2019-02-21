@@ -11,19 +11,12 @@
 
     </head>
     <body>
-        <div id="toolbar">
-            <div class="form-group" align="left">
-                <i id="power" class="fa fa-power-off" style="font-size:18px"></i>
-                <input type="text" id="input" placeholder="Search...">
-                <i id="home" class="fa fa-home" style="font-size:40px"></i>
-                <button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'">Login</button>
-                <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
-            </div>
-        </div>
+            <button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'">Login</button>
+            <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
         <!-- Login Form -->
         <form method="post" id="loginForm">
             {% csrf_token %}
-
+            
             <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -71,6 +64,7 @@
                     </div>
                 </div>
                 -->
+                
                 <div id="rideAlong" class="logo">
                     <img src="{% static 'logo2.png' %}" class="center">
                 </div>
