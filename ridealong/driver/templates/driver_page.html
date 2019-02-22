@@ -29,7 +29,45 @@
             </div>
         </div>
         <button class="circle"id="myBtn"> &#43;</button>
+
         <table id="ride">
+            <tr>
+                <th>New Ride</th>
+            </tr>
+            <tr>
+                <th>
+                </th>
+            </tr>
+            <tr><th></th></tr>
+            <div class="circle">
+                        <div class="dropdown" >
+                        <div onclick="myfunction()" class = "arrow"></div>
+                        <div id="myDropdown" class="dropdown-content">
+                                
+                                <div>
+                                            <p>Ride Info</p>
+                                            <label for="Destination">Destination: St. Louis, Ohio</label>
+                                            <button class="btn" id="Edit1">Edit</button><br>
+                                            <label for="Origin">Pick Up Location: West Laffayte, Indiana</label>
+                                            <button class="btn" id="Edit2">Edit</button><br>
+                                            <label for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019</label>
+                                            <button class="btn" id="Edit3">Edit</button><br>
+                                            <label for="Filled Seats">Filled Seats: 3</label>
+                                            <button class="btn" id="Edit4">Edit</button><br>
+                                        </div>
+                        </div>
+                    </div>
+                    
+            </div>
+            
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <th> My Rides</th>
+            </tr>
+        </table>
+        <!-- <table id="ride">
                 <tr>
                     <th>New Ride</th>
                 </tr>
@@ -38,6 +76,7 @@
                     </th>
                 </tr>
                 <tr><th></th></tr>
+                
                 <div class="circle">
                         <button class="arrow Driver"id="viewRideBtn"></button>
                         <div class="driver-contents">
@@ -46,7 +85,7 @@
                 </div>
                 <div id="rideModal" class="modal">
                         <!-- Modal content -->
-                        <div class="modal-content">
+                        <!-- <div class="modal-content">
                           <span class="close">&times;</span>
                           <p>Ride Info</p>
                           <label for="Destination">Destination: St. Louis, Ohio</label>
@@ -60,13 +99,14 @@
                         </div>
                       
                     </div>
-                <tr>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th> View Rides</th>
-                </tr>
-            </table>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th> View Rides</th>
+                    </tr>
+                </table>
+               --> 
         <form id="deets" action="" method = "post">
             {%csrf_token%}
                 <div id="myModal" class="modal">
@@ -142,29 +182,14 @@
                         <button id="btn" type="submit"  <a href="driverpage"> Start a ride </button>
                       </div>
         </form>
-        <!-- <div class="circle">
-                    &#43;
-                    <a href="{% url 'ridepopup' %}"></a>
-        </div> -->
-        <table id="ride">
-            <tr>
-                <th>New Ride</th>
-            </tr>
-            <tr>
-                <th>
-                </th>
-            </tr>
-            <tr><th></th></tr>
-            <div class="circle">
-                    <div class="arrow"></div>
-            </div>
-            <tr>
-                <th></th>
-            </tr>
-            <tr>
-                <th> Requests</th>
-            </tr>
-        </table>
+        
+
+
+        
+          
+        </div>
+
+        
     </body>
     <script>
             var modal = document.getElementById('myModal');
@@ -172,6 +197,11 @@
         var btn = document.getElementById("myBtn");
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
+        var showRide = document.getElementById('rideModal');
+        var arrow = document.getElementsByClassName('arrow');
+        arrow.onclick = function(){
+                showRide.style.display = "block";
+        }
         // When the user clicks on the button, open the modal 
         btn.onclick = function() {
             modal.style.display = "block";
@@ -191,6 +221,9 @@
         function submitVals(){
             console.log(departureLocation);
 
+        }
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
         }
         function drop(){
 	        document.getElementByID("driverInfo").classList.toggle("show");
