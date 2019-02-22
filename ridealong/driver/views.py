@@ -48,9 +48,11 @@ def index(request):
         driveRequest_instance.Rider = request.user
 
         driveRequest_instance.save()
-	
 
-    return render(request,"driver_page.html")
+    driveRequests = DriveRequest.objects.all()
+
+
+    return render(request,"driver_page.html",{'driveRequests':driveRequests})
 
 def ridepopup(request):
     return render(request,'ridePopup.html')
