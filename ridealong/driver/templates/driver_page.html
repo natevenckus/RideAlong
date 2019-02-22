@@ -39,13 +39,32 @@
                 </tr>
                 <tr><th></th></tr>
                 <div class="circle">
-                        <div class="arrow"></div>
+                        <button class="arrow Driver"id="viewRideBtn"></button>
+                        <div class="driver-contents">
+                            <button id="rideBtn">Ride 1</button><br>
+                        </div>
                 </div>
+                <div id="rideModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                          <span class="close">&times;</span>
+                          <p>Ride Info</p>
+                          <label for="Destination">Destination: St. Louis, Ohio</label>
+                          <button class="btn" id="Edit1">Edit</button><br>
+                          <label for="Origin">Pick Up Location: West Laffayte, Indiana</label>
+                          <button class="btn" id="Edit2">Edit</button><br>
+                          <label for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019</label>
+                          <button class="btn" id="Edit3">Edit</button><br>
+                          <label for="Filled Seats">Filled Seats: 3</label>
+                          <button class="btn" id="Edit4">Edit</button><br>
+                        </div>
+                      
+                    </div>
                 <tr>
                     <th></th>
                 </tr>
                 <tr>
-                    <th> Requests</th>
+                    <th> View Rides</th>
                 </tr>
             </table>
         <form id="deets" action="" method = "post">
@@ -172,6 +191,9 @@
         function submitVals(){
             console.log(departureLocation);
 
+        }
+        function drop(){
+	        document.getElementByID("driverInfo").classList.toggle("show");
         }
 
             </script>

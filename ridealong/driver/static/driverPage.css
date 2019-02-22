@@ -1,3 +1,31 @@
+/* The Modal (background) */
+.ride-content{
+	overflow: auto;
+    z-index: 1;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*dropdown for Driving contents/View Rides*/
+.Driver {
+	position: relative;
+    display: inline-block;
+}
+
+.driver-contents {
+	display: none;
+}
+.dropDriver button{
+	display: block;
+}
+
+.Driver:hover .driver-contents {display: block;}
+
 #toolbar{
     background-color : rgba(184, 229, 250, 0.2);
     border-color: transparent;
