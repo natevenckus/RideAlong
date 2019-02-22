@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import models
+from .models import DriveRequest
 
 # Create your views here.
 
@@ -12,6 +12,14 @@ def index(request):
         print(request.POST['dropTime'])
         print(request.POST['seats'])
         print(request.POST['baggage'])
+        driveRequest_instance = DriveRequest.objects.create(
+            departLoc = request.POST['departLoc'],
+            arrivalLoc = request.POST['arrivalLoc'],
+            pickupTime = request.POST['pickupTime'],
+            dropTime = request.POST['dropTime'],
+            numOfSeats = request.POST['seats'],
+            numOfBaggage = request.POST['baggage']
+        )
 
     return render(request,"driver_page.html")
 

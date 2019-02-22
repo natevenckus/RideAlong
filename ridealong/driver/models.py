@@ -16,8 +16,8 @@ class DriveRequest(models.Model):
     Completed = models.BooleanField(null=True)
     CompleteTime = models.DateTimeField(null=True)
     #additional columns
-    Rider = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
-    departureLoc = models.CharField(default="departureLoc",max_length=100)
+    #Driver = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    departLoc = models.CharField(default="departureLoc",max_length=100)
     arrivalLoc = models.CharField(default="arrivalLoc",max_length=100)
     pickupTime = models.DateTimeField()
     dropTime = models.DateTimeField()
