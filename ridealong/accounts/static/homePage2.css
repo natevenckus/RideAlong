@@ -79,7 +79,7 @@
     z-index: 1; /* Sit on top */
     padding-top: 10px; /* Location of the box */
     width: 100%; /* Full width */
-    color:wheat;
+    color: black;
     overflow: visible;
   }
 .modal-content {

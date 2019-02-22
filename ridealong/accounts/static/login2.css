@@ -72,8 +72,12 @@ img {
 }
 #loginUsername{
     color: white;
-    font-size: 60px;
-    align-content: center;
+    margin-left: 300px;
+}
+#loginUsername{
+    color: black;
+    font-size: 100px;
+    margin-left: 30px;
 }
 #register{
     margin-top:15px;
