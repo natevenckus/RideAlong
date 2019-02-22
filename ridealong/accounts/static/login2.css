@@ -73,7 +73,7 @@ img {
 #loginUsername{
     color: white;
     font-size: 60px;
-    align-content: center;
+    margin-left: 30px;
 }
 #register{
     margin-top:15px;

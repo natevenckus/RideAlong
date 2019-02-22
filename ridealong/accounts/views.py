@@ -9,16 +9,20 @@ from django.contrib.auth import logout as customLogout
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.core.mail import send_mail
 
 def index(request):
     formRegister = RegistrationForm()
     formLogin = AuthenticationForm()
-    
-    if request.user.is_authenticated:
-        return render(request, 'login.html')
+    num = request.session.get_expiry_age()
+    print(request.POST)
+    print("Expiry age")
+    print(num)
+    if request.user.is_authenticated and num is not 0:
+        return render(request, 'login.html') 
 
     if request.method == 'POST':
-        print("Hello")
+       
         formRegister = RegistrationForm(request.POST)
         print("user instance = ")
         print(formRegister.instance)
@@ -42,10 +46,10 @@ def index(request):
             formProfileRegister.save()
             username = formRegister.cleaned_data.get("username")
             password1 = formRegister.cleaned_data.get("password1")
-            print(username)
-            print(password1)
+            
             user = authenticate(username=username, password=password1)
-            print(user)
+            send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
+            
             login(request,user)
             return redirect('regsuccess')
 
@@ -53,11 +57,19 @@ def index(request):
             print("IN")
             username = formLogin.cleaned_data.get("username")
             password1 = formLogin.cleaned_data.get("password")
-            print(username)
-            print(password1)
             user = authenticate(request, username=username, password=password1)
-            if request.POST['remember_me']:
-                request.session.set_expiry(1209600)
+			
+            print(request.POST)
+            
+            if "remember_me" in request.POST.keys() and request.POST['remember_me']:
+                request.session.set_expiry(45)
+                print(request.session.get_expiry_age())
+            else:
+                request.session.flush()
+                request.session.set_expiry(0)
+                print("DO NOT REMEMBER ME")
+                print(request.session.get_expiry_age())
+
             context = {'form': formLogin}
             if user:
                 print("Not none")
@@ -70,9 +82,8 @@ def index(request):
         formRegister = RegistrationForm()
         formProfileRegister = ProfileRegistrationForm(request.POST)
         return render(request,'homePage.html', {'formRegister':formRegister,'formLogin':formLogin, 'formProfileRegister':formProfileRegister})
-
-
-
+        
+    return render(request,'homePage.html', {'formRegister':formRegister,'formLogin':formLogin })
 
 def loginpage(request):
     return render(request,'login.html')

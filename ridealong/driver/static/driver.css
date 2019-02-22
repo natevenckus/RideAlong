@@ -1,5 +1,5 @@
 #toolbar{
-    background-color : rgba(184, 229, 250, 0.2);
+    background-color : green;
     border-color: transparent;
     margin: 0px;
     padding: 2px;
@@ -183,4 +183,115 @@ animation: dayNight  60s ease infinite;
 .arrow:hover {
     border-bottom-width: 4px;
     border-right-width: 4px;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 60%; /* Full width */
+    height: 60%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#toolbar{
+    background-color : rgba(184, 229, 250, 0.2);
+    border-color: transparent;
+    margin: 0px;
+    padding: 4px;
+  }
+  #btn{
+    background-color:#0758A6;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    border:none;
+    position: relative;
+    margin-bottom: 10%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.747);
+  
+  }
+  textarea {
+  width: 250px;
+  height: 100px;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #EBB;
+     
+  }
+  /* .lightbox {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(95, 160, 221);
+  }
+  .toolbarLB {
+    text-align: right;
+    padding: 3px;
+    margin: 30px;
+    
+  }
+  
+  .closeLB {
+    color: red;
+    cursor: pointer;
+  }
+  .lightbox .iframeContainer {
+    vertical-align: middle;
+    background:blue;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 5px 10px 5px;
+  }
+  .lightbox.closed {
+    display: none;
+  }
+  
+  #formz td, #formz tr{
+    padding: 40px;
+    margin-left: 20px;
+    width: 200px;
+  } */
+ 

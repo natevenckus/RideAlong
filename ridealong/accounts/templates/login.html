@@ -10,6 +10,8 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         </head>
         <body>
+            {% block content %}
+            {% if user.is_authenticated %}
                 <div id="toolbar">
                     <div class="form-group" align="left">
                         <div class="dropdown">
@@ -22,20 +24,22 @@
                         <input type="text" id="input" placeholder="Search...">
                         <i id="home" class="fa fa-home" style="font-size:40px"></i>
                         <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
-                        <img img src="{% static 'tempPic.png' %}" >
+                        <img img src="{% static 'tempPic.png' %}" > 
+                        <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
+                        {{user.username}}
+                        </div>
                         <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
 
                     </div>
                 </div>
                 <div id="loginUsername"> 
                       
-                        {% block content %}
-                        {% if user.is_authenticated %}
-                          Welcome {{ user.username }}!
-                        {% else %}
-                          {{user.username}}
-                          <p>You are not logged in </p>
-                        {% endif %}
-                        {% endblock %}
-
-            </div>
+                        <p style="margin-left: 425px; margin-top: 250px;"> Welcome {{ user.username }}! </p>
+                </div>
+            {% else %}
+                <div id="loginUsername">
+                          <p style="margin-left: 425px; margin-top: 250px;">You are not logged in!</p>
+                </div>
+            {% endif %}
+            {% endblock %}
+      </body>

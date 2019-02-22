@@ -11,8 +11,10 @@
 
     </head>
     <body>
-            <button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'">Login</button>
-            <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
+            <div id="homeButtons">
+                <div class="inner"><button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'" style="margin:5px;">Login</button></div>
+                <div class="inner"><button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'" style="margin:5px;">Register</button></div>
+            </div>
         <!-- Login Form -->
         <form method="post" id="loginForm">
             {% csrf_token %}
@@ -21,18 +23,19 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                                <button class="close" data-dismiss="modal">&times;</button>
+                                <button class="close" data-dismiss="modal" aria-label="Close"><a href="{% url 'index' %}">&times;</a></button>
                                 <h4 id="myModalLabel">Login here:</h4>
-                            </div>
+                        </div>
                             {{formLogin.as_p}}
                         <div class="modal-footer">
                         <input type="checkbox" name="remember_me" value="true"> Remember Me</input>
                             <button class="btn btn-default" name="login" type="submit" value="Login" style="margin:5px;" >Login </button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;"><a href="{% url 'index' %}">Close</a></button>
                         </div>
-                        </div>
+                        
                     </div>
-                </div>
+                 </div>
+             </div>
         </form>
         <!-- Register Form -->
         <form method="post" id="registerForm">
@@ -41,14 +44,16 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button class="close" data-dismiss="modal">&times;</button>
+                            <button class="close" data-dismiss="modal"><a href="{% url 'index' %}">&times;</a></button>
                             <h4 id="myModalLabel">Register here:</h4>
                         </div>
                         {{formRegister.as_p}}
                         {{formProfileRegister.as_p}}
                         <div class="modal-footer">
-                            <button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;"> Register </button>
-                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>
+                            <!--<button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;"> Register </button>
+                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;">Close</button>-->
+                            <button class="btn btn-default" name="register" type="submit" value="Register" style="margin:5px;" onclick= "myFunction()"> Register </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin:5px;"><a href="{% url 'index' %}">Close</a></button>
                         </div>
                         </div>
                     </div>
@@ -105,12 +110,14 @@
         <!-- <div>
             <img src="logo.png" class="center">
         </div> -->
+
     </body>
+    <!--
     <script>
             // When the user clicks on div, open the popup
             function myFunction() {
                 setTimeout(function(){ alert("Please check your email to verify your account!"); });
                 
             }
-    </script>
+    </script> -->
 </html>
