@@ -22,7 +22,10 @@
                         <input type="text" id="input" placeholder="Search...">
                         <i id="home" class="fa fa-home" style="font-size:40px"></i>
                         <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
-                        <img img src="{% static 'tempPic.png' %}" >
+                        <img img src="{% static 'tempPic.png' %}" > 
+                        <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
+                        {{user.username}}
+                        </div>
                         <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
 
                     </div>
@@ -39,3 +42,4 @@
                         {% endblock %}
 
             </div>
+      </body>

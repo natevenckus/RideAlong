@@ -11,8 +11,10 @@
 
     </head>
     <body>
-            <button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'">Login</button>
-            <button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'">Register</button>
+            <div id="homeButtons">
+                <div class="inner"><button class="btn" id="login" onclick="document.getElementById('loginModal').style.display='block'" style="margin:5px;">Login</button></div>
+                <div class="inner"><button class="btn" id="register" onclick="document.getElementById('registerModal').style.display='block'" style="margin:5px;">Register</button></div>
+            </div>
         <!-- Login Form -->
         <form method="post" id="loginForm">
             {% csrf_token %}

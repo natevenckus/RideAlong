@@ -25,15 +25,37 @@
     padding:12px 12px;
     cursor: pointer;
 }
-.btn{
-    float: right;
+#homeButtons {
+    margin-left: 500px;
+    margin-top: 437px;
+
+    
+}
+.inner {
+    display: inline-block;
+}
+#login{
+   
     border: none;
-    width:80px;
+    width: 100px;
     border-radius: 4px;
-    background-color:#0758A6;
+    background-color:rgb(255,219,153,.9);
     color:white;
 }
-.btn:hover{
+#login:hover{
+    background-color:#65B1FB;
+    opacity: 2;
+    
+}
+#register{
+    margin-bottom: 200px;
+    border: none;
+    width:100px;
+    border-radius: 4px;
+    background-color:rgb(255,219,153,.9);
+    color:white;
+}
+#register:hover{
     background-color:#65B1FB;
     opacity: 2;
     

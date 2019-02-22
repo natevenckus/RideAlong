@@ -16,14 +16,16 @@ import psycopg2.extensions
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '=m7gc(y_#mglwd#a8v4nl*m1+4(!3+=h7ciafndgi&v*j##0k6'
-
+SESSION_COOKIE_AGE = 0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
