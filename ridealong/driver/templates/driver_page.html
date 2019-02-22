@@ -51,7 +51,7 @@
                     <th> Requests</th>
                 </tr>
             </table>
-        <form id="deets" method="POST">
+        <form id="deets" mathod = "GET">
                 <div id="myModal" class="modal">
 
                         <!-- Modal content -->
@@ -67,7 +67,7 @@
                                                 Enter Departure Location 
                                             </label>
                                             <br>
-                                            <input type="text" required autocomplete="off" size="50" />
+                                            <input id="departure" type="text" required autocomplete="off" size="50" />
                                         </p>
                                 
                         
@@ -142,7 +142,7 @@
                                     </form>
                                     
                         </div>
-                        <button id="btn" type="submit"> Find a ride </button>
+                        <button id="btn" type="submit"  <a href="driverpage"> Start a ride </button>
                       </div>
                    
                 
@@ -201,5 +201,14 @@
                 modal.style.display = "none";
             }
         }
+        
+        var departureLocation = document.getElementById("departure").value;
+        var findBtn = document.getElementById("btn");
+       
+        function submitVals(){
+            console.log(departureLocation);
+
+        }
+
             </script>
 </html>
