@@ -1,9 +1,15 @@
 from django.shortcuts import render
-from .models import DriveRequest
+from django.shortcuts import redirect
+from .models import DriveRequest, Car
+from accounts.models import Profile
+from . import views
 
 # Create your views here.
 
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('loginpage')
+
     print (request.method)
     if request.method == "POST":
         print(request.POST['departLoc'])
@@ -18,9 +24,31 @@ def index(request):
             pickupTime = request.POST['pickupTime'],
             dropTime = request.POST['dropTime'],
             numOfSeats = request.POST['seats'],
-            numOfBaggage = request.POST['baggage']
+            numOfBaggage = request.POST['baggage'],
         )
+        
+        make = request.POST['carMake']
+        model = request.POST['carModel']
+        year = request.POST['carYear']
+
+        if make and model and year:
+            car = Car.objects.create(
+                Make = make,
+                Model = model,
+                Year = year
+            )
+            
+            car.save()
+            
+            driveRequest_instance.Car = car
+            driveRequest_instance.save()
+        
+        print(request.user)
+		
+        driveRequest_instance.Rider = request.user
+
         driveRequest_instance.save()
+
     driveRequests = DriveRequest.objects.all()
 
 
