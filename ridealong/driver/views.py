@@ -21,8 +21,11 @@ def index(request):
             numOfBaggage = request.POST['baggage']
         )
         driveRequest_instance.save()
+    else:
+        driveRequests = DriveRequest.objects.all()
 
-    return render(request,"driver_page.html")
+
+    return render(request,"driver_page.html",{'driveRequests':driveRequests})
 
 def ridepopup(request):
     return render(request,'ridePopup.html')
