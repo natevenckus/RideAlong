@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'popup.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         </head>
         <body id="hello">
@@ -15,35 +15,28 @@
             <div class="toolbarLB">
                 <!-- <span class="closeLB" onclick="lightBoxClose()">x</span> -->
                 <div class="form deets">
-        
                         <div class="tab-content">
                             <form action="/" method="post">
-                            
                                 <p>
                                     <label>
-                                        Enter Departure Location 
+                                        Enter Departure Location
                                     </label>
                                     <br>
-                                    <input type="text" required autocomplete="off" size="50" />
+                                    <input type="text" required autocomplete="off" size="50" name="departureLoc" />
                                 </p>
-                        
-                
                                 <p>
                                     <label>
                                     Enter Arrival Location
-                                    </label>  
-                                    <br>  
-                                    
-                                    <input type="text"required autocomplete="off" size="50"/>
+                                    </label>
+                                    <br>
+                                    <input type="text"required autocomplete="off" size="50" /name="arrivalLoc" >
                                 </p>
-                            
                             </div>
                             <div>
                                 <p>
                                <label> Estimate Pickup: Date/Time </label>
                                <br>
                                     <input type = "datetime-local" name = "pickup_time"/>
-                               
                                 </p>
 
                             </div>
@@ -51,17 +44,14 @@
                                     <p>
                                    <label> Estimate DropOff: Date/Time</label>
                                    <br>
-                                        <input type = "datetime-local" name = "pickup_time" />
-                                    
+                                        <input type = "datetime-local" name = "dropoff_time" />
                                     </p>
-    
                             </div>
                             <!-- <div>
                                 <p>
                                     <label>Special Instructions</label>
                                     <br>
                                     <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
-                                    
                                 </p>
 
                             </div> -->
@@ -72,8 +62,8 @@
                                                 <p>
                                                         <label>Seats Available</label>
                                                         <br>
-                                                     <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >                                     
-                                                </p>  
+                                                     <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >
+                                                </p>
                                         </td>
                                         <td>
                                             <p><br></p>
@@ -83,27 +73,24 @@
                                                         <label>Baggage space</label>
                                                         <br>
                                                         <input type="number" id = "Baggage" name = "Baggage" min = "0" max = "10">
-                                                     </p> 
+                                                     </p>
                                         </td>
                                     </tr>
                                 </table>
-                                 
-                                 
                             </div>
-                            
                             <div>
                                 <fieldset>
                                     <br>
                                     <legend>Extra Accomodations</legend>
                                     <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
                                     <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
-                                </fieldset> 
-                            </div>        
+                                </fieldset>
+                            </div>
                             </form>
             </div>
                 <button id="btn" type="submit"> Find a ride </button>
             </div>
         </div>
         </body>
-       <script src="script.js"></script>    
+       <script src="script.js"></script>
 </html>
