@@ -21,10 +21,10 @@
     position: absolute;
     margin-top: 2px;
     margin-left: 300px;
-    background-color: transparent;
+    background-color: #29516c;
     padding:12px 12px;
     cursor: pointer;
-    color: black;
+    color: white;
 }
 #bell{
     color: black;
