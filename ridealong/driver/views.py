@@ -20,6 +20,7 @@ def index(request):
             numOfSeats = request.POST['seats'],
             numOfBaggage = request.POST['baggage']
         )
+        driveRequest_instance.save()
 
     return render(request,"driver_page.html")
 

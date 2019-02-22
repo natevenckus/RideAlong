@@ -2,7 +2,38 @@
 {% load static %}
 <html>
     <head>
-        <h>Profile Page is currently under maintenance</h>
-    </head>    
+        <title>RideAlong</title>
+        <link rel="stylesheet" href="{% static 'profile.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+    </head>
+    <body>
+        <div id="toolbar">
+            <div class="form-group" align="left">
+                <div class="dropdown">
+                    <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                        <div class="dropdown-content">
+                                <a href="#">Rider</a>
+                                <a><b>Driver</b></a>
+                        </div>
+                </div>
+                    <input type="text" id="input" placeholder="Search...">
+                    <a href="{% url 'driverpage' %}" >
+                        <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                    </a>
+                    <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
+                    <img src="{% static 'tempPic.png' %}" ></a>
+                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
+            </div>
+        </div>
+       
+        </div>
+
+        <h1>Welcome to your profile</h1>
+    </body>
+   
 </html>

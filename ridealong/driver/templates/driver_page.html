@@ -23,7 +23,7 @@
                     <input type="text" id="input" placeholder="Search...">
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
-                    <img img src="{% static 'tempPic.png' %}">
+                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
 
             </div>
@@ -45,15 +45,16 @@
                         <div id="myDropdown" class="dropdown-content two">
                                 
                                 <div>
-                                            <p>Ride Info</p>
-                                            <label for="Destination">Destination: St. Louis, Ohio</label>
-                                            <button class="btn" id="Edit1">Edit</button><br>
-                                            <label for="Origin">Pick Up Location: West Laffayte, Indiana</label>
-                                            <button class="btn" id="Edit2">Edit</button><br>
-                                            <label for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019</label>
-                                            <button class="btn" id="Edit3">Edit</button><br>
-                                            <label for="Filled Seats">Filled Seats: 3</label>
-                                            <button class="btn" id="Edit4">Edit</button><br>
+                                            <p>Rides</p>
+                                            <p for="Destination">Destination: St. Louis, Ohio
+                                            <button class="btn" id="Edit1">Edit</button><br></p>
+                                            <p for="Origin">Pick Up Location: West Laffayte, Indiana
+                                            <button class="btn" id="Edit2">Edit</button><br></p>
+                                            <p for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
+                                            <button class="btn" id="Edit3">Edit</button><br></p>
+                                            <p for="Filled Seats">Filled Seats: 3
+                                            <button class="btn" id="Edit4">Edit</button><br></p>
+                                            
                                         </div>
                         </div>
                     </div>
