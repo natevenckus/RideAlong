@@ -8,6 +8,7 @@ from django.http import Http404
 from django.contrib.auth import logout as customLogout
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 def index(request):
     formRegister = RegistrationForm()
@@ -30,6 +31,7 @@ def index(request):
             password1 = formRegister.cleaned_data.get("password1")
             
             user = authenticate(username=username, password=password1)
+            send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
             
             login(request,user)
             return redirect('regsuccess')
