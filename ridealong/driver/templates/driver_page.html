@@ -29,7 +29,125 @@
             </div>
         </div>
         
-        <button class="circle"><a href="{% url 'ridepopup' %}"> &#43;</a></button>
+        <button class="circle"id="myBtn"> &#43;</button>
+        <table id="ride">
+                <tr>
+                    <th>New Ride</th>
+                </tr>
+                <tr>
+                    <th>
+                    </th>
+                </tr>
+                <tr><th></th></tr>
+                <div class="circle">
+                        <div class="arrow"></div>
+                        
+                </div>
+                
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th> Requests</th>
+                </tr>
+            </table>
+        <form id="deets" method="POST">
+                <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                          <span class="close">&times;</span>
+                          <div class="form">
+        
+                                <div class="tab-content">
+                                    <form action="/" method="post">
+                                    
+                                        <p>
+                                            <label>
+                                                Enter Departure Location 
+                                            </label>
+                                            <br>
+                                            <input type="text" required autocomplete="off" size="50" />
+                                        </p>
+                                
+                        
+                                        <p>
+                                            <label>
+                                            Enter Arrival Location
+                                            </label>  
+                                            <br>  
+                                            
+                                            <input type="text"required autocomplete="off" size="50"/>
+                                        </p>
+                                    
+                                    </div>
+                                    <div>
+                                        <p>
+                                       <label> Estimate Pickup: Date/Time </label>
+                                       <br>
+                                            <input type = "datetime-local" name = "pickup_time"/>
+                                       
+                                        </p>
+        
+                                    </div>
+                                    <div>
+                                            <p>
+                                           <label> Estimate DropOff: Date/Time</label>
+                                           <br>
+                                                <input type = "datetime-local" name = "pickup_time" />
+                                            
+                                            </p>
+            
+                                    </div>
+                                    <!-- <div>
+                                        <p>
+                                            <label>Special Instructions</label>
+                                            <br>
+                                            <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
+                                            
+                                        </p>
+        
+                                    </div> -->
+                                    <div>
+                                        <table id="formz">
+                                            <tr>
+                                                <td>
+                                                        <p>
+                                                                <label>Seats Available</label>
+                                                                <br>
+                                                             <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >                                     
+                                                        </p>  
+                                                </td>
+                                    
+                                                <td>
+                                                        <p>
+                                                                <label>Baggage space</label>
+                                                                <br>
+                                                                <input type="number" id = "Baggage" name = "Baggage" min = "0" max = "10">
+                                                        </p> 
+                                                </td>
+                                            </tr>
+                                        </table>
+                                         
+                                         
+                                    </div>
+                                    
+                                    <div>
+                                        <fieldset>
+                                            <legend>Extra Accomodations</legend>
+                                            <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
+                                            <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
+                                        </fieldset> 
+                                    </div>      
+                                    </form>
+                                    
+                        </div>
+                        <button id="btn" type="submit"> Find a ride </button>
+                      </div>
+                   
+                
+        </form>
+           
         <!-- <div class="circle">
                     &#43;
                     <a href="{% url 'ridepopup' %}"></a>
@@ -58,5 +176,30 @@
        
         
     </body>
-    <script src="{% static 'script.js' %}"></script>
+    <script>
+            var modal = document.getElementById('myModal');
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+            </script>
 </html>
