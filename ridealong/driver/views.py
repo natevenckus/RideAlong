@@ -50,7 +50,8 @@ def index(request):
         driveRequest_instance.save()
 
     driveRequests = DriveRequest.objects.all()
-
+    print("driveRequests:")
+    print(driveRequests)
 
     return render(request,"driver_page.html",{'driveRequests':driveRequests})
 
