@@ -149,27 +149,48 @@
                                                 Enter Departure Location
                                             </label>
                                             <br>
-                                            <input id="departure" type="text" required autocomplete="off" size="50" name="departLoc"/>
+                                            <input id="departure" type="text" required autocomplete="off" size="50" name="departLoc" required />
                                         </p>
                                         <p>
                                             <label>
                                             Enter Arrival Location
                                             </label>
                                             <br>
-                                            <input type="text"required autocomplete="off" size="50" name="arrivalLoc"/>
+                                            <input type="text"required autocomplete="off" size="50" name="arrivalLoc" required />
                                         </p>
                                     </div>
                                     <div>
                                         <p>
                                        <label> Estimate Pickup: Date/Time </label>
                                        <br>
-                                            <input type = "datetime-local" name = "pickupTime"/>
+                                            <input type = "datetime-local" name = "pickupTime" required />
                                         </p>
                                     <div>
                                             <p>
                                            <label> Estimate DropOff: Date/Time</label>
                                            <br>
-                                                <input type = "datetime-local" name = "dropTime" />
+                                                <input type = "datetime-local" name = "dropTime" required />
+                                            </p>
+                                    </div>
+									<div>
+                                            <p>
+                                           <label> Car Make (optional)</label>
+                                           <br>
+                                                <input type = "text" name = "carMake" />
+                                            </p>
+                                    </div>
+									<div>
+                                            <p>
+                                           <label> Car Model (optional)</label>
+                                           <br>
+                                                <input type = "text" name = "carModel" />
+                                            </p>
+                                    </div>
+									<div>
+                                            <p>
+                                           <label> Car Year (optional)</label>
+                                           <br>
+                                                <input type = "text" name = "carYear" />
                                             </p>
                                     </div>
                                     <!-- <div>

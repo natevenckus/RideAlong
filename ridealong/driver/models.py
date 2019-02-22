@@ -3,18 +3,18 @@ from django.contrib.auth.models import User
 
 class DriveRequest(models.Model):
     ID = models.AutoField(primary_key=True)
-    Rider = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
-    FromLat = models.DecimalField(decimal_places=10, max_digits=15,null=True)
-    FromLong = models.DecimalField(decimal_places=10, max_digits=15,null=True)
-    ToLat = models.DecimalField(decimal_places=10, max_digits=15,null=True)
-    ToLong = models.DecimalField(decimal_places=10, max_digits=15,null=True)
-    MinDepartTime = models.DateTimeField(null=True)
-    MaxDepartTime = models.DateTimeField(null=True)
-    PriceOffer = models.DecimalField(decimal_places=2, max_digits=10,null=True)
-    LuggageSqFt = models.DecimalField(decimal_places=2, max_digits=5,null=True)
-    RequestTime = models.DateTimeField(null=True)
-    Completed = models.BooleanField(null=True)
-    CompleteTime = models.DateTimeField(null=True)
+    Rider = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True)
+    FromLat = models.DecimalField(decimal_places=10, max_digits=15,blank=True,null=True)
+    FromLong = models.DecimalField(decimal_places=10, max_digits=15,blank=True,null=True)
+    ToLat = models.DecimalField(decimal_places=10, max_digits=15,blank=True,null=True)
+    ToLong = models.DecimalField(decimal_places=10, max_digits=15,blank=True,null=True)
+    MinDepartTime = models.DateTimeField(blank=True,null=True)
+    MaxDepartTime = models.DateTimeField(blank=True,null=True)
+    PriceOffer = models.DecimalField(decimal_places=2, max_digits=10,blank=True,null=True)
+    LuggageSqFt = models.DecimalField(decimal_places=2, max_digits=5,blank=True,null=True)
+    RequestTime = models.DateTimeField(blank=True,null=True)
+    Completed = models.BooleanField(blank=True,null=True)
+    CompleteTime = models.DateTimeField(blank=True,null=True)
     #additional columns
     #Driver = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     departLoc = models.CharField(default="departureLoc",max_length=100)
@@ -23,6 +23,10 @@ class DriveRequest(models.Model):
     dropTime = models.DateTimeField()
     numOfSeats = models.IntegerField()
     numOfBaggage = models.IntegerField()
+    Car = models.ForeignKey("Car", on_delete=models.CASCADE, null=True, blank=True)
 
-
-
+class Car(models.Model):
+    ID = models.AutoField(primary_key=True)
+    Make = models.CharField(max_length=30)
+    Model = models.CharField(max_length=30)
+    Year = models.IntegerField()
