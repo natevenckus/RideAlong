@@ -26,4 +26,5 @@ def index(request):
 def ridepopup(request):
     return render(request,'ridePopup.html')
 
-
+def profile(request):
+    return render(request, 'profile.html');
