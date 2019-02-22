@@ -1,7 +1,7 @@
-# from django.db import models
-# from django.contrib.auth.models import User
-# from django.db.models.signals import post_save
-# from django.dispatch import receiver
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 #Design based on https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 class Profile(models.Model):
@@ -14,7 +14,6 @@ class Profile(models.Model):
 	Gender = models.CharField(max_length = 20, null=True, blank=True)
 	DOB = models.DateField(null=True, blank=True)
 	SchoolName = models.CharField(max_length=50, null=True, blank=True)
-	Car = models.ForeignKey("Car", on_delete=models.CASCADE, null=True, blank=True)
 	ProfilePic = models.BinaryField(null=True, blank=True)
 	EduVerified = models.BooleanField(default=False, null=True, blank=True)
 	EduVerifyTime = models.DateTimeField(null=True, blank=True)

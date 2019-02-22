@@ -75,8 +75,6 @@ def index(request):
                 print("Not none")
                 login(request,user)
                 return render(request, 'login.html', context)
-        else:
-            return HttpResponse(formRegister.errors + formProfileRegister.errors)
             
     else:
         formRegister = RegistrationForm()
