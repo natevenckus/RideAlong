@@ -44,6 +44,10 @@
     margin-left: 20px;
     cursor: pointer;
 }
+#Delete {
+    position: relative;
+    float: left;
+}
 #home{
     float:right;
     position: absolute;
