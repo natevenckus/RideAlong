@@ -22,7 +22,14 @@
                 </div>
                     <input type="text" id="input" placeholder="Search...">
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
-                    <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
+                    <div class="dropdown three">
+                            <i id="bell" class="fa fa-bell" style="font-size:36px">
+                            <div class="dropdown-content three">
+                                <p> No New Notifications</p>
+                            </div>
+                            </i>
+                    </div>
+                    
                     <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
 
@@ -54,10 +61,10 @@
                                             <button class="btn" id="Edit3">Edit</button><br></p>
                                             <p for="Filled Seats">Filled Seats: 3
                                             <button class="btn" id="Edit4">Edit</button><br></p>
-                                            <label for="CarModel">Car Model: </label>
-                                            <button class="btn" id="Edit5">Edit</button><br>
-                                            <label for="CarYear">Model year: </label>
-                                            <button class="btn" id="Edit6">Edit</button><br>
+                                            <p for="CarModel">Car Model:
+                                            <button class="btn" id="Edit5">Edit</button><br></p>
+                                            <p for="CarYear">Model year:
+                                            <button class="btn" id="Edit6">Edit</button><br></p>
                                             <button class="btn" id="Delete">Delete</button>
                                         </div>
                         </div>
@@ -121,6 +128,7 @@
                           <span class="close">&times;</span>
                           <div class="form">
                                 <div class="tab-content">
+                                        
                                         <p>
                                             <label>
                                                 Enter Departure Location
@@ -175,14 +183,28 @@
                                                 </td>
                                             </tr>
                                         </table>
+                                        <p>
+                                                <label>
+                                                    Enter Car Model:
+                                                </label>
+                                                <br>
+                                                <input id="carModel" type="text" required autocomplete="off" size="50" name="carModel"/>
+                                        </p>
+                                        <p>
+                                                <label>
+                                                    Enter Car Year:
+                                                </label>
+                                                <br>
+                                                <input id="carYear" type="text" required autocomplete="off" size="50" name="carYear"/>
+                                        </p>
                                     </div>
-                                    <div>
+                                   <!-- <div>
                                         <fieldset>
                                             <legend>Extra Accomodations</legend>
                                             <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
                                             <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
                                         </fieldset>
-                                    </div>
+                                    </div> -->
                         </div>
                         <button id="btn" type="submit"  <a href="driverpage"> Start a ride </button>
                       </div>

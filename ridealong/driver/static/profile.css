@@ -59,8 +59,8 @@
     color: black;
     float:right;
     position: absolute;
-    margin-top: 15px;
-    margin-left: 400px;
+    margin-top:-20px;
+    margin-left: 410px;
     background-color: transparent;
     cursor: pointer;
 
@@ -156,7 +156,26 @@ img {
   .dropdown:hover .dropbtn {
     background-color: #3e8e41;
   }
+  .dropdown.three{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content.three{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+.dropdown-content.three {
+    display: none;
+    position: absolute;
+    background-color:white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 
+}
   
 html {
     box-sizing: border-box;
