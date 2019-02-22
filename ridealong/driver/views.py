@@ -3,11 +3,16 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    print(request.GET['departLoc'])
-    return render(request,"driver_page.html")
+    print (request.method)
+    if request.method == "POST":
+        print(request.POST['departLoc'])
+        print(request.POST['arrivalLoc'])
+        print(request.POST['pickupTime'])
+        print(request.POST['dropTime'])
+        print(request.POST['seats'])
+        print(request.POST['baggage'])
 
-def storeRideInfo(request):
-    return
+    return render(request,"driver_page.html")
 
 def ridepopup(request):
     return render(request,'ridePopup.html')
