@@ -6,27 +6,30 @@ from django.dispatch import receiver
 #Design based on https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	FBID = models.CharField(max_length=50)
-	FullName = models.CharField(max_length=100)
-	SchoolEmail = models.EmailField()
-	ContactEmail = models.EmailField()
-	PhoneNum = models.CharField(max_length = 20)
-	Gender = models.CharField(max_length = 20)
-	DOB = models.DateField()
-	CreationTime = models.DateTimeField()
-	SchoolName = models.CharField(max_length=50)
-	Car = models.ForeignKey("Car", on_delete=models.CASCADE)
-	ProfilePic = models.BinaryField()
-	EduVerified = models.BooleanField()
-	EduVerifyTime = models.DateTimeField()
+	FBID = models.CharField(max_length=50, null=True, blank=True)
+	FullName = models.CharField(max_length=100, null=True, blank=True)
+	SchoolEmail = models.EmailField(null=True, blank=True)
+	ContactEmail = models.EmailField(null=True, blank=True)
+	PhoneNum = models.CharField(max_length = 20, null=True, blank=True)
+	Gender = models.CharField(max_length = 20, null=True, blank=True)
+	DOB = models.DateField(null=True, blank=True)
+	SchoolName = models.CharField(max_length=50, null=True, blank=True)
+	Car = models.ForeignKey("Car", on_delete=models.CASCADE, null=True, blank=True)
+	ProfilePic = models.BinaryField(null=True, blank=True)
+	EduVerified = models.BooleanField(default=False, null=True, blank=True)
+	EduVerifyTime = models.DateTimeField(null=True, blank=True)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+    if created: #means new record was created in database
+        print("Creating user profile")
+        Profile.objects.create(user=instance) #Creates profile object w user field set to caller
+        print("Its id is ")
+        print(Profile.objects.get(user=instance).pk)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
+    print("Save user profile")
     instance.profile.save()
 	
 class Car(models.Model):
