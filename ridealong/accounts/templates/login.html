@@ -10,6 +10,8 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         </head>
         <body>
+            {% block content %}
+            {% if user.is_authenticated %}
                 <div id="toolbar">
                     <div class="form-group" align="left">
                         <div class="dropdown">
@@ -32,14 +34,12 @@
                 </div>
                 <div id="loginUsername"> 
                       
-                        {% block content %}
-                        {% if user.is_authenticated %}
-                          Welcome {{ user.username }}!
-                        {% else %}
-                          {{user.username}}
-                          <p>You are not logged in </p>
-                        {% endif %}
-                        {% endblock %}
-
-            </div>
+                        <p style="margin-left: 425px; margin-top: 250px;"> Welcome {{ user.username }}! </p>
+                </div>
+            {% else %}
+                <div id="loginUsername">
+                          <p style="margin-left: 425px; margin-top: 250px;">You are not logged in!</p>
+                </div>
+            {% endif %}
+            {% endblock %}
       </body>
