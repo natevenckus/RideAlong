@@ -18,14 +18,25 @@ def index(request):
         print(request.POST['dropTime'])
         print(request.POST['seats'])
         print(request.POST['baggage'])
-        driveRequest_instance = DriveRequest.objects.create(
-            departLoc = request.POST['departLoc'],
-            arrivalLoc = request.POST['arrivalLoc'],
-            pickupTime = request.POST['pickupTime'],
-            dropTime = request.POST['dropTime'],
-            numOfSeats = request.POST['seats'],
-            numOfBaggage = request.POST['baggage'],
-        )
+        
+        departLoc = request.POST['departLoc']
+        arrivalLoc = request.POST['arrivalLoc']
+        pickupTime = request.POST['pickupTime']
+        dropTime = request.POST['dropTime']
+        numOfSeats = request.POST['seats']
+        numOfBaggage = request.POST['baggage']
+        
+        if departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
+            driveRequest_instance = DriveRequest.objects.create(
+                departLoc = request.POST['departLoc'],
+                arrivalLoc = request.POST['arrivalLoc'],
+                pickupTime = request.POST['pickupTime'],
+                dropTime = request.POST['dropTime'],
+                numOfSeats = request.POST['seats'],
+                numOfBaggage = request.POST['baggage'],
+            )
+            
+            driveRequest_instance.save()
         
         make = request.POST['carMake']
         model = request.POST['carModel']
