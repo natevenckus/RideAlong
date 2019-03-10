@@ -8,7 +8,8 @@ urlpatterns=[
     path('driverpage',views.driverpage,name='driverpage'),
     path('regsuccess', views.regsuccess, name='regsuccess'),
     path('logout',views.logout, name='logout'),
-    path('ridepopup', views.ridepopup, name='ridepopup')
+    path('ridepopup', views.ridepopup, name='ridepopup'),
+    path('forgotpass', views.forgotpass, name='forgotpass')
 
     #path('login',views.loginPage),
     #path('register',views.registerPage),

@@ -100,3 +100,6 @@ def logout(request):
 def ridepopup(request):
     return render(request, 'ridePopup.html')
 
+def forgotpass(request):
+    return render(request, 'forgot-pass.html')
+
