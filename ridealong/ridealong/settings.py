@@ -148,3 +148,4 @@ EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = 'localhost', 1025
 
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

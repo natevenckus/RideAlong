@@ -12,6 +12,11 @@ urlpatterns=[
     path('forgotpass', views.forgotpass, name='forgotpass')
     path('resetpass', views.resetpass, name="resetpass")
     
+    path('ridepopup', views.ridepopup, name='ri
+    #my changes
+    url(r'^account_activation_sent/$',view.account_activation_sent, name = 'account_activation_sent'),
+    
+
     #path('login',views.loginPage),
     #path('register',views.registerPage),
     #path(r'^login/$',views.loggedIn,name='loggedIn'),
