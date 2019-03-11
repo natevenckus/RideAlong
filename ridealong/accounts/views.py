@@ -102,4 +102,6 @@ def ridepopup(request):
 
 def forgotpass(request):
     return render(request, 'forgot-pass.html')
-
+def requestPass(request):
+    return render (request, 'request-pass.html')
+    
