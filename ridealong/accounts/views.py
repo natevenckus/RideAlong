@@ -48,8 +48,8 @@ def index(request):
             password1 = formRegister.cleaned_data.get("password1")
             
             user = authenticate(username=username, password=password1)
-            send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
-            
+            email1 = send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email',to=[user.email])
+            email1.send()
             login(request,user)
             return redirect('regsuccess')
 
