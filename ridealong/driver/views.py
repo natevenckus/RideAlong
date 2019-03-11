@@ -53,6 +53,17 @@ def index(request):
             
             driveRequest_instance.Car = car
             driveRequest_instance.save()
+            
+        deleteID = request.POST['deleteID']
+        editID = request.POST['editID']
+        editField = request.POST['editField']
+        editVal = request.POST['editVal']
+       
+        if deleteID:
+            print("delete record here")
+        
+        if editID and editField and editVal:
+            print("edit record here")
         
         print(request.user)
 		
@@ -70,4 +81,4 @@ def ridepopup(request):
     return render(request,'ridePopup.html')
 
 def profile(request):
-    return render(request, 'profile.html');
+    return render(request, 'profile.html')
