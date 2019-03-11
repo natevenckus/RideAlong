@@ -59,10 +59,10 @@ def index(request):
         editField = request.POST['editField']
         editVal = request.POST['editVal']
        
-        if deleteID
+        if deleteID:
             print("delete record here")
         
-        if editID and editField and editVal
+        if editID and editField and editVal:
             print("edit record here")
         
         print(request.user)
@@ -81,4 +81,4 @@ def ridepopup(request):
     return render(request,'ridePopup.html')
 
 def profile(request):
-    return render(request, 'profile.html');
+    return render(request, 'profile.html')
