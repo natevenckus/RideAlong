@@ -104,4 +104,5 @@ def forgotpass(request):
     return render(request, 'forgot-pass.html')
 def resetpass(request):
     return render (request, 'request-pass.html')
-    
+def rides(request):
+    return render(request, 'rides.html')
