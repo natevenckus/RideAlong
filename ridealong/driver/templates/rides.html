@@ -1,37 +1,191 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-    <h1>Rides</h1>
-    <link rel="stylesheet" href="{% static 'rides.css' %}">
+    <head>
+        <title>RideAlong</title>
+        <link rel="stylesheet" href="{% static 'rides2.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <body>
+        <div id="toolbar">
+            <div class="form-group" align="left">
+                <div class="dropdown">
+                    <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                        <div class="dropdown-content">
+                                <a href="#">Rider</a>
+                                <a><b>Driver</b></a>
+                        </div>
+                </div>
+                    <input type="text" id="input" placeholder="Search...">
+                    <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                    <div class="dropdown three">
+                            <i id="bell" class="fa fa-bell" style="font-size:36px">
+                            <div class="dropdown-content three">
+                                <p> No New Notifications</p>
+                            </div>
+                            </i>
+                    </div>
+                    
+                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
+            </div>
+        </div>
+       
+                                
+                                <div class="list">
+                                            <p>My Rides</p>
+                                            <br>
+                                            <table>
+                                                <tr>
+                                                        <button style="float: right" id="edit" class="edit" onclick="myFunction()"> Edit</button>                                                                
+                                                        <p id="one" for="Origin">Pick Up Location: West Laffayte, Indiana
+                                                        <p id="two" for="Destination">Destination: St. Louis, Ohio
+                                                                <p id="three" for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
+                                                                <p id="four" for="Filled Seats">Filled Seats: 3
+                                                                <p id="five" for="CarMake">Car Make: Ferrari
+                                                                <p id="six" for="CarModel">Car Model: Enzo
+                                                                <p id="seven" for="CarYear">Car year: 2018
+                                                                    <br>    
+                                                                    <br>
+                                                                <button class="btn" id="Delete">Delete</button>
+                                                                <br>
+                                                                <br>
+                                                </tr>
+                                                <tr>
+                                                        {% for request in driveRequests %}
+                                                        <p for="Destination">Destination: {{request.arrivalLoc}}
+                                                        <button class="btn" id="Edit1">Edit</button><br></p>
+                                                        <p for="Origin">Pick Up Location: {{request.departLoc}}
+                                                        <button class="btn" id="Edit2">Edit</button><br></p>
+                                                        <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
+                                                        <button class="btn" id="Edit3">Edit</button><br></p>
+                                                        <p for="Filled Seats">Filled Seats: {{request.numOfSeats}}
+                                                        <button class="btn" id="Edit4">Edit</button><br></p>
+                                                        <p for="CarYear">Car Make: {{request.Car.Make}}
+                                                        <button class="btn" id="Edit5">Edit</button><br></p>
+                                                        <p for="CarModel">Car Model: {{request.Car.Model}}
+                                                        <button class="btn" id="Edit6">Edit</button><br></p>
+                                                        <p for="CarYear">Car year: {{request.Car.Year}}
+                                                        <button class="btn" id="Edit7">Edit</button><br></p>
+                                                        <button class="btn" id="Delete">Delete</button>
+                                                        {% endfor %}
+                                                </tr>
+                                            </table>
+                                            
+
+
+                                           
+                                        </div>
+                        </div>
+                    </div>
+                    
+            </div>
+            
+            <tr>
+                <th></th>
+            </tr>
+            
+      
+        
+
+
+        
+          
+        </div>
+
+        
+    </body>
+    <script>
+            function myFunction() {
+                var change = document.getElementById("edit");
+                document.getElementById("one").contentEditable = true;
+                document.getElementById("two").contentEditable = true;
+                document.getElementById("three").contentEditable = true;
+                document.getElementById("four").contentEditable = true;
+                document.getElementById("five").contentEditable = true;
+                document.getElementById("six").contentEditable = true;
+                document.getElementById("seven").contentEditable = true;
+
+   
+                if(change.innerHTML == "Edit"){
+                    change.innerHTML = "Update"
+                }
+                else{
+                    change.innerHTML = "Edit"
+                    document.getElementById("one").contentEditable = false;
+                    document.getElementById("two").contentEditable = false;
+                    document.getElementById("three").contentEditable = false;
+                    document.getElementById("four").contentEditable = false;
+                    document.getElementById("five").contentEditable = false;
+                    document.getElementById("six").contentEditable = false;
+                    document.getElementById("seven").contentEditable = false;
+        
+                }
+            }
+        
+           </script>
+    
+</html>
+
+<!-- <!DOCTYPE html>
+{% load static %}
+<html>
+    <link rel="stylesheet" href="{% static 'rides2.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <div class="container">
-                
+        <body>
+            
+                <div id="toolbar">
+                        <div class="form-group" align="left">
+                            <div class="dropdown">
+                                <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                                    <div class="dropdown-content">
+                                            <a href="#">Rider</a>
+                                            <a><b>Driver</b></a>
+                                    </div>
+                            </div>
+                                <input type="text" id="input" placeholder="Search...">
+                                <a href="/" >
+                                    <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                                </a>
+                                <div class="dropdown three">
+                                        <i id="bell" class="fa fa-bell" style="font-size:36px">
+                                        <div class="dropdown-content three">
+                                            <p> No New Notifications</p>
+                                        </div>
+                                        </i>
+                                </div>
+                                <img src="{% static 'tempPic.png' %}" class="image1"></a>
+                                <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+            
+                        </div>
+                    </div>
+             
                 
   
-    <!-- <div class="circle">
+    <div class="circle">
             <div class="dropdown two" >
             <div onclick="myfunction()" class = "arrow"></div>
             <div id="myDropdown" class="dropdown-content two">
                     
-                    <div>
-                                <p>Rides</p>
+                    <div class="entries">
                                 <p for="Destination">Destination: St. Louis, Ohio
                                 <button class="btn" id="Edit1">Edit</button><br></p>
                                 <p for="Origin">Pick Up Location: West Laffayte, Indiana
-                                <button class="btn" id="Edit2">Edit</button><br></p>
                                 <p for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
-                                <button class="btn" id="Edit3">Edit</button><br></p>
                                 <p for="Filled Seats">Filled Seats: 3
-                                <button class="btn" id="Edit4">Edit</button><br></p>
                                 <p for="CarMake">Car Make: Ferrari
-                                <button class="btn" id="Edit5">Edit</button><br></p>
                                 <p for="CarModel">Car Model: Enzo
-                                <button class="btn" id="Edit6">Edit</button><br></p>
                                 <p for="CarYear">Car year: 2018
-                                <button class="btn" id="Edit7">Edit</button><br></p>
+                                    <br>
                                 <button class="btn" id="Delete">Delete</button>
 
 
@@ -56,6 +210,7 @@
             </div>
         </div>
         
-</div> -->
+</div>
+</body>
 
-</html>
+</html> -->
