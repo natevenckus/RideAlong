@@ -10,8 +10,9 @@ urlpatterns=[
     path('logout',views.logout, name='logout'),
     path('ridepopup', views.ridepopup, name='ridepopup'),
     path('forgotpass', views.forgotpass, name='forgotpass'),
-    path('resetpass', views.resetpass, name="resetpass")
-    
+    path('resetpass', views.resetpass, name="resetpass"),
+    path('rides', views.rides, name='rides')
+
     #path('login',views.loginPage),
     #path('register',views.registerPage),
     #path(r'^login/$',views.loggedIn,name='loggedIn'),
