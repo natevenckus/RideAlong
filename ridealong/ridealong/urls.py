@@ -18,6 +18,7 @@ from django.urls import include, path
 from myapp import views
 
 urlpatterns = [
+    path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     #path('pwtest/', include('myapp.urls')),
     path('pwtest/', views.pwtest, name='pwtest'),

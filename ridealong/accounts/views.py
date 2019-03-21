@@ -10,6 +10,7 @@ from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from accounts.models import Profile
 
 def index(request):
     formRegister = RegistrationForm()
@@ -48,9 +49,11 @@ def index(request):
             password1 = formRegister.cleaned_data.get("password1")
             
             user = authenticate(username=username, password=password1)
-            send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
+            #send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
             
             login(request,user)
+            email2 = request.POST['ContactEmail']
+            User.objects.filter(username=username).update(email=email2)
             return redirect('regsuccess')
 
         if formLogin.is_valid():
