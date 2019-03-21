@@ -43,15 +43,16 @@
                     <button style="float: right" id="edit" class="edit" onclick="myFunction()"> Edit</button>
 
                     <br>
-                    <h1 style="margin-top: 70px;" id="name"> Name:{{user.username}} <br> 
-                        School: <br>
+                    {% for request in profilePage %}
+                    <h1 style="margin-top: 70px;" id="name"> Name:{{request.FullName}} <br> 
+                        School: {{request.SchoolName}}<br>
                         Car:   
                     </h1>  
                     <div class="avatar-edit">
                             <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
                             <label for="imageUpload"</label>
                     </div>  
-                    
+                    {% endfor %}
                 </div>
         
                
