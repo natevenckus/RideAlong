@@ -31,15 +31,41 @@
                             </div>
                             </i>
                     </div>
-                    <img src="{% static 'tempPic.png' %}" ></a>
+                    <img src="{% static 'tempPic.png' %}" class="image1"></a>
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
 
             </div>
         </div>
        
         </div>
-
-        <h1>Welcome to your profile</h1>
-    </body>
+        <div class="block1">   
+                <div class="prof" ><p style="float: left;"> <img src="{% static 'tempPic.png' %}" class="image2" align="top"></p>
+                    
+                    <br>
+                    <h1 style="margin-top: 70px;"> Name:{{user.username}} <br> 
+                        School: <br>
+                        Car:   
+                    </h1>
+        
+                
+                
+         </div>
+               
+       
+        <br>
+        <br>
+        <br>
+        <br>
+                <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
+                <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
+                <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
+                <span class="star" style='font-size:30px;'>&#9734;</span>
+                <span class="star" style='font-size:30px;'>&#9734;</span>
+    </div>
+    <div class="block2">
+        <br>
+        <h1> Reviews </h1>
+    </div>
+        </body>
    
 </html>

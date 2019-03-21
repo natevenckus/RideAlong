@@ -25,7 +25,7 @@
                         <i id="home" class="fa fa-home" style="font-size:40px"> <a href="{% url 'driverpage' %}" ></a> </i>
                         <i id="bell" class="fa fa-bell" style="font-size:36px"></i>
                         <a href="{% url 'profile' %}" ></a>
-                        <img src="{% static 'tempPic.png' %}"> 
+                        <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                         <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
                         {{user.username}}
                         </div>
