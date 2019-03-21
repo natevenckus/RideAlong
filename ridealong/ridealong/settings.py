@@ -25,26 +25,30 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '=m7gc(y_#mglwd#a8v4nl*m1+4(!3+=h7ciafndgi&v*j##0k6'
-SESSION_COOKIE_AGE = 0
+#SESSION_COOKIE_AGE = 0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
     'accounts',
-    'driver'
+    'driver',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.sites'
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,6 +97,10 @@ DATABASES = {
     }
 }
 
+TEMPLATE_LOADERS = {
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -142,6 +150,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 #Delete once getting email verification working
 #EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = 'localhost', 1025, None, None
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
