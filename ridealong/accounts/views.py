@@ -54,7 +54,7 @@ def index(request):
             user = authenticate(username=username, password=password1)
             #this stuff too 
             subject1 = 'Thank you for registering to RideAlong'
-            message1 = ' Get Ya Ride Today!!! '
+            message1 = ' Get Ya Ride Today! Feel free to login and start driving/riding with people -RideAlong Team'
             email_from1 = settings.EMAIL_HOST_USER
             recipient1 = request.POST['ContactEmail']
             recipient_list =[recipient1,] 
