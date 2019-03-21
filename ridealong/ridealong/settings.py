@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'accounts',
-    'driver'
+    'driver',
+    'rider'
 ]
 
 MIDDLEWARE = [
