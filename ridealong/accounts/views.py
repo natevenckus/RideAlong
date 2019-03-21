@@ -9,7 +9,10 @@ from django.contrib.auth import logout as customLogout
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+#this shit
 from django.core.mail import send_mail
+from django.conf import settings
+
 from accounts.models import Profile
 
 def index(request):
@@ -49,6 +52,13 @@ def index(request):
             password1 = formRegister.cleaned_data.get("password1")
             
             user = authenticate(username=username, password=password1)
+            #this stuff too 
+            subject1 = 'Thank you for registering to RideAlong'
+            message1 = ' Get Ya Ride Today! Feel free to login and start driving/riding with people -RideAlong Team'
+            email_from1 = settings.EMAIL_HOST_USER
+            recipient1 = request.POST['ContactEmail']
+            recipient_list =[recipient1,] 
+            send_mail(subject1,message1,email_from1,recipient_list)
             #send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
             
             login(request,user)

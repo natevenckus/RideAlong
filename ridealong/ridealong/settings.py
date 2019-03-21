@@ -150,6 +150,13 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 #Delete once getting email verification working
 #EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = 'localhost', 1025, None, None
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ridealongpurdue@gmail.com'
+EMAIL_HOST_PASSWORD = 'ridealongforlife123'
+
 
 
 
