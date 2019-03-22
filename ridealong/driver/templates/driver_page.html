@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'driverPage2.css' %}">
+        <link rel="stylesheet" href="{% static 'drivePageNew.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
                         </div>
                 </div>
                 <form id="searchForm" method="get" action="">
-            {%csrf_token%}
+                    {%csrf_token%}
                     <input type="text" name="searchText" id="input" placeholder="Search...">
                     <!--<button type="submit" id="searchText" onclick="l">Search</button>-->
                     <a type="submit" href="search" class="btn">Search</a>
@@ -44,6 +44,7 @@
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
             </div>
         </div>
+
         <div id="filters" hidden >
                 <button id="one" class="filter" >Location </button>
                 <button id="two" class="filter" >Date </button>
