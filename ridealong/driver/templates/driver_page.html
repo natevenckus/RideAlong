@@ -12,15 +12,9 @@
     </head>
     <body>
         <div id="toolbar">
-            
                     <button type="button" id="filter" onclick="showMe()" class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-filter"></span> Filter 
                     </button>
-                    
-
-        
-          
-                
             <div class="form-group" align="left">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
@@ -30,6 +24,7 @@
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
+                    <button type="submit" id="searchText">Search</button>
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <div class="dropdown three">
                             <i id="bell" class="fa fa-bell" style="font-size:36px">
@@ -41,10 +36,8 @@
                             </div>
                             </i>
                     </div>
-                    
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-                    
             </div>
         </div>
         <div id="filters" hidden >
@@ -57,6 +50,7 @@
 
         </div>
 
+        {% if isIndex %}
         <button class="circle"id="myBtn"> &#43;</button>
 
         <table id="ride">
@@ -72,7 +66,6 @@
                         <div class="dropdown two" >
                         <div onclick="myfunction()" class = "arrow"></div>
                         <div id="myDropdown" class="dropdown-content two">
-                                
                                 <div>
                                             <p>Rides</p>
                                             <p for="Destination">Destination: St. Louis, Ohio
@@ -111,9 +104,7 @@
                                         </div>
                         </div>
                     </div>
-                    
             </div>
-            
             <tr>
                 <th></th>
             </tr>
@@ -121,6 +112,7 @@
                 <th> My Rides</th>
             </tr>
         </table>
+        {% endif %}
         <!-- <table id="ride">
                 <tr>
                     <th>New Ride</th>
@@ -130,7 +122,6 @@
                     </th>
                 </tr>
                 <tr><th></th></tr>
-                
                 <div class="circle">
                         <button class="arrow Driver"id="viewRideBtn"></button>
                         <div class="driver-contents">
@@ -151,16 +142,15 @@
                           <label for="Filled Seats">Filled Seats: 3</label>
                           <button class="btn" id="Edit4">Edit</button><br>
                         </div>
-                      
                     </div>
                     <tr>
                         <th></th>
                     </tr>
                     <tr>
-                        <th> View Rides</th>
+                        <th> View Rides</th
                     </tr>
                 </table>
-               --> 
+               -->
         <form id="deets" action="" method = "post">
             {%csrf_token%}
                 <div id="myModal" class="modal">
@@ -170,7 +160,6 @@
                           <span class="close">&times;</span>
                           <div class="form">
                                 <div class="tab-content">
-                                        
                                         <p>
                                             <label>
                                                 Enter Departure Location
@@ -258,14 +247,8 @@
                         <button id="btn" type="submit"  <a href="driverpage"> Start a ride </button>
                       </div>
         </form>
-        
-
-
-        
-          
         </div>
 
-        
     </body>
     <script>
             var modal = document.getElementById('myModal');
@@ -276,9 +259,9 @@
         var showRide = document.getElementById('rideModal');
         var arrow = document.getElementsByClassName('arrow');
         arrow.onclick = function(){
-                showRide.style.display = "block";
+                showRide.style.display = "block
         }
-        // When the user clicks on the button, open the modal 
+        // When the user clicks on the button, open the modal
         btn.onclick = function() {
             modal.style.display = "block";
         }

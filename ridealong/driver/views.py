@@ -18,14 +18,12 @@ def index(request):
         print(request.POST['dropTime'])
         print(request.POST['seats'])
         print(request.POST['baggage'])
-        
         departLoc = request.POST['departLoc']
         arrivalLoc = request.POST['arrivalLoc']
         pickupTime = request.POST['pickupTime']
         dropTime = request.POST['dropTime']
         numOfSeats = request.POST['seats']
         numOfBaggage = request.POST['baggage']
-        
         if departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
             driveRequest_instance = DriveRequest.objects.create(
                 departLoc = request.POST['departLoc'],
@@ -35,9 +33,7 @@ def index(request):
                 numOfSeats = request.POST['seats'],
                 numOfBaggage = request.POST['baggage'],
             )
-            
             driveRequest_instance.save()
-        
         make = request.POST['carMake']
         model = request.POST['carModel']
         year = request.POST['carYear']
@@ -48,25 +44,18 @@ def index(request):
                 Model = model,
                 Year = year
             )
-            
             car.save()
-            
             driveRequest_instance.Car = car
             driveRequest_instance.save()
-            
         deleteID = request.POST['deleteID']
         editID = request.POST['editID']
         editField = request.POST['editField']
         editVal = request.POST['editVal']
-       
         if deleteID:
             print("delete record here")
-        
         if editID and editField and editVal:
             print("edit record here")
-        
         print(request.user)
-		
         driveRequest_instance.Rider = request.user
 
         driveRequest_instance.save()
@@ -74,8 +63,10 @@ def index(request):
     driveRequests = DriveRequest.objects.all()
     print("driveRequests:")
     print(driveRequests)
+    return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
 
-    return render(request,"driver_page.html",{'driveRequests':driveRequests})
+def driverSearch(request):
+    return render(request,"driver_page.html",{'isIndex':False})
 
 def ridepopup(request):
     return render(request,'ridePopup.html')
@@ -87,8 +78,7 @@ def profile(request):
         #print(userName)
         profilePage = Profile.objects.filter(ContactEmail=username)
         return render(request,"profile.html",{'profilePage':profilePage})
-    else: 
+    else:
         return render(request, "profile.html")
-        
     # return render(request, 'profile.html')
 
