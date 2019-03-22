@@ -51,3 +51,27 @@ def deleteride(request):
         
     RideRequest.objects.filter(ID=request.GET['id']).delete()
     return redirect('rides')
+    
+def updateride(request):
+    id = request.GET['id']
+    departLoc = request.GET['departLoc']
+    arrivalLoc = request.GET['arrivalLoc']
+    pickupTime = request.GET['pickupTime']
+    numOfSeats = request.GET['seats']
+    numOfBaggage = request.GET['baggage']
+    
+    print("THE DATE")
+    print(request.GET['pickupTime'])
+    
+    ride = RideRequest.objects.filter(ID=id)[0]
+    
+    ride.departLoc = departLoc
+    ride.arrivalLoc = arrivalLoc
+    #ride.pickupTime = pickupTime
+    ride.numOfSeats = numOfSeats
+    ride.numOfBaggage = numOfBaggage
+    
+    ride.save()
+    
+    return redirect('rides')
+    

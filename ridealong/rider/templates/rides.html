@@ -53,13 +53,20 @@
                                                                 <br>
                                                                 <br>
                                                 </tr>
+                                                <form id="rideEditForm" action="updateride">
                                                 <tr id="myrides">
                                                         {% for request in rideRequests %}
+                                                        <input type="text" name="id" value="{{request.ID}}" style="display:none">
                                                         <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
-                                                        <button class="btn" id="Edit1" onclick="myFunction2()">Edit</button><br></p>
-                                                        <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}
-                                                        <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
-                                                        <p id="4" for="Filled Seats">Filled Seats: {{request.numOfSeats}}
+                                                        <br>
+                                                        <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p>
+                                                        <br>
+                                                        <input type="submit" class="btn" id="Update" value="Save" style=""><a href="updateride">Update</a></button><br></p>
+                                                        <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
+                                                        <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
+                                                        <p id="3" for="Pick Up Time">Pick Up Time: <input type="text" name="pickupTime" value="{{request.pickupTime}}">
+                                                        <p id="4" for="Filled Seats">Filled Seats: <input type="text" name="seats" value="{{request.numOfSeats}}">
+                                                        <p id="5" for="Baggage">Baggage: <input type="text" name="baggage" value="{{request.numOfBaggage}}">
                                                             <br>
                                                             <br>
                                                         <button class="btn" id="Delete2" onclick=""><a href="deleteride?id={{request.ID}}">Delete</a></button>
@@ -67,6 +74,7 @@
                                                             <br>
                                                         {% endfor %}
                                                 </tr>
+                                                </form>
                                             </table>
                                             
 
