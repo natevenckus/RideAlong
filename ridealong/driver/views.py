@@ -81,14 +81,14 @@ def ridepopup(request):
     return render(request,'ridePopup.html')
 
 def profile(request):
-    print(request.user)
-    print("IN PROFILE")
-    #print(userName)
-    profilePage = Profile.objects.filter(ContactEmail="tenard@gmail.com")
-    print(profilePage)
-    print("profilePage:")
-    print(profilePage)
-
-    return render(request,"profile.html",{'profilePage':profilePage})
+    if request.user.is_authenticated:
+        print("IN")
+        username = request.user.email
+        #print(userName)
+        profilePage = Profile.objects.filter(ContactEmail=username)
+        return render(request,"profile.html",{'profilePage':profilePage})
+    else: 
+        return render(request, "profile.html")
+        
     # return render(request, 'profile.html')
 

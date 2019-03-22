@@ -6,3 +6,4 @@ urlpatterns=[
     path('ridepopup',views.ridepopup,name='ridepopup'),
     path('profile', views.profile, name = 'profile'),
 ]
+

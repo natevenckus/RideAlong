@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'driverPage.css' %}">
+        <link rel="stylesheet" href="{% static 'driverPage2.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,6 +12,15 @@
     </head>
     <body>
         <div id="toolbar">
+            
+                    <button type="button" id="filter" onclick="showMe()" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-filter"></span> Filter 
+                    </button>
+                    
+
+        
+          
+                
             <div class="form-group" align="left">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
@@ -24,17 +33,30 @@
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <div class="dropdown three">
                             <i id="bell" class="fa fa-bell" style="font-size:36px">
+                            <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+
+                            <!-- <i id="user" class="fa fa-user-circle-o" style="font-size:36px"></i> -->
                             <div class="dropdown-content three">
                                 <p> No New Notifications</p>
                             </div>
                             </i>
                     </div>
                     
-                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                    <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-
+                    
             </div>
         </div>
+        <div id="filters" hidden >
+                <button id="one" class="filter" >Location </button>
+                <button id="two" class="filter" >Date </button>
+                <button id="three" class="filter" >Price </button>
+                <button id="four" class="filter" >Luggage </button>
+                <button id="five" class="filter" >Passengers </button>
+
+
+        </div>
+
         <button class="circle"id="myBtn"> &#43;</button>
 
         <table id="ride">
@@ -65,13 +87,9 @@
                                             <button class="btn" id="Edit5">Edit</button><br></p>
                                             <p for="CarModel">Car Model: Enzo
                                             <button class="btn" id="Edit6">Edit</button><br></p>
-<<<<<<< HEAD
-                                            <button class="btn" id="Delete" align="center" >Delete</button><br>
-=======
                                             <p for="CarYear">Car year: 2018
                                             <button class="btn" id="Edit7">Edit</button><br></p>
                                             <button class="btn" id="Delete">Delete</button>
->>>>>>> decc9b4c7e348e0e838ea0b0d344ddb4561cb4f3
 
                                             {% for request in driveRequests %}
                                             <p for="Destination">Destination: {{request.arrivalLoc}}
@@ -285,6 +303,14 @@
         }
         function drop(){
 	        document.getElementByID("driverInfo").classList.toggle("show");
+        }
+        function showMe(){
+            var x = document.getElementById("filters");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
 
             </script>
