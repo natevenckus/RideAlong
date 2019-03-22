@@ -1,0 +1,301 @@
+/* The Modal (background) */
+.ride-content{
+	overflow: auto;
+    z-index: 1;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*dropdown for Driving contents/View Rides*/
+.Driver {
+	position: relative;
+    display: inline-block;
+}
+
+.driver-contents {
+	display: none;
+}
+.dropDriver button{
+	display: block;
+}
+
+.Driver:hover .driver-contents {display: block;}
+
+#toolbar{
+    background-color : rgba(184, 229, 250, 0.2);
+    border-color: transparent;
+    margin: 0px;
+    padding: 2px;
+}
+#input{
+    padding: 8px; 
+    position: relative;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 700px; 
+    border-color: #0758A6;
+}
+#power{
+    margin-left: 20px;
+    cursor: pointer;
+}
+#home{
+    float:right;
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 300px;
+    background-color: transparent;
+    padding:15px 15px;
+    cursor: pointer;
+    color: black;
+}
+
+#bell{
+    color: black;
+    float:right;
+    position: absolute;
+    margin-top:-20px;
+    margin-left: 410px;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+.image1 {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-left: 500px;
+    cursor: pointer;
+    background-color: white;
+    padding:2px;
+    
+}
+.star{
+    margin-left: 20px;
+}
+.block1{
+    background-color:#D3D3D3;
+}
+
+.block2{
+    background-color: #6e8ea5;
+    opacity: .7;
+    height: 100%;
+}
+
+.edit{
+    float: right;
+    padding: 10px;
+    margin:10px;
+    background-color:#7cadd0;
+    border-radius: 4px;
+    box-shadow:1px 1px grey;
+}
+
+
+.image2{
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 15px;
+}
+
+.btn{
+    padding:12px;
+    float:right;
+    border: none;
+    width:80px;
+    border-radius: 4px;
+    background-color:#0758A6;
+    color:white;
+   
+}
+.btn:hover{
+    background-color:#65B1FB;
+    opacity: 2;
+    
+}
+.logo {
+    position: absolute;
+    top: 100px;
+    width: 85%;
+}
+#login{
+ margin-top:15px;  
+ margin-right: 5px;
+}
+#loginUsername{
+    color: white;
+    font-size: 60px;
+    align-content: center;
+}
+#register{
+    margin-top:15px;
+    margin-right: -190px;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+  .dropdown.three{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content.three{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+.dropdown-content.three {
+    display: none;
+    position: absolute;
+    background-color:white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+  
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+body {
+overflow: hidden;
+height: 100vh;
+background: linear-gradient(180deg,#29516c, #6e8ea5, #7cadd0, #7cadd0, #7cadd0, #7cadd0, #6e8ea5, #3a6583, #1a4461, #09283d);
+background-size: 2400% 2400%;
+animation: dayNight  60s ease infinite;
+}
+
+  
+  #toolbar{
+    background-color : rgba(184, 229, 250, 0.2);
+    border-color: transparent;
+    margin: 0px;
+    padding: 4px;
+  }
+
+  textarea {
+  width: 250px;
+  height: 100px;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #EBB;
+     
+  }
+  .lightbox {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(95, 160, 221);
+  }
+  .toolbarLB {
+    text-align: right;
+    padding: 3px;
+    margin: 30px;
+    
+  }
+ 
+
+  textarea {
+  width: 250px;
+  height: 100px;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #EBB;
+     
+  }
+  body {
+    background-color: #efefef;
+  }
+  
+  .profile-pic {
+      max-width: 200px;
+      max-height: 200px;
+      display: block;
+  }
+  
+  .file-upload {
+      display: none;
+  }
+  .circle {
+      border-radius: 1000px !important;
+      overflow: hidden;
+      width: 128px;
+      height: 128px;
+      border: 8px solid rgba(255, 255, 255, 0.7);
+      position: absolute;
+      top: 72px;
+  }
+  img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  
