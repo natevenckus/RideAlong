@@ -71,14 +71,10 @@ def driverSearch(request):
     #ex. query http://localhost:8000/driver/search?searchText=West&filter=location
     #filter options: location,date,price,luggage,passengershttp://localhost:8000/driver/search?Filter=Price
     if request.method == "GET":
-        print (request.GET)
-        if filter is 'location':
-            result = DriveRequest.objects.filter(body_text__search=searchText)
-            print (result)
-            print ('done')
+        if request.GET['filter'] == 'location':
+            searchResult = DriveRequest.objects.filter(departLoc__search=request.GET['searchText'])
 
-
-    return render(request,"driver_page.html",{'isIndex':False})
+    return render(request,"driver_page.html",{'isIndex':False,'searchResult':searchResult})
 
 def ridepopup(request):
     return render(request,'ridePopup.html')
