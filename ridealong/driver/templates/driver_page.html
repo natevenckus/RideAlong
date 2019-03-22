@@ -23,11 +23,32 @@
                                 <a><b>Driver</b></a>
                         </div>
                 </div>
-                <form id="searchForm" method="get" action="">
-            {%csrf_token%}
-                    <input type="text" name="searchText" id="input" placeholder="Search...">
-                    <!--<button type="submit" id="searchText" onclick="l">Search</button>-->
-                    <a type="submit" href="search" class="btn">Search</a>
+                <form id="searchForm" method="get" action="search">
+                    <input type="text" name="searchLocation" id="input">
+                    <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+                    <input id="seachVal" type="submit" value="Submit">
+                <select name="filter" id="filters">
+                  <option value="location">Location</option>
+                  <option id="dateSelection" value="date">Date</option>
+                  <option value="price">Price</option>
+                  <option value="luggage">Number of Bags</option>
+                  <option value="passenger">Number of Passengers</option>
+                </select>
+            <script>
+                var departDate = document.getElementById('departDate');
+                departDate.required=false;
+                // Get the button that opens the modal
+                var filters = document.getElementById("filters");
+                // Get the <span> element that closes the modal
+                filters.onchange = function(){
+                    if(filters.value=="date"){
+                        departDate.style.display = "block";
+                    }else{
+                        departDate.style.display = "none";
+                    }
+
+                }
+            </script>
                 </form>
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <div class="dropdown three">
@@ -44,15 +65,7 @@
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
             </div>
         </div>
-        <div id="filters" hidden >
-                <button id="one" class="filter" >Location </button>
-                <button id="two" class="filter" >Date </button>
-                <button id="three" class="filter" >Price </button>
-                <button id="four" class="filter" >Luggage </button>
-                <button id="five" class="filter" >Passengers </button>
 
-
-        </div>
 
         {% if isIndex is False %}
             <div class="circle">

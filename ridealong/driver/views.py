@@ -81,7 +81,8 @@ def driverSearch(request):
         if request.GET['filter'] == 'location':
             searchResult = DriveRequest.objects.filter(departLoc__search=request.GET['searchLocation'])
         elif request.GET['filter'] == 'date':
-            searchResult = DriveRequest.objects.filter(pickupTime__year=request.GET['searchYear'], pickupTime__month=request.GET['searchMonth'],pickupTime__day=request.GET['searchDay'])
+            date = request.GET['departDate'].split('-')
+            searchResult = DriveRequest.objects.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
         elif request.GET['filter'] == 'price':
             q = SearchQuery(request.GET['searchPrice'])
             vector = SearchVector(Cast('PriceOffer', CharField()))
@@ -91,8 +92,6 @@ def driverSearch(request):
             vector = SearchVector(Cast('numOfBaggage', CharField()))
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
         elif request.GET['filter'] == 'passenger':
-            q = SearchQuery(request.GET['searchPassenger'])
-            vector = SearchVector(Cast('numOfSeats', CharField()))
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
 
     return render(request,"driver_page.html",{'isIndex':False,'searchResult':searchResult})
