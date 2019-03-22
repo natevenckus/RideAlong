@@ -50,13 +50,13 @@
     
 }
 #edit{
-    float: right;
-    padding: 10px;
-    margin:10px;
-    background-color:#005296fd;
+    padding:12px;
+    float:right;
+    border: none;
+    width:80px;
     border-radius: 4px;
-    color: white;
-    box-shadow:1px 1px grey;
+    background-color:#0758A6;
+    color:white;
 }
 #home{
     float:right;

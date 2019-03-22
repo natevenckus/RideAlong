@@ -57,16 +57,20 @@
                                                                 <br>
                                                 </tr>
                                                 <tr id="myrides">
-                                                        {% for request in driveRequests %}
-                                                        <p for="Destination">Destination: {{request.arrivalLoc}}
-                                                        <button class="btn" id="Edit1">Edit</button><br></p>
-                                                        <p for="Origin">Pick Up Location: {{request.departLoc}}
-                                                        <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
-                                                        <p for="Filled Seats">Filled Seats: {{request.numOfSeats}}
-                                                        <p for="CarYear">Car Make: {{request.Car.Make}}
-                                                        <p for="CarModel">Car Model: {{request.Car.Model}}
-                                                        <p for="CarYear">Car year: {{request.Car.Year}}
-                                                        <button class="btn" id="Delete" onclick="show()">Delete</button>
+                                                        {% for request in rideRequests %}
+                                                        <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
+                                                        <button class="btn" id="Edit1" onclick="myFunction2()">Edit</button><br></p>
+                                                        <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}
+                                                        <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
+                                                        <p id="4" for="Filled Seats">Filled Seats: {{request.numOfSeats}}
+                                                        <p id="5" for="CarYear">Car Make: {{request.Car.Make}}
+                                                        <p id="6" for="CarModel">Car Model: {{request.Car.Model}}
+                                                        <p id="7" for="CarYear">Car year: {{request.Car.Year}}
+                                                            <br>
+                                                            <br>
+                                                        <button class="btn" id="Delete2" onclick="show2()">Delete</button>
+                                                            <br>
+                                                            <br>
                                                         {% endfor %}
                                                 </tr>
                                             </table>
@@ -104,6 +108,15 @@
             document.getElementById("six").hidden = true;
             document.getElementById("seven").hidden = true;            
             }
+            function show2(){
+            document.getElementById("1").hidden = true;
+            document.getElementById("2").hidden = true;
+            document.getElementById("3").hidden = true;
+            document.getElementById("4").hidden = true;
+            document.getElementById("5").hidden = true;
+            document.getElementById("6").hidden = true;
+            document.getElementById("7").hidden = true;            
+            }
 
             function myFunction() {
                 var change = document.getElementById("edit");
@@ -132,7 +145,32 @@
                 }
             }
 
-            
+            function myFunction2() {
+                var change = document.getElementById("Edit1");
+                document.getElementById("1").contentEditable = true;
+                document.getElementById("2").contentEditable = true;
+                document.getElementById("3").contentEditable = true;
+                document.getElementById("4").contentEditable = true;
+                document.getElementById("5").contentEditable = true;
+                document.getElementById("6").contentEditable = true;
+                document.getElementById("7").contentEditable = true;
+
+   
+                if(change.innerHTML == "Edit"){
+                    change.innerHTML = "Update"
+                }
+                else{
+                    change.innerHTML = "Edit"
+                    document.getElementById("1").contentEditable = false;
+                    document.getElementById("2").contentEditable = false;
+                    document.getElementById("3").contentEditable = false;
+                    document.getElementById("4").contentEditable = false;
+                    document.getElementById("5").contentEditable = false;
+                    document.getElementById("6").contentEditable = false;
+                    document.getElementById("7").contentEditable = false;
+        
+                }
+            }
         
            </script>
     
