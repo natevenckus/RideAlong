@@ -13,8 +13,16 @@
     <body>
         <div id="toolbar">
             
-                    <button type="button" id="filter" onclick="showMe()" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-filter"></span> Filter 
+                    <button type="button" id="filter" onclick="clickMe()" class="dropbtn btn btn-default btn-sm dropdown three">
+                            <span class="glyphicon glyphicon-filter">
+                                    <div id="myDropdown2" class="dropdown-content three">
+                                            <p>Destination</p>
+                                            <p>Dates</p>
+                                            <p>Price</p>
+                                            <p>Luggage</p>
+                                            <p>Passengers</p>
+                                    </div>
+                            </span> Filter 
                     </button>
                     
 
@@ -47,12 +55,12 @@
                     
             </div>
         </div>
-        <div id="filters" hidden >
-                <button id="one" class="filter" >Location </button>
-                <button id="two" class="filter" >Date </button>
-                <button id="three" class="filter" >Price </button>
-                <button id="four" class="filter" >Luggage </button>
-                <button id="five" class="filter" >Passengers </button>
+        <div>
+                <!-- <button class="filter" >Location </button>
+                <button class="filter" >Date </button>
+                <button class="filter" >Price </button>
+                <button class="filter" >Luggage </button>
+                <button class="filter" >Passengers </button> -->
 
 
         </div>
@@ -304,13 +312,8 @@
         function drop(){
 	        document.getElementByID("driverInfo").classList.toggle("show");
         }
-        function showMe(){
-            var x = document.getElementById("filters");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+        function onClick(){
+            document.getElementById("myDropdown2").classList.toggle("show");
         }
 
             </script>
