@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'driverPage2.css' %}">
+        <link rel="stylesheet" href="{% static 'drivePageNew.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -49,23 +49,7 @@
 
                 }
             </script>
-                </form>
-                    <i id="home" class="fa fa-home" style="font-size:40px"></i>
-                    <div class="dropdown three">
-                            <i id="bell" class="fa fa-bell" style="font-size:36px">
-                            <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
-
-                            <!-- <i id="user" class="fa fa-user-circle-o" style="font-size:36px"></i> -->
-                            <div class="dropdown-content three">
-                                <p> No New Notifications</p>
-                            </div>
-                            </i>
-                    </div>
-                    <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
-                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-            </div>
-        </div>
-
+            </form>
 
         {% if isIndex is False %}
             <div class="circle">
@@ -344,5 +328,6 @@
             }
         }
 
+        
             </script>
 </html>
