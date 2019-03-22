@@ -19,12 +19,13 @@
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
-                                <a href="/rider">Rider</a>
-                                <a href="/driverpage">Driver</a>
+                                <a href="#">Rider</a>
+                                <a><b>Driver</b></a>
                         </div>
                 </div>
-                <form id="searchForm" method="post">
-                    <input type="text" id="input" placeholder="Search...">
+                <form id="searchForm" method="get" action="">
+            {%csrf_token%}
+                    <input type="text" name="searchText" id="input" placeholder="Search...">
                     <!--<button type="submit" id="searchText" onclick="l">Search</button>-->
                     <a type="submit" href="search" class="btn">Search</a>
                 </form>
@@ -248,12 +249,7 @@
                                         </fieldset>
                                     </div> -->
                         </div>
-<<<<<<< HEAD
                         <button id="btn" type="submit" >  Start a ride </button>
-=======
-                        <button id="btn" type="submit"  <a href="/rider"> Start a ride </button>
-                        <button id="btn" type="submit"  <a href="/driverpage"> Driver Page </button>
->>>>>>> ae13e57d8272213883d568be04f16e7b2e8b244b
                       </div>
         </form>
         </div>

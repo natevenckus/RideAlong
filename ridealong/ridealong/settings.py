@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'rider',
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites'
+    'django.contrib.sites',
+    'django.contrib.postgres'
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
