@@ -89,5 +89,6 @@ def profile(request):
         return render(request,"profile.html",{'profilePage':profilePage})
     else: 
         return render(request, "profile.html")
+        
     # return render(request, 'profile.html')
 
