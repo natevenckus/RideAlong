@@ -59,7 +59,7 @@ def index(request):
             recipient1 = request.POST['ContactEmail']
             recipient_list =[recipient1,] 
             send_mail(subject1,message1,email_from1,recipient_list)
-            #send_mail('Ridealong Registration','Congratulations for Registering with RideAlong. Here is your confirmation email','root@localhost',[user.email])
+            
             
             login(request,user)
             email2 = request.POST['ContactEmail']
