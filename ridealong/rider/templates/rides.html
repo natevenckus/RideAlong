@@ -42,7 +42,7 @@
                                             <br>
                                             <table>
                                                 <tr id="rides2">
-                                                        <button style="float: right" id="edit" class="edit" onclick="myFunction()"> Edit</button>                                                                
+                                                        <!-- <button style="float: right" id="edit" class="edit" onclick="myFunction()"> Edit</button>                                                                 -->
                                                         <p id="one" for="Origin">Pick Up Location: West Laffayte, Indiana
                                                         <p id="two" for="Destination">Destination: St. Louis, Ohio
                                                                 <p id="three" for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
@@ -59,7 +59,7 @@
                                                         <input type="text" name="id" value="{{request.ID}}" style="display:none">
                                                         <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
                                                         <br>
-                                                        <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p>
+                                                        <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                                         <br>
                                                         <input type="submit" class="btn" id="Update" value="Save" style=""><a href="updateride">Update</a></button><br></p>
                                                         <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
@@ -69,7 +69,7 @@
                                                         <p id="5" for="Baggage">Baggage: <input type="text" name="baggage" value="{{request.numOfBaggage}}">
                                                             <br>
                                                             <br>
-                                                        <button class="btn" id="Delete2" onclick=""><a href="deleteride?id={{request.ID}}">Delete</a></button>
+                                                        <button class="btn" id="Delete2" style="float: left" =""><a href="deleteride?id={{request.ID}}">Delete</a></button>
                                                             <br>
                                                             <br>
                                                         {% endfor %}
