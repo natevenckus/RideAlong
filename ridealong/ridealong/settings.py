@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'myapp',
     'accounts',
     'driver',
+    'rider',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites'
