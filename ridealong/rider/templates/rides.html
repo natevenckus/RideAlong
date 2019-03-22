@@ -16,8 +16,8 @@
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
-                                <a href="#">Rider</a>
-                                <a><b>Driver</b></a>
+                                <a href="#"><b></b>Rider</a>
+                                <a>Driver</a>
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
@@ -41,7 +41,7 @@
                                             <p>My Rides</p>
                                             <br>
                                             <table>
-                                                <tr>
+                                                <tr id="rides2">
                                                         <button style="float: right" id="edit" class="edit" onclick="myFunction()"> Edit</button>                                                                
                                                         <p id="one" for="Origin">Pick Up Location: West Laffayte, Indiana
                                                         <p id="two" for="Destination">Destination: St. Louis, Ohio
@@ -52,27 +52,21 @@
                                                                 <p id="seven" for="CarYear">Car year: 2018
                                                                     <br>    
                                                                     <br>
-                                                                <button class="btn" id="Delete">Delete</button>
+                                                                <button class="btn" id="Delete" onclick="show()">Delete</button>
                                                                 <br>
                                                                 <br>
                                                 </tr>
-                                                <tr>
-                                                        {% for request in rideRequests %}
+                                                <tr id="myrides">
+                                                        {% for request in driveRequests %}
                                                         <p for="Destination">Destination: {{request.arrivalLoc}}
                                                         <button class="btn" id="Edit1">Edit</button><br></p>
                                                         <p for="Origin">Pick Up Location: {{request.departLoc}}
-                                                        <button class="btn" id="Edit2">Edit</button><br></p>
                                                         <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
-                                                        <button class="btn" id="Edit3">Edit</button><br></p>
                                                         <p for="Filled Seats">Filled Seats: {{request.numOfSeats}}
-                                                        <button class="btn" id="Edit4">Edit</button><br></p>
                                                         <p for="CarYear">Car Make: {{request.Car.Make}}
-                                                        <button class="btn" id="Edit5">Edit</button><br></p>
                                                         <p for="CarModel">Car Model: {{request.Car.Model}}
-                                                        <button class="btn" id="Edit6">Edit</button><br></p>
                                                         <p for="CarYear">Car year: {{request.Car.Year}}
-                                                        <button class="btn" id="Edit7">Edit</button><br></p>
-                                                        <button class="btn" id="Delete">Delete</button>
+                                                        <button class="btn" id="Delete" onclick="show()">Delete</button>
                                                         {% endfor %}
                                                 </tr>
                                             </table>
@@ -101,6 +95,16 @@
         
     </body>
     <script>
+        function show(){
+            document.getElementById("one").hidden = true;
+            document.getElementById("two").hidden = true;
+            document.getElementById("three").hidden = true;
+            document.getElementById("four").hidden = true;
+            document.getElementById("five").hidden = true;
+            document.getElementById("six").hidden = true;
+            document.getElementById("seven").hidden = true;            
+            }
+
             function myFunction() {
                 var change = document.getElementById("edit");
                 document.getElementById("one").contentEditable = true;
@@ -127,6 +131,8 @@
         
                 }
             }
+
+            
         
            </script>
     
