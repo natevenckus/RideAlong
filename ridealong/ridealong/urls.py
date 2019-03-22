@@ -23,5 +23,6 @@ urlpatterns = [
     #path('pwtest/', include('myapp.urls')),
     path('pwtest/', views.pwtest, name='pwtest'),
     path('',include('accounts.urls')),
-    path('driver/',include('driver.urls'))
+    path('driver/',include('driver.urls')),
+    path('rider/',include('rider.urls')),
 ]
