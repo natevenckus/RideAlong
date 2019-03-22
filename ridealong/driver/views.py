@@ -47,6 +47,7 @@ def index(request):
             car.save()
             driveRequest_instance.Car = car
             driveRequest_instance.save()
+        """
         deleteID = request.POST['deleteID']
         editID = request.POST['editID']
         editField = request.POST['editField']
@@ -55,6 +56,7 @@ def index(request):
             print("delete record here")
         if editID and editField and editVal:
             print("edit record here")
+        """
         print(request.user)
         driveRequest_instance.Rider = request.user
 

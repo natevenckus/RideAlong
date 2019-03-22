@@ -23,8 +23,11 @@
                                 <a><b>Driver</b></a>
                         </div>
                 </div>
+                <form id="searchForm" method="post">
                     <input type="text" id="input" placeholder="Search...">
-                    <button type="submit" id="searchText">Search</button>
+                    <!--<button type="submit" id="searchText" onclick="l">Search</button>-->
+                    <a type="submit" href="search" class="btn">Search</a>
+                </form>
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <div class="dropdown three">
                             <i id="bell" class="fa fa-bell" style="font-size:36px">
@@ -49,6 +52,7 @@
 
 
         </div>
+
 
         {% if isIndex %}
         <button class="circle"id="myBtn"> &#43;</button>
@@ -244,7 +248,7 @@
                                         </fieldset>
                                     </div> -->
                         </div>
-                        <button id="btn" type="submit"  <a href="driverpage"> Start a ride </button>
+                        <button id="btn" type="submit" >  Start a ride </button>
                       </div>
         </form>
         </div>
