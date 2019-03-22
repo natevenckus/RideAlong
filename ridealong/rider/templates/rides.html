@@ -47,9 +47,6 @@
                                                         <p id="two" for="Destination">Destination: St. Louis, Ohio
                                                                 <p id="three" for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
                                                                 <p id="four" for="Filled Seats">Filled Seats: 3
-                                                                <p id="five" for="CarMake">Car Make: Ferrari
-                                                                <p id="six" for="CarModel">Car Model: Enzo
-                                                                <p id="seven" for="CarYear">Car year: 2018
                                                                     <br>    
                                                                     <br>
                                                                 <button class="btn" id="Delete" onclick="show()">Delete</button>
@@ -63,12 +60,9 @@
                                                         <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}
                                                         <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
                                                         <p id="4" for="Filled Seats">Filled Seats: {{request.numOfSeats}}
-                                                        <p id="5" for="CarYear">Car Make: {{request.Car.Make}}
-                                                        <p id="6" for="CarModel">Car Model: {{request.Car.Model}}
-                                                        <p id="7" for="CarYear">Car year: {{request.Car.Year}}
                                                             <br>
                                                             <br>
-                                                        <button class="btn" id="Delete2" onclick="show2()">Delete</button>
+                                                        <button class="btn" id="Delete2" onclick=""><a href="deleteride?id={{request.ID}}">Delete</a></button>
                                                             <br>
                                                             <br>
                                                         {% endfor %}

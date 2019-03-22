@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.http import HttpResponse
 from .models import RideRequest
 from accounts.models import Profile
 from . import views
@@ -43,3 +44,10 @@ def index(request):
 def rides(request):
     rideRequests = RideRequest.objects.all()
     return render(request,"rides.html",{'isIndex':True,'rideRequests':rideRequests})
+    
+def deleteride(request):
+    if not request.GET['id']:
+        return HttpResponse("No ID")
+        
+    RideRequest.objects.filter(ID=request.GET['id']).delete()
+    return redirect('rides')
