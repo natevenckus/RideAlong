@@ -110,3 +110,13 @@ def profile(request):
         return render(request, "profile.html")
     # return render(request, 'profile.html')
 
+def saveprofile(request):
+    id = request.GET['id']
+
+    prof = Profile.objects.filter(id=id)[0]
+    prof.SchoolName = request.GET['school']
+    prof.FullName = request.GET['name']
+    
+    prof.save()
+    
+    return redirect('/driver/profile')
