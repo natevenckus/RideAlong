@@ -117,3 +117,8 @@ def forgotpass(request):
     return render(request, 'forgot-pass.html')
 def resetpass(request):
     return render (request, 'request-pass.html')
+    
+def rider(request):
+    return render(request,'rider_page.html')
+def driver(request):
+    return render(request,'driver_page.html')

@@ -48,6 +48,12 @@ def rides(request):
 def deleteride(request):
     if not request.GET['id']:
         return HttpResponse("No ID")
+
+def rider(request):
+    return render(request,'rider_page.html')
+
+def driver(request):
+    return render(request,'driver_page.html')
         
     RideRequest.objects.filter(ID=request.GET['id']).delete()
     return redirect('rides')
