@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts',
     'driver',
     'rider',
+    'notifications',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
