@@ -56,23 +56,21 @@
     float:right;
     position: absolute;
     margin-top: 2px;
-    margin-left: 170px;
+    margin-left: 120px;
     background-color: transparent;
     padding:15px 15px;
     cursor: pointer;
     color: black;
 }
-
-#bell{
+#bell2{
     color: black;
     float:right;
     position: absolute;
-    margin-top:-20px;
-    margin-left: 250px;
-    background-color: transparent;
-    cursor: pointer;
-
+    margin-left: 220px;
+    margin-top: 20px;
 }
+
+
 img {
     border-radius: 50%;
     width: 40px;

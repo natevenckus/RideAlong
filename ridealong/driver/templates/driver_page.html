@@ -33,8 +33,18 @@
                   <option value="luggage">Number of Bags</option>
                   <option value="passenger">Number of Passengers</option>
                 </select>
-                <input id="seachVal" type="submit" value="Submit">
                 
+                <input id="seachVal" type="submit" value="Submit">
+                    
+                <i id="home" class="fa fa-home" style="font-size:40px"> <a href="{% url 'driverpage' %}" ></a> </i>
+                        <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
+                        <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                        <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
+                        {{user.username}}
+                        </div> -->
+                        <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
+
             <script>
                 var departDate = document.getElementById('departDate');
                 departDate.required=false;
