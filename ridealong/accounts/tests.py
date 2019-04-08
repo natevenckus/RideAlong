@@ -14,6 +14,7 @@ class ProfileTestCase(TestCase):
         user2.set_password('hihowareu12345')
         user2.save()
         user3 = User.objects.create(username = 'test3user')
+        user3.set_password('himynameisdope1234')
         user3.save()
         #c = Client()
         #logged_in = c.login(username = 'testuser',password = 'hello12345') 
