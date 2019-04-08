@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from myapp import views
-import notifications.urls
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
@@ -26,5 +25,5 @@ urlpatterns = [
     path('',include('accounts.urls')),
     path('driver/',include('driver.urls')),
     path('rider/',include('rider.urls')),
-    path('notifications/', include(notifications.urls, namespace='notifications'))
+    path('notifications/',include('notifications.urls')),
 ]
