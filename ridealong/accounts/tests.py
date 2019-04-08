@@ -21,6 +21,6 @@ class ProfileTestCase(TestCase):
         Profile.objects.create(user2,FullName = 'testFullName2',SchoolEmail = 'test2@gmail.edu', ContactEmail = 'test2@gmail.com', PhoneNum = '5622773131',Gender = 'Male', DOB = '07/30/1999', SchoolName = 'Purdue')
         Profile.objects.create(user3,FullName = 'testFullName3',SchoolEmail = 'test3@gmail.edu', ContactEmail = 'test3@gmail.com', PhoneNum = '5622773131',Gender = 'Male', DOB = '07/30/1999', SchoolName = 'Purdue')
 
-    def test_login(self):
-        
+   # def test_login(self):
+
 
