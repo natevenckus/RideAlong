@@ -73,7 +73,7 @@ def updateride(request):
     
     ride.departLoc = departLoc
     ride.arrivalLoc = arrivalLoc
-    #ride.pickupTime = pickupTime
+    ride.pickupTime = pickupTime
     ride.numOfSeats = numOfSeats
     ride.numOfBaggage = numOfBaggage
     

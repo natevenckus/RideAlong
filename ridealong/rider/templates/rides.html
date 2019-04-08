@@ -64,7 +64,7 @@
                                                         <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p>
                                                         <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
                                                         <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
-                                                        <p id="3" for="Pick Up Time">Pick Up Time: <input type="text" name="pickupTime" value="{{request.pickupTime}}">
+                                                        <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
                                                         <p id="4" for="Filled Seats">Filled Seats: <input type="text" name="seats" value="{{request.numOfSeats}}">
                                                         <p id="5" for="Baggage">Baggage: <input type="text" name="baggage" value="{{request.numOfBaggage}}">
                                                             <br>
