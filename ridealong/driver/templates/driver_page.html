@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'drivePageNew.css' %}">
+        <link rel="stylesheet" href="{% static 'drivePageNew2.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,21 +12,20 @@
     </head>
     <body>
         <div id="toolbar">
-                    <button type="button" id="filter" onclick="showMe()" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-filter"></span> Filter 
-                    </button>
+                    
             <div class="form-group" align="left">
-                <div class="dropdown">
-                    <i id="power" class="fa fa-car" style="font-size:20px"></i>
-                        <div class="dropdown-content">
-`                                <a href= "{% url 'rider' %}"> Rider </a>
-                                <a href = "{% url 'driver' %}"> Driver </a>
-                        </div>
-                </div>
+                
                 <form id="searchForm" method="get" action="search">
+                        <div class="dropdown">
+                                <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                                    <div class="dropdown-content">
+            `                                <a href= "{% url 'rider' %}"> Rider </a>
+                                            <a href = "{% url 'driver' %}"> Driver </a>
+                                    </div>
+                            </div>
                     <input type="text" name="searchLocation" id="input">
                     <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
-                    <input id="seachVal" type="submit" value="Submit">
+                    
                 <select name="filter" id="filters">
                   <option value="location">Location</option>
                   <option id="dateSelection" value="date">Date</option>
@@ -34,11 +33,13 @@
                   <option value="luggage">Number of Bags</option>
                   <option value="passenger">Number of Passengers</option>
                 </select>
+                <input id="seachVal" type="submit" value="Submit">
+                
             <script>
                 var departDate = document.getElementById('departDate');
                 departDate.required=false;
                 // Get the button that opens the modal
-                var filters = document.getElementById("filters");
+               // var filters = document.getElementById("filters");
                 // Get the <span> element that closes the modal
                 filters.onchange = function(){
                     if(filters.value=="date"){
