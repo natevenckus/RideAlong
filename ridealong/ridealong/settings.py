@@ -133,7 +133,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = False #Set to false so that DATE_FORMAT gets used
+USE_L10N = True
 
 USE_TZ = True
 
@@ -159,7 +159,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ridealongpurdue@gmail.com'
 EMAIL_HOST_PASSWORD = 'ridealongforlife123'
-DATE_FORMAT = "Y-m-d h:i:s"
 
 
 

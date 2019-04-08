@@ -48,23 +48,23 @@ def rides(request):
 def deleteride(request):
     if not request.GET['id']:
         return HttpResponse("No ID")
+    
+    RideRequest.objects.filter(ID=request.GET['id']).delete()
+    return redirect('rides')
 
 def rider(request):
     return render(request,'rider_page.html')
 
 def driver(request):
     return render(request,'driver_page.html')
-        
-    RideRequest.objects.filter(ID=request.GET['id']).delete()
-    return redirect('rides')
     
 def updateride(request):
     id = request.GET['id']
     departLoc = request.GET['departLoc']
     arrivalLoc = request.GET['arrivalLoc']
     pickupTime = request.GET['pickupTime']
-    numOfSeats = request.GET['seats']
-    numOfBaggage = request.GET['baggage']
+    seatsNeeded = request.GET['seats']
+    baggageNeeded = request.GET['baggage']
     
     print("THE DATE")
     print(request.GET['pickupTime'])
@@ -74,8 +74,8 @@ def updateride(request):
     ride.departLoc = departLoc
     ride.arrivalLoc = arrivalLoc
     ride.pickupTime = pickupTime
-    ride.numOfSeats = numOfSeats
-    ride.numOfBaggage = numOfBaggage
+    ride.seatsNeeded = seatsNeeded
+    ride.baggageNeeded = baggageNeeded
     
     ride.save()
     
