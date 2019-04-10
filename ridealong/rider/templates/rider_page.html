@@ -25,7 +25,6 @@
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <div class="dropdown three">
                             <i id="bell" class="fa fa-bell" style="font-size:36px">
-                            <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
 
                             <!-- <i id="user" class="fa fa-user-circle-o" style="font-size:36px"></i> -->
                             <div class="dropdown-content three">
@@ -33,6 +32,7 @@
                             </div>
                             </i>
                     </div>
+
                     <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
                     
                 <select name="filter" id="filters">
@@ -43,10 +43,14 @@
                   <option value="passenger">Number of Passengers</option>
                 </select>
                 <button type="submit" id="searchText">Search</button>
+                <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
 
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
-                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
             </div>
+
         </div>
         <div id="filters" hidden >
                 <button id="one" class="filter" >Location </button>
