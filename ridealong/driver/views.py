@@ -126,3 +126,7 @@ def saveprofile(request):
     prof.save()
     
     return redirect('/driver/profile')
+
+
+#  def showRides(request):
+#     return render(request,'showRides.html');

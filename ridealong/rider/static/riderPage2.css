@@ -37,7 +37,7 @@
     position: relative;
     margin-left: 20px;
     margin-top: 10px;
-    width: 850px; 
+    width: 750px; 
     border-color: #0758A6;
 }
 #power{
@@ -59,7 +59,7 @@
     float:right;
     position: absolute;
     margin-top: 2px;
-    margin-left: 170px;
+    margin-left: 300px;
     background-color: transparent;
     padding:15px 15px;
     cursor: pointer;
@@ -71,7 +71,7 @@
     float:right;
     position: absolute;
     margin-top:-20px;
-    margin-left: 250px;
+    margin-left: 390px;
     background-color: transparent;
     cursor: pointer;
 
@@ -82,7 +82,8 @@ img {
     height: 40px;
     vertical-align: middle;
     cursor: pointer;
-    margin-bottom: 250px;
+    margin-top: -80px;
+    margin-left: 60px;
 
     
 }
