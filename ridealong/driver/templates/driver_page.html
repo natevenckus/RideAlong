@@ -12,9 +12,7 @@
     </head>
     <body>
         <div id="toolbar">
-                    
             <div class="form-group" align="left">
-                
                 <form id="searchForm" method="get" action="search">
                         <div class="dropdown">
                                 <i id="power" class="fa fa-car" style="font-size:20px"></i>
@@ -25,7 +23,6 @@
                             </div>
                     <input type="text" name="searchLocation" id="input">
                     <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
-                    
                 <select name="filter" id="filters">
                   <option value="location">Location</option>
                   <option id="dateSelection" value="date">Date</option>
@@ -33,9 +30,7 @@
                   <option value="luggage">Number of Bags</option>
                   <option value="passenger">Number of Passengers</option>
                 </select>
-                
                 <input id="seachVal" type="submit" value="Submit">
-                    
                 <i id="home" class="fa fa-home" style="font-size:40px"> <a href="{% url 'driverpage' %}" ></a> </i>
                         <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
                         <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
@@ -43,6 +38,10 @@
                         {{user.username}}
                         </div> -->
                         <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+                        </div>
+                        </div>
+                        <div>
+                          </div>
 
 
             <script>
@@ -155,7 +154,7 @@
                 <th> My Rides</th>
             </tr>
         </table>
-                          <object data="{% static 'create_ride.html' %}"></object>
+
         {% endif %}
         <form id="deets" action="" method = "post">
             {%csrf_token%}
@@ -164,6 +163,9 @@
                         <!-- Modal content -->
                         <div class="modal-content">
                           <span class="close">&times;</span>
+                          <div style="height: 100%; width: 100%">
+                          <object style="height: 100%; width: 100%" data="{% static 'create_ride.html' %}"></object>
+                          </div>
 
                           <div class="form">
 
