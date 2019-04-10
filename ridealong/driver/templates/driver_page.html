@@ -12,13 +12,14 @@
     </head>
     <body>
         <div id="toolbar">
+           
             <div class="form-group" align="left">
                 <form id="searchForm" method="get" action="search">
                         <div class="dropdown">
                                 <i id="power" class="fa fa-car" style="font-size:20px"></i>
                                     <div class="dropdown-content">
             `                                <a href= "{% url 'rider' %}"> Rider </a>
-                                            <a href = "{% url 'driver' %}"> Driver </a>
+                                            <a href= "{% url 'driver' %}"> Driver </a>
                                     </div>
                             </div>
                     <input type="text" name="searchLocation" id="input">
@@ -37,13 +38,13 @@
                         <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
                         {{user.username}}
                         </div> -->
-                        <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                        <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                         <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
                         </div>
                         </div>
                         <div>
                           </div>
-
+           
 
             <script>
                 var departDate = document.getElementById('departDate');
@@ -162,18 +163,24 @@
                 <div id="myModal" class="modal">
 
                         <!-- Modal content -->
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <div style="height: 100%; width: 100%">
-                          <object style="height: 100%; width: 100%" data="{% static 'create_ride.html' %}"></object>
-                          </div>
+                      
+                            
 
                           <div class="form">
-
+                                
 
                                 <div class="tab-content">
+                                        <div class="modal-content" id="myModal2">
+                                            
+                                                <span class="close">&times;</span>
+                                                <div>
+                                                        <div style="height: 500px; width: 100%">
+                                                                <object style="height: 100%; width: 100%" data="{% static 'create_ride.html' %}"></object>
+                                                                </div>
+                                                </div>
                                         <p>
                                             <label>
+                                                <br>
                                                 Enter Departure Location
                                             </label>
                                             <br>
@@ -186,7 +193,7 @@
                                             <br>
                                             <input type="text"required autocomplete="off" size="50" name="arrivalLoc" required />
                                         </p>
-                                    </div>
+                                   
                                     <div>
                                         <p>
                                        <label> Estimate Pickup: Date/Time </label>
