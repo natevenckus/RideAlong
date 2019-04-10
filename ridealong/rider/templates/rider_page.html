@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'driverPage2.css' %}">
+        <link rel="stylesheet" href="{% static 'riderPage2.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,9 +12,7 @@
     </head>
     <body>
         <div id="toolbar">
-                    <button type="button" id="filter" onclick="showMe()" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-filter"></span> Filter 
-                    </button>
+                    
             <div class="form-group" align="left">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
@@ -24,7 +22,6 @@
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
-                    <button type="submit" id="searchText">Search</button>
                     <i id="home" class="fa fa-home" style="font-size:40px"></i>
                     <div class="dropdown three">
                             <i id="bell" class="fa fa-bell" style="font-size:36px">
@@ -36,6 +33,17 @@
                             </div>
                             </i>
                     </div>
+                    <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+                    
+                <select name="filter" id="filters">
+                  <option value="location">Location</option>
+                  <option id="dateSelection" value="date">Date</option>
+                  <option value="price">Price</option>
+                  <option value="luggage">Number of Bags</option>
+                  <option value="passenger">Number of Passengers</option>
+                </select>
+                <button type="submit" id="searchText">Search</button>
+
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
             </div>
