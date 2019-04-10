@@ -106,15 +106,11 @@ def driver(request):
     return render(request,'driver_page.html')
 
 def profile(request):
-    if request.user.is_authenticated:
-        print("IN")
-        username = request.user.email
-        #print(userName)
-        profilePage = Profile.objects.filter(ContactEmail=username)
-        return render(request,"profile.html",{'profilePage':profilePage})
-    else:
-        return render(request, "profile.html")
-    # return render(request, 'profile.html')
+    if not request.user.is_authenticated:
+        return redirect('loginpage')
+    
+    profileSet = Profile.objects.filter(pk=request.user.profile.pk)
+    return render(request,"profile.html",{'profilePage':profileSet})
 
 def saveprofile(request):
     id = request.GET['id']
