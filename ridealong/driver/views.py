@@ -73,6 +73,10 @@ def index(request):
     print("driveRequests:")
     print(driveRequests)
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
+    
+def rides(request):
+    driveRequests = DriveRequest.objects.all()
+    return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def driverSearch(request):
     #ex. query http://localhost:8000/driver/search?searchLocation=West&filter=location
