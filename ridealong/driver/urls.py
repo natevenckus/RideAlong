@@ -3,12 +3,12 @@ from . import views
 
 urlpatterns=[
     path('',views.index,name='driverpage'),
-    path('search',views.driverSearch,name='driversearch'),
-    path('ridepopup',views.ridepopup,name='ridepopup'),
+    #path('search',views.driverSearch,name='driversearch'),
+    #path('ridepopup',views.ridepopup,name='ridepopup'),
     path('profile', views.profile, name = 'profile'),
-    path('saveprofile', views.saveprofile, name='saveprofile'),
-    path('rider', views.rider, name='rider'),
-    path('driver', views.driver, name='driver'),
-    path('showRides', views.driver, name='showRides')
+    #path('saveprofile', views.saveprofile, name='saveprofile'),
+    #path('rider', views.rider, name='rider'),
+    #path('driver', views.driver, name='driver'),
+    #path('showRides', views.driver, name='showRides')
 ]
 

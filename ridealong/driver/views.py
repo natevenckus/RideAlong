@@ -10,6 +10,8 @@ from . import views
 # Create your views here.
 
 def index(request):
+    print("IN DRIVER INDEX!!!!!")
+
     if not request.user.is_authenticated:
         return redirect('loginpage')
 

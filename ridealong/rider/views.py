@@ -6,6 +6,8 @@ from accounts.models import Profile
 from . import views
 
 def index(request):
+    print("IN RIDER INDEX!!!")
+
     if not request.user.is_authenticated:
         return redirect('loginpage')
     

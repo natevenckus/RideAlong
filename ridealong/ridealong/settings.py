@@ -48,12 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
+    'debug_toolbar', #Use "pip install django-debug-toolbar" if you want this. Pretty useful.
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -159,6 +161,12 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ridealongpurdue@gmail.com'
 EMAIL_HOST_PASSWORD = 'ridealongforlife123'
+
+APPEND_SLASH = True
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 
 
