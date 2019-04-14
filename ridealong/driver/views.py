@@ -108,8 +108,8 @@ def ridepopup(request):
 def rider(request):
     return render(request,'rider_page.html')
 
-def driver(request):
-    return render(request,'driver_page.html')
+#def driver(request):
+    #return render(request,'driver_page.html')
 
 def profile(request):
     if not request.user.is_authenticated:

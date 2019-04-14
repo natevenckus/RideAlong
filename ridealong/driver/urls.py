@@ -8,7 +8,7 @@ urlpatterns=[
     path('profile', views.profile, name = 'profile'),
     path('saveprofile', views.saveprofile, name='saveprofile'),
     path('rider', views.rider, name='rider'),
-    path('driver', views.driver, name='driver'),
+    #path('driver', views.driver, name='driver'),
     path('rides', views.rides, name='rides'),
 ]
 

@@ -7,5 +7,5 @@ urlpatterns=[
     path('deleteride', views.deleteride, name='deleteride'),
     path('updateride', views.updateride, name='updateride'),
     path('rider', views.rider, name='rider'),
-    path('driver', views.driver, name='driver')
+    #path('driver', views.driver, name='driver')
 ]
