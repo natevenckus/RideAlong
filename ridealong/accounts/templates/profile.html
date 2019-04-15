@@ -17,7 +17,7 @@
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                     <div class="dropdown-content">
                             <a href= "{% url 'rider' %}"> Rider </a>
-                            <a href="{% url 'driver' %}"> Driver </a>
+                            <a href="{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
@@ -31,7 +31,7 @@
                             </div>
                             </i>
                     </div>
-                    <img src="{% static 'tempPic.png' %}" class="image1"></a>
+                    <!--<img src="{% static 'tempPic.png' %}" class="image1"></a>-->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
 
             </div>
@@ -77,7 +77,10 @@
         </div>
     <div class="block2">
         <br>
-        <h1> Reviews </h1>
+        <Header>Reviews</Header>
+        <!--this button should allow user to review another user, link to post review page-->
+        <button class="btn" id="login">Review</a></button>
+        
     </div>
         </body>
    <script>

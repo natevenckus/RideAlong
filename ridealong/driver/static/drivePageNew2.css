@@ -50,7 +50,9 @@
     float: right;
     margin-right: 50%;
 }
-
+.myModal2{
+    overflow-y: auto;
+}
 
 #home{
     float:right;

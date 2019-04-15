@@ -17,7 +17,7 @@
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
                             <a href= "{% url 'rider' %}"> Rider </a>
-                            <a href="{% url 'driver' %}"> Driver </a>
+                            <a href="{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
@@ -55,7 +55,7 @@
                                                 </tr>
                                                 <form id="rideEditForm" action="updateride">
                                                 <tr id="myrides">
-                                                        {% for request in rideRequests %}
+                                                        {% for request in driveRequests %}
                                                         <input type="text" name="id" value="{{request.ID}}" style="display:none">
                                                         <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
                                                         <br>
@@ -65,8 +65,8 @@
                                                         <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
                                                         <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
                                                         <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
-                                                        <p id="4" for="Filled Seats">Filled Seats: <input type="number" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">
-                                                        <p id="5" for="Baggage">Baggage: <input type="number" name="baggage" value="{{request.baggageNeeded}}" min="0" max="5">
+                                                        <p id="4" for="Filled Seats">Available Seats: <input type="number" name="seats" value="{{request.numOfSeats}}" min="0" max="5">
+                                                        <p id="5" for="Baggage">Room for Baggage: <input type="number" name="baggage" value="{{request.numOfBaggage}}" min="0" max="5">
                                                             <br>
                                                             <br>
                                                         <button class="btn" id="Delete2" style="float: left" =""><a href="deleteride?id={{request.ID}}">Delete</a></button>

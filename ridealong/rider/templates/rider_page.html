@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'driverPage2.css' %}">
+        <link rel="stylesheet" href="{% static 'riderPage2.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,23 +12,19 @@
     </head>
     <body>
         <div id="toolbar">
-                    <button type="button" id="filter" onclick="showMe()" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-filter"></span> Filter 
-                    </button>
+                    
             <div class="form-group" align="left">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
-                            <a href= "{% url 'rider' %}"> Rider </a>
-                            <a href = "{% url 'driver' %}"> Driver </a>
+                            <a href= "{% url 'riderpage' %}"> Rider </a>
+                            <a href = "{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
-                    <button type="submit" id="searchText">Search</button>
-                    <i id="home" class="fa fa-home" style="font-size:40px"></i>
+                    <a href="/"><i id="home" class="fa fa-home" style="font-size:40px"></i></a>
                     <div class="dropdown three">
                             <i id="bell" class="fa fa-bell" style="font-size:36px">
-                            <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
 
                             <!-- <i id="user" class="fa fa-user-circle-o" style="font-size:36px"></i> -->
                             <div class="dropdown-content three">
@@ -36,9 +32,25 @@
                             </div>
                             </i>
                     </div>
+
+                    <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+                    
+                <select name="filter" id="filters">
+                  <option value="location">Location</option>
+                  <option id="dateSelection" value="date">Date</option>
+                  <option value="price">Price</option>
+                  <option value="luggage">Number of Bags</option>
+                  <option value="passenger">Number of Passengers</option>
+                </select>
+                <button type="submit" id="searchText">Search</button>
+                <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
+
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
-                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
             </div>
+
         </div>
         <div id="filters" hidden >
                 <button id="one" class="filter" >Location </button>
@@ -62,6 +74,7 @@
                 </th>
             </tr>
             <tr><th></th></tr>
+            <a href="rides">
             <div class="circle">
                         <div class="dropdown two" >
                         <div onclick="myfunction()" class = "arrow"></div>
@@ -99,6 +112,7 @@
                         </div>
                     </div>
             </div>
+            </a>
             <tr>
                 <th></th>
             </tr>
@@ -193,7 +207,7 @@
                                             <tr>
                                                 <td>
                                                         <p>
-                                                                <label>Seats Available</label>
+                                                                <label>Seats Needed</label>
                                                                 <br>
                                                              <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >
                                                         </p>
@@ -206,6 +220,7 @@
                                                         </p>
                                                 </td>
                                             </tr>
+                                           
                                         </table>
                                     </div>
                                    <!-- <div>
@@ -216,8 +231,9 @@
                                         </fieldset>
                                     </div> -->
                         </div>
-                        <button id="btn" type="submit"  <a href="/rider"> Start a ride </button>
-                        <button id="btn" type="submit"  <a href="/driver"> Driver Page </button>
+                        <button id="btn" type="submit" >  Submit </button>
+                        <!--<button id="btn" type="submit"  <a href="/rider"> Start a ride </button>
+                        <button id="btn" type="submit"  <a href="/driver"> Driver Page </button>-->
                       </div>
         </form>
         </div>

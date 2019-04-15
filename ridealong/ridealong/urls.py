@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from myapp import views
+from django.conf import settings
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
@@ -23,7 +24,11 @@ urlpatterns = [
     #path('pwtest/', include('myapp.urls')),
     path('pwtest/', views.pwtest, name='pwtest'),
     path('',include('accounts.urls')),
-    path('driver/',include('driver.urls')),
-    path('rider/',include('rider.urls')),
+    path('driver/',include('driver.urls'), name = 'driver'),
+    path('rider/',include('rider.urls'), name = 'rider'),
     path('notifications/',include('notifications.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))

@@ -10,6 +10,8 @@ from . import views
 # Create your views here.
 
 def index(request):
+    print("IN DRIVER INDEX!!!!!")
+
     if not request.user.is_authenticated:
         return redirect('loginpage')
 
@@ -71,6 +73,10 @@ def index(request):
     print("driveRequests:")
     print(driveRequests)
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
+    
+def rides(request):
+    driveRequests = DriveRequest.objects.all()
+    return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def driverSearch(request):
     #ex. query http://localhost:8000/driver/search?searchLocation=West&filter=location
@@ -102,19 +108,15 @@ def ridepopup(request):
 def rider(request):
     return render(request,'rider_page.html')
 
-def driver(request):
-    return render(request,'driver_page.html')
+#def driver(request):
+    #return render(request,'driver_page.html')
 
 def profile(request):
-    if request.user.is_authenticated:
-        print("IN")
-        username = request.user.email
-        #print(userName)
-        profilePage = Profile.objects.filter(ContactEmail=username)
-        return render(request,"profile.html",{'profilePage':profilePage})
-    else:
-        return render(request, "profile.html")
-    # return render(request, 'profile.html')
+    if not request.user.is_authenticated:
+        return redirect('loginpage')
+    
+    profileSet = Profile.objects.filter(pk=request.user.profile.pk)
+    return render(request,"profile.html",{'profilePage':profileSet})
 
 def saveprofile(request):
     id = request.GET['id']
@@ -126,3 +128,7 @@ def saveprofile(request):
     prof.save()
     
     return redirect('/driver/profile')
+
+
+#  def showRides(request):
+#     return render(request,'showRides.html');
