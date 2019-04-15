@@ -50,9 +50,7 @@
     float: right;
     margin-right: 50%;
 }
-.myModal2{
-    overflow-y: auto;
-}
+
 
 #home{
     float:right;
@@ -200,7 +198,7 @@ html {
     box-sizing: inherit;
 }
 body {
-overflow: hidden;
+overflow: auto;
 height: 100vh;
 background: linear-gradient(180deg,#29516c, #6e8ea5, #7cadd0, #7cadd0, #7cadd0, #7cadd0, #6e8ea5, #3a6583, #1a4461, #09283d);
 background-size: 2400% 2400%;
@@ -256,9 +254,9 @@ animation: dayNight  60s ease infinite;
     margin-left: 20%;
     left: 0;
     top: 0;
-    width: 60%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    /* width: 60%; */ /* Full width */
+    /* height: 100%; */ /* Full height */
+ /* Enable scroll if needed */
     background-color: rgb(63, 113, 189); /* Fallback color */
     background-color: rgba(110, 159, 233, 0.2); /* Black w/ opacity */
   }
@@ -269,13 +267,17 @@ animation: dayNight  60s ease infinite;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    height: 90%;
+    position: relative;
+    /* width: 80%; */
+    /* height: 90%; */
     text-align: center;
   }
-  #deets{
-      background-color: green;
-  }
+.tab-content {
+    width: 63%;
+    height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
   
   /* The Close Button */
   .close {
@@ -406,10 +408,12 @@ animation: dayNight  60s ease infinite;
     background-color: #1a4461;
    
   }
+
   
   .dropdown.two a:hover {background-color: #ddd;}
   
   .show {display: block;}
+  
   /* .lightbox {
     position: fixed;
     top: 0;
@@ -448,3 +452,4 @@ animation: dayNight  60s ease infinite;
     margin-left: 20px;
     width: 200px;
   } */
+

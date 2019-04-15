@@ -124,7 +124,8 @@ def saveprofile(request):
     prof = Profile.objects.filter(id=id)[0]
     prof.SchoolName = request.GET['school']
     prof.FullName = request.GET['name']
-    
+    #prof.Car = request.GET['car']
+    #print(request.GET['car']);
     prof.save()
     
     return redirect('/driver/profile')
