@@ -14,6 +14,7 @@
         <div id="toolbar">
                     
             <div class="form-group" align="left">
+                <form id="searchForm" method="get" action="search">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
@@ -21,48 +22,81 @@
                             <a href = "{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
-                    <input type="text" id="input" placeholder="Search...">
-                    <a href="/"><i id="home" class="fa fa-home" style="font-size:40px"></i></a>
-                    <div class="dropdown three">
-                            <i id="bell" class="fa fa-bell" style="font-size:36px">
-
-                            <!-- <i id="user" class="fa fa-user-circle-o" style="font-size:36px"></i> -->
-                            <div class="dropdown-content three">
-                                <p> No New Notifications</p>
-                            </div>
-                            </i>
-                    </div>
-
-                    <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+                <input type="text" name="searchLocation" id="input">
+                <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+            <select name="filter" id="filters">
+              <option value="location">Location</option>
+              <option id="dateSelection" value="date">Date</option>
+              <option value="price">Price</option>
+              <option value="luggage">Number of Bags</option>
+              <option value="passenger">Number of Passengers</option>
+            </select>
+            <input id="seachVal" type="submit" value="Submit">
+            <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
+                    <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
+                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     
-                <select name="filter" id="filters">
-                  <option value="location">Location</option>
-                  <option id="dateSelection" value="date">Date</option>
-                  <option value="price">Price</option>
-                  <option value="luggage">Number of Bags</option>
-                  <option value="passenger">Number of Passengers</option>
-                </select>
-                <button type="submit" id="searchText">Search</button>
-                <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
-                <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-
-
+                    <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                    <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
+                    {{user.username}}
+                    </div> -->
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
+                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+                    </div>
+                    </div>
+                    <div>
+                    </div>
+       
 
+        <script>
+            var departDate = document.getElementById('departDate');
+            departDate.required=false;
+            // Get the button that opens the modal
+           // var filters = document.getElementById("filters");
+            // Get the <span> element that closes the modal
+            filters.onchange = function(){
+                if(filters.value=="date"){
+                    departDate.style.display = "block";
+                }else{
+                    departDate.style.display = "none";
+                }
+
+            }
+        </script>
+        </form>
+
+        {% if isIndex is False %}
+            <a href="rides">
+            <div class="circle">
+                        <div class="dropdown two" >
+                        <div onclick="myfunction()" class = "arrow"></div>
+                        <div id="myDropdown" class="dropdown-content two">
+                                <div>
+                                            <p>Rides</p>
+                                            {% for request in searchResult %}
+                                            <p for="Destination">Destination: {{request.arrivalLoc}}
+                                            <button class="btn" id="Edit1">Edit</button><br></p>
+                                            <p for="Origin">Pick Up Location: {{request.departLoc}}
+                                            <button class="btn" id="Edit2">Edit</button><br></p>
+                                            <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
+                                            <button class="btn" id="Edit3">Edit</button><br></p>
+                                            <p for="Filled Seats">Filled Seats: {{request.numOfSeats}}
+                                            <button class="btn" id="Edit4">Edit</button><br></p>
+                                            <p for="CarYear">Car Make: {{request.Car.Make}}
+                                            <button class="btn" id="Edit5">Edit</button><br></p>
+                                            <p for="CarModel">Car Model: {{request.Car.Model}}
+                                            <button class="btn" id="Edit6">Edit</button><br></p>
+                                            <p for="CarYear">Car year: {{request.Car.Year}}
+                                            <button class="btn" id="Edit7">Edit</button><br></p>
+                                            <button class="btn" id="Delete">Delete</button>
+                                            {% endfor %}
+                                        </div>
+                        </div>
+                    </div>
             </div>
+        {%endif%}
 
-        </div>
-        <div id="filters" hidden >
-                <button id="one" class="filter" >Location </button>
-                <button id="two" class="filter" >Date </button>
-                <button id="three" class="filter" >Price </button>
-                <button id="four" class="filter" >Luggage </button>
-                <button id="five" class="filter" >Passengers </button>
-
-
-        </div>
-
-   
+        {% if isIndex %}
         <button class="circle"id="myBtn"> &#43;</button>
 
         <table id="ride">
@@ -120,6 +154,7 @@
                 <th> My Rides</th>
             </tr>
         </table>
+        {% endif %}
         <!-- <table id="ride">
                 <tr>
                     <th>New Ride</th>
@@ -236,11 +271,12 @@
                         <button id="btn" type="submit"  <a href="/driver"> Driver Page </button>-->
                       </div>
         </form>
-        </div>
+    </div>
 
     </body>
     <script>
-            var modal = document.getElementById('myModal');
+
+        var modal = document.getElementById('myModal');
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
         // Get the <span> element that closes the modal
@@ -285,5 +321,5 @@
             }
         }
 
-            </script>
+    </script>
 </html>

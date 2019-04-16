@@ -16,13 +16,14 @@
         <div id="toolbar">
             <div class="form-group" align="left">
                 <form id="searchForm" method="get" action="search">
-                    <div class="dropdown">
-                        <i id="power" class="fa fa-car" style="font-size:20px"></i>
-                        <div class="dropdown-content">
-                            `                                <a href= "{% url 'rider' %}"> Riders </a>
-                            <a href= "{% url 'driverpage' %}"> Driver </a>
-                        </div>
-                    </div>
+
+                        <div class="dropdown">
+                                <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                                    <div class="dropdown-content">
+            `                                <a href= "{% url 'riderpage' %}"> Riders </a>
+                                            <a href= "{% url 'driverpage' %}"> Driver </a>
+                                    </div>
+                            </div>
                     <input type="text" name="searchLocation" id="input">
                     <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
                     <select name="filter" id="filters">
