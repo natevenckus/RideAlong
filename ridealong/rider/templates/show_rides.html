@@ -38,13 +38,13 @@
        
                                 
                                 <div class="list">
-                                            <p>All Rides</p>
                                             <br>
                                             <table>
                                                 <form id="rideEditForm" action="updateride">
                                                 <tr id="myrides">
                                                         <div>
-                                                                <p>Rides</p>
+                                                            {% if searchResult %}
+                                                                <p>All Rides</p>
                                                                 {% for request in searchResult %}
                                                                 <p for="Destination">Destination: {{request.arrivalLoc}}
                                                                 <p for="Origin">Pick Up Location: {{request.departLoc}}
@@ -59,6 +59,11 @@
                                                                 <br>
                                                                 <br>
                                                                 {% endfor %}
+                                                            
+                                                            {% else %}
+                                                                <p>Currently no rides are available that meet your specifications. Try Again Later!</p>
+                                                            
+                                                            {% endif %}
                                                         </div>
                                                 </tr>
                                                 </form>
