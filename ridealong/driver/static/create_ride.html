@@ -61,16 +61,17 @@
     </style>
   </head>
   <body>
+    <form id="deets" action="/driver/" method="post">
     <div style="display: none">
-        <input id="origin-input" class="controls" type="text"
+        <input name="departLoc" id="origin-input" required class="controls" type="text"
             placeholder="Enter an origin location">
 
-        <input id="destination-input" class="controls" type="text"
+        <input name="arrivalLoc" id="destination-input" required class="controls" type="text"
             placeholder="Enter a destination location">
     </div>
 
     <div id="map"></div>
-    <form id="deets" action="" method="post">
+    <!--
     <p>
       <label>
         <br>
@@ -84,35 +85,36 @@
         Enter Arrival Location
       </label>
       <br>
-      <input type="text"required autocomplete="off" size="50" name="arrivalLoc" required />
+      <input type="text" required autocomplete="off" size="50" name="arrivalLoc" required />
     </p>
+    -->
 
     <div>
       <p>
         <label> Estimate Pickup: Date/Time </label>
         <br>
-        <input type = "datetime-local" name = "pickupTime" required />
+        <input id="pickupTime" type = "datetime-local" name = "pickupTime" required />
       </p>
     </div>
     <div>
       <p>
         <label> Estimate DropOff: Date/Time</label>
         <br>
-        <input type = "datetime-local" name = "dropTime" required />
+        <input id="dropTime" type = "datetime-local" name = "dropTime" required />
       </p>
     </div>
     <div>
       <p>
         <label> Car Make (optional)</label>
         <br>
-        <input type = "text" name = "carMake" />
+        <input id="carMake" type = "text" name = "carMake" />
       </p>
     </div>
     <div>
       <p>
         <label> Car Model (optional)</label>
         <br>
-        <input type = "text" name = "carModel" />
+        <input id="carModel" type = "text" name = "carModel" />
       </p>
     </div>
     <div>
@@ -157,7 +159,7 @@
         <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
         </fieldset>
         </div> -->
-        <button id="btn">  Start a ride </button>
+        <button  id="submitBtn" type="submit">Start a ride </button>
         </div>
         </form>
 
@@ -173,7 +175,7 @@ var destPlaceID = null;
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeControl: false,
-    center: {lat: -33.8688, lng: 151.2195},
+    center: {lat: 40.4237 , lng: -86.9212},
     zoom: 13
   });
 
@@ -257,7 +259,6 @@ AutocompleteDirectionsHandler.prototype.route = function() {
         }
       });
 };
-
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk&libraries=places&callback=initMap"

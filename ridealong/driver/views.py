@@ -6,9 +6,11 @@ from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models.functions import Cast
 from django.db.models import CharField
 from . import views
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
-
+@csrf_exempt
 def index(request):
     print("IN DRIVER INDEX!!!!!")
 
