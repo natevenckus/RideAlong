@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Place Autocomplete and Directions</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -66,21 +67,10 @@
 
         <input id="destination-input" class="controls" type="text"
             placeholder="Enter a destination location">
-
-        <div id="mode-selector" class="controls">
-          <input type="radio" name="type" id="changemode-walking" checked="checked">
-          <label for="changemode-walking">Walking</label>
-
-          <input type="radio" name="type" id="changemode-transit">
-          <label for="changemode-transit">Transit</label>
-
-          <input type="radio" name="type" id="changemode-driving">
-          <label for="changemode-driving">Driving</label>
-        </div>
     </div>
 
     <div id="map"></div>
-    <form id="deets">
+    <form id="deets" action="" method="post">
     <p>
       <label>
         <br>
@@ -178,6 +168,8 @@
 // <script
 // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+var originPlaceID = null;
+var destPlaceID = null;
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeControl: false,
@@ -213,10 +205,6 @@ function AutocompleteDirectionsHandler(map) {
   // Specify just the place data fields that you need.
   destinationAutocomplete.setFields(['place_id']);
 
-  this.setupClickListener('changemode-walking', 'WALKING');
-  this.setupClickListener('changemode-transit', 'TRANSIT');
-  this.setupClickListener('changemode-driving', 'DRIVING');
-
   this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
   this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
 
@@ -225,19 +213,6 @@ function AutocompleteDirectionsHandler(map) {
       destinationInput);
   this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
 }
-
-// Sets a listener on a radio button to change the filter type on Places
-// Autocomplete.
-AutocompleteDirectionsHandler.prototype.setupClickListener = function(
-    id, mode) {
-  var radioButton = document.getElementById(id);
-  var me = this;
-
-  radioButton.addEventListener('click', function() {
-    me.travelMode = mode;
-    me.route();
-  });
-};
 
 AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(
     autocomplete, mode) {
@@ -253,8 +228,10 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(
     }
     if (mode === 'ORIG') {
       me.originPlaceId = place.place_id;
+      originPlaceID = place.place_id;
     } else {
       me.destinationPlaceId = place.place_id;
+      destPlaceID = place.place_id;
     }
     me.route();
   });
@@ -270,7 +247,7 @@ AutocompleteDirectionsHandler.prototype.route = function() {
       {
         origin: {'placeId': this.originPlaceId},
         destination: {'placeId': this.destinationPlaceId},
-        travelMode: this.travelMode
+        travelMode: 'DRIVING'
       },
       function(response, status) {
         if (status === 'OK') {
@@ -280,6 +257,7 @@ AutocompleteDirectionsHandler.prototype.route = function() {
         }
       });
 };
+
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk&libraries=places&callback=initMap"
