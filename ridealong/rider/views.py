@@ -44,9 +44,9 @@ def index(request):
     
     return render(request,'rider_page.html')
 
-def rides(request):
+def rides1(request):
     rideRequests = RideRequest.objects.all()
-    return render(request,"rides.html",{'isIndex':True,'rideRequests':rideRequests})
+    return render(request,"rides1.html",{'isIndex':True,'rideRequests':rideRequests})
 
 def riderSearch(request):
     #ex. query http://localhost:8000/driver/search?searchLocation=West&filter=location
@@ -78,10 +78,10 @@ def deleteride(request):
         return HttpResponse("No ID")
     
     RideRequest.objects.filter(ID=request.GET['id']).delete()
-    return redirect('rides')
+    return redirect('rides1')
 
-def rider(request):
-    return render(request,'rider_page.html')
+#def rider(request):
+    #return render(request,'rider_page.html')
 
 #def driver(request):
     #return render(request,'driver_page.html')

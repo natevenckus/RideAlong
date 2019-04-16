@@ -105,8 +105,8 @@ def driverSearch(request):
 def ridepopup(request):
     return render(request,'ridePopup.html')
 
-def rider(request):
-    return render(request,'rider_page.html')
+#def rider(request):
+    #return render(request,'rider_page.html')
 
 #def driver(request):
     #return render(request,'driver_page.html')
