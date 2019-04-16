@@ -99,6 +99,9 @@ def index(request):
 def loginpage(request):
     return render(request,'login.html')
 
+def notfications(request):
+    return render (request,'notifications.html')
+
 def registerPage(request):
     return render(request,'register.html')
 
