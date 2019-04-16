@@ -70,7 +70,7 @@ def riderSearch(request):
         elif request.GET['filter'] == 'passenger':
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
 
-    return render(request,"rider_page.html",{'isIndex':False,'searchResult':searchResult})
+    return render(request,"show_rides.html",{'isIndex':False,'searchResult':searchResult})
 
     
 def deleteride(request):
