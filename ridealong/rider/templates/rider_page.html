@@ -43,6 +43,9 @@
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
                 <div class="list">
+                    {% if requestSuccess %}
+                        Your request was successful!
+                    {% endif %}
                     <h1 id="header" >Available Rides</h1>
 
 

@@ -33,6 +33,7 @@ def index(request):
         numOfBaggage = request.POST['baggage']
         if departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
             driveRequest_instance = DriveRequest.objects.create(
+                Rider = request.user,
                 departLoc = request.POST['departLoc'],
                 arrivalLoc = request.POST['arrivalLoc'],
                 pickupTime = request.POST['pickupTime'],
