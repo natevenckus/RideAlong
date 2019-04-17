@@ -132,6 +132,9 @@ def saveprofile(request):
     
     return redirect('/driver/profile')
 
+def drivernotfications(request):
+    return render (request,'drivernotifications.html')
+
 
 #  def showRides(request):
 #     return render(request,'showRides.html');
