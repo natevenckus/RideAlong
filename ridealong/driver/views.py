@@ -77,7 +77,10 @@ def index(request):
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def rides(request):
-    driveRequests = DriveRequest.objects.all()
+    if not request.user.is_authenticated:
+        return redirect('loginpage')
+        
+    driveRequests = DriveRequest.objects.filter(Rider = request.user)
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def driverSearch(request):
@@ -134,6 +137,37 @@ def saveprofile(request):
 
 def drivernotfications(request):
     return render (request,'drivernotifications.html')
+
+
+def updateride(request):
+    id = request.GET['id']
+    departLoc = request.GET['departLoc']
+    arrivalLoc = request.GET['arrivalLoc']
+    pickupTime = request.GET['pickupTime']
+    seatsNeeded = request.GET['seats']
+    baggageNeeded = request.GET['baggage']
+    
+    print("THE DATE")
+    print(request.GET['pickupTime'])
+    
+    ride = DriveRequest.objects.filter(ID=id)[0]
+    
+    ride.departLoc = departLoc
+    ride.arrivalLoc = arrivalLoc
+    ride.pickupTime = pickupTime
+    ride.seatsNeeded = seatsNeeded
+    ride.baggageNeeded = baggageNeeded
+    
+    ride.save()
+    
+    return redirect('rides')
+
+def deleteride(request):
+    if not request.GET['id']:
+        return HttpResponse("No ID")
+    
+    DriveRequest.objects.filter(ID=request.GET['id']).delete()
+    return redirect('rides')
 
 
 #  def showRides(request):

@@ -46,12 +46,12 @@
                                                   
                                                             {% for request in driveRequests %}
                                                             <div class="pls">
-                                                            <input type="text" ame="id" value="{{request.ID}}" style="display:none">
+                                                            <input type="text" name="id" value="{{request.ID}}" style="display:none">
                                                             <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
                                                             <br>
                                                             <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                                             <br>
-                                                            <!-- <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p> -->
+                                                            <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p>
                                                             <p id="2" for="Origin">Pick Up Location: <input type="text" style="color: black" name="departLoc" value="{{request.departLoc}}">
                                                             <p id="two" for="Destination">Destination: <input type="text" style="color: black" name="arrivalLoc" value="{{request.arrivalLoc}}">
                                                             <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" style="color: black" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
