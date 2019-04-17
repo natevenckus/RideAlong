@@ -44,28 +44,30 @@
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
                 </form>
                 <div class="list">
-                    <p>All Rides</p>
-                    <br>
+                    <h1 id="header" >My Rides</h1>
+
                     <table>
                         <form id="rideEditForm" action="updateride">
                         <tr id="myrides">
                                 {% for request in driveRequests %}
+                                <div class="pls">
                                 <input type="text" name="id" value="{{request.ID}}" style="display:none">
-                                <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
+                                <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                 <br>
-                                <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p>
-                                <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
-                                <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
-                                <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
-                                <p id="4" for="Filled Seats">Filled Seats: <input type="number" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">
-                                <p id="5" for="Baggage">Baggage: <input type="number" name="baggage" value="{{request.baggageNeeded}}" min="0" max="5">
+                                <p id="2" for="Origin">Pick Up Location: <input type="text" style="color: black" name="departLoc" value="{{request.departLoc}}">
+                                <p id="two" for="Destination">Destination: <input type="text" style="color: black" name="arrivalLoc" value="{{request.arrivalLoc}}">
+                                <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" style="color: black" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
+                                <p id="4" for="Filled Seats">Filled Seats: <input type="number" style="color: black" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">
+                                <p id="5" for="Baggage">Baggage: <input type="number" style="color: black" name="baggage" value="{{request.baggageNeeded}}" min="0" max="5">
                                     <br>
                                     <br>
-                                <button class="btn" id="Delete2" style="float: left" =""><a href="deleteride?id={{request.ID}}">Request Ride</a></button>
+                                <button class="btn1" id="Delete2" style="float: left">Request Ride</button>
                                     <br>
                                     <br>
+                                </div>
+                                <br>
                                 {% endfor %}
                         </tr>
                         </form>
@@ -134,7 +136,10 @@
             } else {
                 x.style.display = "none";
             }
+        
+            
         }
 
     </script>
+    
 </html>

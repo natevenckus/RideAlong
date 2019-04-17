@@ -95,6 +95,20 @@ img {
 
     
 }
+.pls{
+    background-color: #1a4461;
+    color: white;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px; 
+     
+ }
+ #header{
+    color:black;
+    padding: 10px;
+    margin:10px;
+}
 .btn{
     padding:12px;
     float:right;
@@ -104,6 +118,15 @@ img {
     background-color:#0758A6;
     color:white;
    
+}
+.btn1 {
+    padding:8px;
+    float:right;
+    border: none;
+    width:130px;
+    border-radius: 4px;
+    background-color:#7cadd0;
+    color:white;
 }
 .btn:hover{
     background-color:#65B1FB;

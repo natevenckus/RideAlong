@@ -129,9 +129,18 @@ img {
     border: none;
     width:80px;
     border-radius: 4px;
-    background-color:#7cadd0;
+    background-color:#0758A6;
     color:white;
    
+}
+.btn1 {
+    padding:8px;
+    float:right;
+    border: none;
+    width:80px;
+    border-radius: 4px;
+    background-color:#7cadd0;
+    color:white;
 }
 .btn:hover{
     background-color:#65B1FB;
