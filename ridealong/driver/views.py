@@ -66,8 +66,8 @@ def index(request):
         """
         print(request.user)
         driveRequest_instance.Rider = request.user
-
         driveRequest_instance.save()
+        return render(request,"create_ride.html");
 
     driveRequests = DriveRequest.objects.all()
     #times = DriveRequest.objects.all().values_list('pickupTime',flat=True)
@@ -75,12 +75,9 @@ def index(request):
     print("driveRequests:")
     print(driveRequests)
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
-    
+
 def rides(request):
-    if not request.user.is_authenticated:
-        return redirect('loginpage')
-        
-    driveRequests = DriveRequest.objects.filter(Rider = request.user)
+    driveRequests = DriveRequest.objects.all()
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def driverSearch(request):

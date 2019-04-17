@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Place Autocomplete and Directions</title>
+    
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 425px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #origin-input,
+      #destination-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+      #origin-input:focus,
+      #destination-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #mode-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        margin-left: 12px;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+      .properties{
+        background-color: lightblue;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+      }
+      
+      input, select {
+  width: 40%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+      /* #move{
+        margin-left: 400px;
+      } */
+      #formz{
+      margin-left: 370px;
+      
+
+    }
+  #formz td, #formz tr{
+    width: 50;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #submitBtn{
+    /* background-color:#0758A6;
+    color: white;
+    padding: 18px;
+    border-radius: 4px;
+    text-align: center;
+    border:none;
+    position: relative;
+    margin-bottom: 10%;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.747); */
+    width: 20%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: white;
+  background-color:#0758A6;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.747);
+  align-content: center;
+  border: none;
+  }
+
+    </style>
+  </head>
+  <body>
+    <form id="deets" action="/driver/" method="post">
+    <div style="display: none">
+        <input name="departLoc" id="origin-input" required class="controls" type="text"
+            placeholder="Enter an origin location">
+
+        <input name="arrivalLoc" id="destination-input" required class="controls" type="text"
+            placeholder="Enter a destination location">
+    </div>
+
+    <div id="map"></div>
+    <!--
+    <p>
+      <label>
+        <br>
+        Enter Departure Location
+      </label>
+      <br>
+      <input id="departure" type="text" required autocomplete="off" size="50" name="departLoc" required />
+    </p>
+    <p>
+      <label>
+        Enter Arrival Location
+      </label>
+      <br>
+      <input type="text" required autocomplete="off" size="50" name="arrivalLoc" required />
+    </p>
+    -->
+<div class = "properties">
+  <div>
+    <p>
+      <br>
+      <label> <b>Estimate Pickup: Date/Time </b></label>
+      <br>
+      <br>
+      <input id="pickupTime font" type = "datetime-local" name = "pickupTime" required />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b>Estimate DropOff: Date/Time </b></label>
+      <br>
+      <br>
+      <input id="dropTime font" type = "datetime-local" name = "dropTime" required />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b> Car Make (optional)</b></label>
+      <br>
+      <br>
+      <input id="carMake font" type = "text" name = "carMake" />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b> Car Model (optional)</b></label>
+      <br>
+      <br>
+      <input id="carModel font" type = "text" name = "carModel" />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b>Car Year (optional) </b></label>
+      <br>
+      <br>
+      <input type = "text font" name = "carYear" />
+    </p>
+    <br>
+  </div>
+  <!-- <div>
+    <p>
+    <label>Special Instructions</label>
+    <br>
+    <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
+    </p>
+    </div> -->
+    <div class="properties" id="move">
+      <table id="formz" style="text-align: center">
+        <tr>
+          <td>
+            <p>
+              <label><b>Seats Available </b></label>
+              <br>
+              <br>
+              <input type="number" id ="Seats "  name = "seats" min = "0" max = "10" >
+            </p>
+          </td>
+          <td>
+            <p>
+              <label><b>Baggage space</b></label>
+              <br>
+              <br>
+              <input type="number" id = "Baggage " name = "baggage" min = "0" max = "10">
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- <div>
+      <fieldset>
+      <legend>Extra Accomodations</legend>
+      <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
+      <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
+      </fieldset>
+      </div> -->
+      <br>
+      <br>
+      <button  id="submitBtn" type="submit">Start a ride </button>
+      <br>
+      <br>
+      
+
+      </div>
+</div>
+   
+        </form>
+
+
+    <script>
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+var originPlaceID = null;
+var destPlaceID = null;
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    mapTypeControl: false,
+    center: {lat: 40.4237 , lng: -86.9212},
+    zoom: 13
+  });
+
+  new AutocompleteDirectionsHandler(map);
+}
+
+/**
+ * @constructor
+ */
+function AutocompleteDirectionsHandler(map) {
+  this.map = map;
+  this.originPlaceId = null;
+  this.destinationPlaceId = null;
+  this.travelMode = 'WALKING';
+  this.directionsService = new google.maps.DirectionsService;
+  this.directionsDisplay = new google.maps.DirectionsRenderer;
+  this.directionsDisplay.setMap(map);
+
+  var originInput = document.getElementById('origin-input');
+  var destinationInput = document.getElementById('destination-input');
+  var modeSelector = document.getElementById('mode-selector');
+
+  var originAutocomplete = new google.maps.places.Autocomplete(originInput);
+  // Specify just the place data fields that you need.
+  originAutocomplete.setFields(['place_id']);
+
+  var destinationAutocomplete =
+      new google.maps.places.Autocomplete(destinationInput);
+  // Specify just the place data fields that you need.
+  destinationAutocomplete.setFields(['place_id']);
+
+  this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+  this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+  this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+  this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(
+      destinationInput);
+  this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+}
+
+AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(
+    autocomplete, mode) {
+  var me = this;
+  autocomplete.bindTo('bounds', this.map);
+
+  autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+
+    if (!place.place_id) {
+      window.alert('Please select an option from the dropdown list.');
+      return;
+    }
+    if (mode === 'ORIG') {
+      me.originPlaceId = place.place_id;
+      originPlaceID = place.place_id;
+    } else {
+      me.destinationPlaceId = place.place_id;
+      destPlaceID = place.place_id;
+    }
+    me.route();
+  });
+};
+
+AutocompleteDirectionsHandler.prototype.route = function() {
+  if (!this.originPlaceId || !this.destinationPlaceId) {
+    return;
+  }
+  var me = this;
+
+  this.directionsService.route(
+      {
+        origin: {'placeId': this.originPlaceId},
+        destination: {'placeId': this.destinationPlaceId},
+        travelMode: 'DRIVING'
+      },
+      function(response, status) {
+        if (status === 'OK') {
+          me.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+};
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk&libraries=places&callback=initMap"
+        async defer></script>
+  </body>
+</html>
