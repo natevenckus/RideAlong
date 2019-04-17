@@ -42,12 +42,36 @@
                     </div> -->
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-                    </div>
-                    </div>
-                    <div>
-                    </div>
-               
-
+                </form>
+                <div class="list">
+                    <p>All Rides</p>
+                    <br>
+                    <table>
+                        <form id="rideEditForm" action="updateride">
+                        <tr id="myrides">
+                                {% for request in driveRequests %}
+                                <input type="text" name="id" value="{{request.ID}}" style="display:none">
+                                <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
+                                <br>
+                                <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
+                                <br>
+                                <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p>
+                                <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
+                                <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
+                                <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
+                                <p id="4" for="Filled Seats">Filled Seats: <input type="number" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">
+                                <p id="5" for="Baggage">Baggage: <input type="number" name="baggage" value="{{request.baggageNeeded}}" min="0" max="5">
+                                    <br>
+                                    <br>
+                                <button class="btn" id="Delete2" style="float: left" =""><a href="deleteride?id={{request.ID}}">Request Ride</a></button>
+                                    <br>
+                                    <br>
+                                {% endfor %}
+                        </tr>
+                        </form>
+        </table>
+                </div>
+                    
         <script>
             var departDate = document.getElementById('departDate');
             departDate.required=false;
@@ -63,126 +87,6 @@
 
             }
         </script>
-        </form>
-
-        
-        <!-- <table id="ride">
-                <tr>
-                    <th>New Ride</th>
-                </tr>
-                <tr>
-                    <th>
-                    </th>
-                </tr>
-                <tr><th></th></tr>
-                <div class="circle">
-                        <button class="arrow Driver"id="viewRideBtn"></button>
-                        <div class="driver-contents">
-                            <button id="rideBtn">Ride 1</button><br>
-                        </div>
-                </div>
-                <div id="rideModal" class="modal">
-                        Modal content -->
-                        <!-- <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <p>Ride Info</p>
-                          <label for="Destination">Destination: St. Louis, Ohio</label>
-                          <button class="btn" id="Edit1">Edit</button><br>
-                          <label for="Origin">Pick Up Location: West Laffayte, Indiana</label>
-                          <button class="btn" id="Edit2">Edit</button><br>
-                          <label for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019</label>
-                          <button class="btn" id="Edit3">Edit</button><br>
-                          <label for="Filled Seats">Filled Seats: 3</label>
-                          <button class="btn" id="Edit4">Edit</button><br>
-                        </div>
-                    </div>
-                    <tr>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th> View Rides</th
-                    </tr>
-                </table>
-               -->
-        <form id="deets" action="" method = "post">
-            {%csrf_token%}
-                <div id="myModal" class="modal">
-
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <div class="form">
-                                <div class="tab-content">
-                                        <p>
-                                            <label>
-                                                Enter Departure Location
-                                            </label>
-                                            <br>
-                                            <input id="departure" type="text" required autocomplete="off" size="50" name="departLoc" required />
-                                        </p>
-                                        <p>
-                                            <label>
-                                            Enter Arrival Location
-                                            </label>
-                                            <br>
-                                            <input type="text"required autocomplete="off" size="50" name="arrivalLoc" required />
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p>
-                                       <label> Estimate Pickup: Date/Time </label>
-                                       <br>
-                                            <input type = "datetime-local" name = "pickupTime" required />
-                                        </p>
-                                    <div>
-                                            <p>
-                                           <label> Estimate DropOff: Date/Time</label>
-                                           <br>
-                                                <input type = "datetime-local" name = "dropTime" required />
-                                            </p>
-                                    </div>
-                                    <!-- <div>
-                                        <p>
-                                            <label>Special Instructions</label>
-                                            <br>
-                                            <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
-                                        </p>
-                                    </div> -->
-                                    <div>
-                                        <table id="formz">
-                                            <tr>
-                                                <td>
-                                                        <p>
-                                                                <label>Seats Needed</label>
-                                                                <br>
-                                                             <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >
-                                                        </p>
-                                                </td>
-                                                <td>
-                                                        <p>
-                                                                <label>Baggage space</label>
-                                                                <br>
-                                                                <input type="number" id = "Baggage" name = "baggage" min = "0" max = "10">
-                                                        </p>
-                                                </td>
-                                            </tr>
-                                           
-                                        </table>
-                                    </div>
-                                   <!-- <div>
-                                        <fieldset>
-                                            <legend>Extra Accomodations</legend>
-                                            <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
-                                            <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
-                                        </fieldset>
-                                    </div> -->
-                        </div>
-                        <button id="btn" type="submit" >  Submit </button>
-                        <!--<button id="btn" type="submit"  <a href="/rider"> Start a ride </button>
-                        <button id="btn" type="submit"  <a href="/driver"> Driver Page </button>-->
-                      </div>
-        </form>
-    </div>
 
     </body>
     <script>

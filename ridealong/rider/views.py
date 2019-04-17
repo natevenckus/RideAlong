@@ -36,11 +36,12 @@ def index(request):
         rideRequest_instance.save()
 
     rideRequests = RideRequest.objects.all()
+    driveRequests = DriveRequest.objects.all()
     #times = DriveRequest.objects.all().values_list('pickupTime',flat=True)
     #print (times)
     print("rideRequests:")
     print(rideRequests)
-    return render(request,"rider_page.html",{'isIndex':True,'rideRequests':rideRequests})
+    return render(request,"rider_page.html",{'isIndex':True,'driveRequests':driveRequests})
     
     return render(request,'rider_page.html')
 
