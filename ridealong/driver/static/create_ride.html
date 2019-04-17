@@ -3,6 +3,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Place Autocomplete and Directions</title>
+    
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -57,6 +58,59 @@
         font-size: 13px;
         font-weight: 300;
       }
+      .properties{
+        background-color: lightblue;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+      }
+      
+      input, select {
+  width: 40%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+      /* #move{
+        margin-left: 400px;
+      } */
+      #formz{
+      margin-left: 370px;
+      
+
+    }
+  #formz td, #formz tr{
+    width: 50;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #submitBtn{
+    /* background-color:#0758A6;
+    color: white;
+    padding: 18px;
+    border-radius: 4px;
+    text-align: center;
+    border:none;
+    position: relative;
+    margin-bottom: 10%;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.747); */
+    width: 20%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: white;
+  background-color:#0758A6;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.747);
+  align-content: center;
+  border: none;
+  }
 
     </style>
   </head>
@@ -88,79 +142,95 @@
       <input type="text" required autocomplete="off" size="50" name="arrivalLoc" required />
     </p>
     -->
-
-    <div>
-      <p>
-        <label> Estimate Pickup: Date/Time </label>
-        <br>
-        <input id="pickupTime" type = "datetime-local" name = "pickupTime" required />
-      </p>
-    </div>
-    <div>
-      <p>
-        <label> Estimate DropOff: Date/Time</label>
-        <br>
-        <input id="dropTime" type = "datetime-local" name = "dropTime" required />
-      </p>
-    </div>
-    <div>
-      <p>
-        <label> Car Make (optional)</label>
-        <br>
-        <input id="carMake" type = "text" name = "carMake" />
-      </p>
-    </div>
-    <div>
-      <p>
-        <label> Car Model (optional)</label>
-        <br>
-        <input id="carModel" type = "text" name = "carModel" />
-      </p>
-    </div>
-    <div>
-      <p>
-        <label> Car Year (optional)</label>
-        <br>
-        <input type = "text" name = "carYear" />
-      </p>
+<div class = "properties">
+  <div>
+    <p>
       <br>
+      <label> <b>Estimate Pickup: Date/Time </b></label>
+      <br>
+      <br>
+      <input id="pickupTime font" type = "datetime-local" name = "pickupTime" required />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b>Estimate DropOff: Date/Time </b></label>
+      <br>
+      <br>
+      <input id="dropTime font" type = "datetime-local" name = "dropTime" required />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b> Car Make (optional)</b></label>
+      <br>
+      <br>
+      <input id="carMake font" type = "text" name = "carMake" />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b> Car Model (optional)</b></label>
+      <br>
+      <br>
+      <input id="carModel font" type = "text" name = "carModel" />
+    </p>
+  </div>
+  <div>
+    <p>
+      <label> <b>Car Year (optional) </b></label>
+      <br>
+      <br>
+      <input type = "text font" name = "carYear" />
+    </p>
+    <br>
+  </div>
+  <!-- <div>
+    <p>
+    <label>Special Instructions</label>
+    <br>
+    <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
+    </p>
+    </div> -->
+    <div class="properties" id="move">
+      <table id="formz" style="text-align: center">
+        <tr>
+          <td>
+            <p>
+              <label><b>Seats Available </b></label>
+              <br>
+              <br>
+              <input type="number" id ="Seats "  name = "seats" min = "0" max = "10" >
+            </p>
+          </td>
+          <td>
+            <p>
+              <label><b>Baggage space</b></label>
+              <br>
+              <br>
+              <input type="number" id = "Baggage " name = "baggage" min = "0" max = "10">
+            </p>
+          </td>
+        </tr>
+      </table>
     </div>
     <!-- <div>
-      <p>
-      <label>Special Instructions</label>
-      <br>
-      <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
-      </p>
+      <fieldset>
+      <legend>Extra Accomodations</legend>
+      <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
+      <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
+      </fieldset>
       </div> -->
-      <div>
-        <table id="formz">
-          <tr>
-            <td>
-              <p>
-                <label>Seats Available</label>
-                <br>
-                <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >
-              </p>
-            </td>
-            <td>
-              <p>
-                <label>Baggage space</label>
-                <br>
-                <input type="number" id = "Baggage" name = "baggage" min = "0" max = "10">
-              </p>
-            </td>
-          </tr>
-        </table>
+      <br>
+      <br>
+      <button  id="submitBtn" type="submit">Start a ride </button>
+      <br>
+      <br>
+      
+
       </div>
-      <!-- <div>
-        <fieldset>
-        <legend>Extra Accomodations</legend>
-        <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
-        <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
-        </fieldset>
-        </div> -->
-        <button  id="submitBtn" type="submit">Start a ride </button>
-        </div>
+</div>
+   
         </form>
 
 
