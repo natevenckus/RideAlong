@@ -77,7 +77,10 @@ def index(request):
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
     
 def rides(request):
-    driveRequests = DriveRequest.objects.all()
+    if not request.user.is_authenticated:
+        return redirect('loginpage')
+        
+    driveRequests = DriveRequest.objects.filter(Rider = request.user)
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def driverSearch(request):
