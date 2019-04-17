@@ -36,31 +36,8 @@
                 <div class="list"> 
                       
                         <div id="loginUsername">
-                        <p style="margin-left: 485px; margin-top: 1px;"> Welcome {{ user.username }}! </p>
+                        <p style="width:600px; margin: 100px auto;"> Welcome {{ user.username }}! </p>
                         </div>
-                        <p><!--All Rides--></p>
-                                            <br>
-                                            <table>
-                                                <tr id="myrides"> 
-                                                        {% for request in driveRequests %}
-                                                        <input type="text" name="id" value="{{request.ID}}" style="display:none">
-                                                        <p id="1" for="Destination">Destination: {{request.arrivalLoc}}
-                                                        <br>
-                                                        <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
-                                                        <br>
-                                                        <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
-                                                        <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
-                                                        <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
-                                                        <p id="4" for="Filled Seats">Available Seats: <input type="number" name="seats" value="{{request.numOfSeats}}" min="0" max="5">
-                                                        <p id="5" for="Baggage">Room for Baggage: <input type="number" name="baggage" value="{{request.numOfBaggage}}" min="0" max="5">
-                                                            <br>
-                                                            <br>
-                                                        <button class="btn" id="Delete2" style="float: left" =""><a href="deleteride?id={{request.ID}}">Request Ride</a></button>
-                                                            <br>
-                                                            <br>
-                                                        {% endfor %}
-                                                </tr>
-                                            </table>
                 </div>
             {% else %}
                 <div id="loginUsername">
