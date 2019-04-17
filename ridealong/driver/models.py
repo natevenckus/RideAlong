@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchVectorField
+from datetime import datetime
 
 class DriveRequest(models.Model):
     ID = models.AutoField(primary_key=True)
@@ -13,7 +14,7 @@ class DriveRequest(models.Model):
     MaxDepartTime = models.DateTimeField(blank=True,null=True)
     PriceOffer = models.DecimalField(decimal_places=2, max_digits=10,blank=True,null=True)
     LuggageSqFt = models.DecimalField(decimal_places=2, max_digits=5,blank=True,null=True)
-    RequestTime = models.DateTimeField(blank=True,null=True)
+    RequestTime = models.DateTimeField(default=datetime.now,blank=True,null=True)
     Completed = models.BooleanField(blank=True,null=True)
     CompleteTime = models.DateTimeField(blank=True,null=True)
     #additional columns
@@ -48,4 +49,6 @@ class RiderLink(models.Model):
     Rider = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True)
     DriveRequest = models.ForeignKey(DriveRequest, on_delete=models.CASCADE, blank=True,null=True)
     Confirmed = models.BooleanField(blank=True, null=True)
-    ConfirmTime = models.DateTimeField(blank=True, null=True)
+    ConfirmedTime = models.DateTimeField(blank=True, null=True)
+    Denied = models.BooleanField(blank=True, null=True)
+    DeniedTime = models.DateTimeField(blank=True, null=True)

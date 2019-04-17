@@ -14,7 +14,7 @@
         <div id="toolbar">
                     
             <div class="form-group" align="left">
-                <form id="searchForm" method="get" action="search">
+            <form id="searchForm" method="get">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
@@ -31,7 +31,7 @@
               <option value="luggage">Number of Bags</option>
               <option value="passenger">Number of Passengers</option>
             </select>
-            <input id="seachVal" type="submit" value="Submit">
+            <input id="seachVal" type="submit" name="searchButton" value="Search">
             <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
                     <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
                     <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
@@ -42,14 +42,12 @@
                     </div> -->
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-                </form>
                 <div class="list">
-                    <h1 id="header" >My Rides</h1>
+                    <h1 id="header" >Available Rides</h1>
 
 
                                 {% for request in driveRequests %}
                                 <div class="pls">
-                                <input type="text" name="id" value="{{request.ID}}" style="display:none">
                                 <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
@@ -61,7 +59,7 @@
                                     <p id="5" for="Baggage">Baggage: {{request.baggageNeeded}}</p>
                                     <br>
                                     <br>
-                                <input type="submit" class="btn1" id="Delete2" style="float: left" value="Request Ride"></input>
+                                <button type="submit" class="btn1" name="requestButton" style="float: left" value="{{request.ID}}">Request Ride</button>
                                     <br>
                                     <br>
                                 </div>
@@ -69,6 +67,7 @@
                                 {% endfor %}
 
                 </div>
+                </form>
                     
         <script>
             var departDate = document.getElementById('departDate');

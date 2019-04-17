@@ -7,12 +7,16 @@ from accounts.models import Profile
 from . import views
 
 def index(request):
-    print("IN RIDER INDEX!!!")
-
     if not request.user.is_authenticated:
         return redirect('loginpage')
-    
-    if request.method == "POST":
+
+    if request.method == "GET":
+        if request.GET.get("searchButton") is not None:
+            return riderSearch(request)
+        elif request.GET.get("requestButton") is not None:
+            driveReqID = request.GET["requestButton"]
+            
+    elif request.method == "POST":
         departLoc = request.POST['departLoc']
         arrivalLoc = request.POST['arrivalLoc']
         pickupTime = request.POST['pickupTime']
@@ -36,20 +40,17 @@ def index(request):
         rideRequest_instance.save()
 
     rideRequests = RideRequest.objects.all()
-    driveRequests = DriveRequest.objects.all()
+    driveRequests = DriveRequest.objects.order_by("-RequestTime")[:30]
     #times = DriveRequest.objects.all().values_list('pickupTime',flat=True)
     #print (times)
-    print("rideRequests:")
-    print(rideRequests)
     return render(request,"rider_page.html",{'isIndex':True,'driveRequests':driveRequests})
-    
-    return render(request,'rider_page.html')
 
 def rides1(request):
     rideRequests = RideRequest.objects.all()
     return render(request,"rides1.html",{'isIndex':True,'rideRequests':rideRequests})
 
 def riderSearch(request):
+    print("IN RIDER SEARCH")
     #ex. query http://localhost:8000/driver/search?searchLocation=West&filter=location
     #ex. query for date http://localhost:8000/driver/search?searchYear=2222&searchMonth=2&searchDay=2&filter=date
     #filter options: location,date,price,luggage,passengershttp://localhost:8000/driver/search?Filter=Price
