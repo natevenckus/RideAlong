@@ -16,7 +16,7 @@
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                     <div class="dropdown-content">
-                            <a href= "{% url 'rider' %}"> Rider </a>
+                            <a href= "{% url 'riderpage' %}"> Rider </a>
                             <a href="{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
@@ -54,7 +54,8 @@
                         <input type="text" name="name" value="{{request.FullName}}"> <br> 
                         School: 
                         <input type="text" name="school" value="{{request.SchoolName}}"><br>
-                        Car:   
+                        Car: 
+                        <input type="text" name="car" value="{{request.Car}}"><br>  
                     </h1>  
                     <div class="avatar-edit">
                             <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
@@ -77,9 +78,9 @@
         </div>
     <div class="block2">
         <br>
-        <Header>Reviews</Header>
         <!--this button should allow user to review another user, link to post review page-->
-        <button class="btn" id="login">Review</a></button>
+        <button class="btn1" id="login"><a href= "{% url 'reviews' %}"> Write a Review</a></button>
+        <button class="btn2" id="login"><a href= "{% url 'reviews' %}"> View Reviews</a></button>
         
     </div>
         </body>

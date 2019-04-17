@@ -16,8 +16,8 @@
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
-                            <a href= "{% url 'rider' %}"> Rider </a>
-                            <a href="{% url 'driver' %}"> Driver </a>
+                            <a href= "{% url 'riderpage' %}"> Rider </a>
+                            <a href="{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
                     <input type="text" id="input" placeholder="Search...">
@@ -38,21 +38,9 @@
        
                                 
                                 <div class="list">
-                                            <p>My Rides</p>
+                                            <p>My Ridesssss</p>
                                             <br>
                                             <table>
-                                                <tr id="rides2">
-                                                        <!-- <button style="float: right" id="edit" class="edit" onclick="myFunction()"> Edit</button>                                                                 -->
-                                                        <p id="one" for="Origin">Pick Up Location: West Laffayte, Indiana
-                                                        <p id="two" for="Destination">Destination: St. Louis, Ohio
-                                                                <p id="three" for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
-                                                                <p id="four" for="Filled Seats">Filled Seats: 3
-                                                                    <br>    
-                                                                    <br>
-                                                                <button class="btn" id="Delete" onclick="show()">Delete</button>
-                                                                <br>
-                                                                <br>
-                                                </tr>
                                                 <form id="rideEditForm" action="updateride">
                                                 <tr id="myrides">
                                                         {% for request in rideRequests %}
@@ -75,30 +63,12 @@
                                                         {% endfor %}
                                                 </tr>
                                                 </form>
-                                            </table>
+                                </table>
                                             
 
 
                                            
                                         </div>
-                        </div>
-                    </div>
-                    
-            </div>
-            
-            <tr>
-                <th></th>
-            </tr>
-            
-      
-        
-
-
-        
-          
-        </div>
-
-        
     </body>
     <script>
         function show(){

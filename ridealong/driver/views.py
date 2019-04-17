@@ -6,9 +6,11 @@ from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models.functions import Cast
 from django.db.models import CharField
 from . import views
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
-
+@csrf_exempt
 def index(request):
     print("IN DRIVER INDEX!!!!!")
 
@@ -64,8 +66,8 @@ def index(request):
         """
         print(request.user)
         driveRequest_instance.Rider = request.user
-
         driveRequest_instance.save()
+        return render(request,"create_ride.html");
 
     driveRequests = DriveRequest.objects.all()
     #times = DriveRequest.objects.all().values_list('pickupTime',flat=True)
@@ -73,7 +75,7 @@ def index(request):
     print("driveRequests:")
     print(driveRequests)
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
-    
+
 def rides(request):
     driveRequests = DriveRequest.objects.all()
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
@@ -105,8 +107,8 @@ def driverSearch(request):
 def ridepopup(request):
     return render(request,'ridePopup.html')
 
-def rider(request):
-    return render(request,'rider_page.html')
+#def rider(request):
+    #return render(request,'rider_page.html')
 
 #def driver(request):
     #return render(request,'driver_page.html')
@@ -124,7 +126,8 @@ def saveprofile(request):
     prof = Profile.objects.filter(id=id)[0]
     prof.SchoolName = request.GET['school']
     prof.FullName = request.GET['name']
-    
+    #prof.Car = request.GET['car']
+    #print(request.GET['car']);
     prof.save()
     
     return redirect('/driver/profile')

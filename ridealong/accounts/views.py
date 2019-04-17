@@ -9,6 +9,7 @@ from django.contrib.auth import logout as customLogout
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from driver.models import DriveRequest
 #this shit
 from django.core.mail import send_mail
 from django.conf import settings
@@ -23,7 +24,8 @@ def index(request):
     print("Expiry age")
     print(num)
     if request.user.is_authenticated and num is not 0:
-        return render(request, 'login.html') 
+        driveRequests = DriveRequest.objects.all()
+        return render(request,"login.html",{'isIndex':True,'driveRequests':driveRequests}) 
 
     if request.method == 'POST':
        
@@ -83,11 +85,14 @@ def index(request):
                 print("DO NOT REMEMBER ME")
                 print(request.session.get_expiry_age())
 
-            context = {'form': formLogin}
+            #context = {'form': formLogin}
             if user:
                 print("Not none")
                 login(request,user)
-                return render(request, 'login.html', context)
+                driveRequests = DriveRequest.objects.all()
+                print("HELLO DRIVER/RIDER")
+                print(driveRequests)
+                return render(request, 'login.html', {'isIndex':True,'form': formLogin, 'driveRequests':driveRequests})
             
     else:
         formRegister = RegistrationForm()
@@ -101,6 +106,11 @@ def loginpage(request):
 
 def notfications(request):
     return render (request,'notifications.html')
+def reviews(request): 
+    return render(request, 'reviews.html')
+
+def viewReviews(request):
+    return render(request, 'viewReviews.html')
 
 def registerPage(request):
     return render(request,'register.html')

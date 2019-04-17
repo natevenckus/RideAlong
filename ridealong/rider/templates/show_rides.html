@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>RideAlong</title>
+        <link rel="stylesheet" href="{% static 'rides2.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <body>
+        <div id="toolbar">
+            <div class="form-group" align="left">
+                <div class="dropdown">
+                    <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                        <div class="dropdown-content">
+                            <a href= "{% url 'riderpage' %}"> Rider </a>
+                            <a href="{% url 'driverpage' %}"> Driver </a>
+                        </div>
+                </div>
+                    <input type="text" id="input" placeholder="Search...">
+                    <a href="/"><i id="home" class="fa fa-home" style="font-size:40px"></i></a>
+                    <div class="dropdown three">
+                            <i id="bell" class="fa fa-bell" style="font-size:36px">
+                            <div class="dropdown-content three">
+                                <p> No New Notifications</p>
+                            </div>
+                            </i>
+                    </div>
+                    
+                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+
+            </div>
+        </div>
+       
+                                
+                                <div class="list">
+                                            <br>
+                                            <table>
+                                                <form id="rideEditForm" action="updateride">
+                                                <tr id="myrides">
+                                                        <div>
+                                                            {% if searchResult %}
+                                                                <p>All Rides</p>
+                                                                {% for request in searchResult %}
+                                                                <p for="Destination">Destination: {{request.arrivalLoc}}
+                                                                <p for="Origin">Pick Up Location: {{request.departLoc}}
+                                                                <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
+                                                                <p for="Filled Seats">Filled Seats: {{request.numOfSeats}}
+                                                                <p for="CarYear">Car Make: {{request.Car.Make}}
+                                                                <p for="CarModel">Car Model: {{request.Car.Model}}
+                                                                <p for="CarYear">Car year: {{request.Car.Year}}
+                                                                <br>
+                                                                <br>
+                                                                <button class="btn" id="Delete" style="width:110px;">Request Ride</button>
+                                                                <br>
+                                                                <br>
+                                                                {% endfor %}
+                                                            
+                                                            {% else %}
+                                                                <p>Currently no rides are available that meet your specifications. Try Again Later!</p>
+                                                            
+                                                            {% endif %}
+                                                        </div>
+                                                </tr>
+                                                </form>
+                                            </table>
+                                </div>
+    </body>
+    <script>
+        function show(){
+            document.getElementById("one").hidden = true;
+            document.getElementById("two").hidden = true;
+            document.getElementById("three").hidden = true;
+            document.getElementById("four").hidden = true;
+            document.getElementById("five").hidden = true;
+            document.getElementById("six").hidden = true;
+            document.getElementById("seven").hidden = true;            
+            }
+            function show2(){
+            document.getElementById("1").hidden = true;
+            document.getElementById("2").hidden = true;
+            document.getElementById("3").hidden = true;
+            document.getElementById("4").hidden = true;
+            document.getElementById("5").hidden = true;
+            document.getElementById("6").hidden = true;
+            document.getElementById("7").hidden = true;            
+            }
+
+            function myFunction() {
+                var change = document.getElementById("edit");
+                document.getElementById("one").contentEditable = true;
+                document.getElementById("two").contentEditable = true;
+                document.getElementById("three").contentEditable = true;
+                document.getElementById("four").contentEditable = true;
+                document.getElementById("five").contentEditable = true;
+                document.getElementById("six").contentEditable = true;
+                document.getElementById("seven").contentEditable = true;
+
+   
+                if(change.innerHTML == "Edit"){
+                    change.innerHTML = "Update"
+                }
+                else{
+                    change.innerHTML = "Edit"
+                    document.getElementById("one").contentEditable = false;
+                    document.getElementById("two").contentEditable = false;
+                    document.getElementById("three").contentEditable = false;
+                    document.getElementById("four").contentEditable = false;
+                    document.getElementById("five").contentEditable = false;
+                    document.getElementById("six").contentEditable = false;
+                    document.getElementById("seven").contentEditable = false;
+        
+                }
+            }
+
+            function myFunction2() {
+                var change = document.getElementById("Edit1");
+                document.getElementById("1").contentEditable = true;
+                document.getElementById("2").contentEditable = true;
+                document.getElementById("3").contentEditable = true;
+                document.getElementById("4").contentEditable = true;
+                document.getElementById("5").contentEditable = true;
+                document.getElementById("6").contentEditable = true;
+                document.getElementById("7").contentEditable = true;
+
+   
+                if(change.innerHTML == "Edit"){
+                    change.innerHTML = "Update"
+                }
+                else{
+                    change.innerHTML = "Edit"
+                    document.getElementById("1").contentEditable = false;
+                    document.getElementById("2").contentEditable = false;
+                    document.getElementById("3").contentEditable = false;
+                    document.getElementById("4").contentEditable = false;
+                    document.getElementById("5").contentEditable = false;
+                    document.getElementById("6").contentEditable = false;
+                    document.getElementById("7").contentEditable = false;
+        
+                }
+            }
+        
+           </script>
+    
+</html>

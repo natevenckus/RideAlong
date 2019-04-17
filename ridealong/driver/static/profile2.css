@@ -113,10 +113,33 @@
     border: none;
     width:80px;
     border-radius: 4px;
-    background-color:#0758A6;
+    background-color: black;
     color:white;
+    
    
 }
+.btn1 {
+    padding:12px;
+    float:right;
+    border: none;
+    width:160px;
+    border-radius: 4px;
+    background-color: black;
+    color:white;
+    float: left;
+
+}
+.btn2 {
+    padding:12px;
+    float:right;
+    border: none;
+    width:130px;
+    border-radius: 4px;
+    background-color: black;
+    color:white;
+    float: left;
+}
+
 .btn:hover{
     background-color:#65B1FB;
     opacity: 2;

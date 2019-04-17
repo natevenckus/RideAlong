@@ -14,6 +14,7 @@
         <div id="toolbar">
                     
             <div class="form-group" align="left">
+                <form id="searchForm" method="get" action="search">
                 <div class="dropdown">
                     <i id="power" class="fa fa-car" style="font-size:20px"></i>
                         <div class="dropdown-content">
@@ -21,226 +22,78 @@
                             <a href = "{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
-                    <input type="text" id="input" placeholder="Search...">
-                    <a href="/"><i id="home" class="fa fa-home" style="font-size:40px"></i></a>
-                    <div class="dropdown three">
-                            <i id="bell" class="fa fa-bell" style="font-size:36px">
-
-                            <!-- <i id="user" class="fa fa-user-circle-o" style="font-size:36px"></i> -->
-                            <div class="dropdown-content three">
-                                <p> No New Notifications</p>
-                            </div>
-                            </i>
-                    </div>
-
-                    <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+                <input type="text" name="searchLocation" id="input">
+                <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
+            <select name="filter" id="filters">
+              <option value="location">Location</option>
+              <option id="dateSelection" value="date">Date</option>
+              <option value="price">Price</option>
+              <option value="luggage">Number of Bags</option>
+              <option value="passenger">Number of Passengers</option>
+            </select>
+            <input id="seachVal" type="submit" value="Submit">
+            <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
+                    <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
+                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     
-                <select name="filter" id="filters">
-                  <option value="location">Location</option>
-                  <option id="dateSelection" value="date">Date</option>
-                  <option value="price">Price</option>
-                  <option value="luggage">Number of Bags</option>
-                  <option value="passenger">Number of Passengers</option>
-                </select>
-                <button type="submit" id="searchText">Search</button>
-                <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
-                <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-
-
+                    <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                    <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
+                    {{user.username}}
+                    </div> -->
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
+                    <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+                </form>
+                <div class="list">
+                    <h1 id="header" >My Rides</h1>
 
-            </div>
-
-        </div>
-        <div id="filters" hidden >
-                <button id="one" class="filter" >Location </button>
-                <button id="two" class="filter" >Date </button>
-                <button id="three" class="filter" >Price </button>
-                <button id="four" class="filter" >Luggage </button>
-                <button id="five" class="filter" >Passengers </button>
-
-
-        </div>
-
-   
-        <button class="circle"id="myBtn"> &#43;</button>
-
-        <table id="ride">
-            <tr>
-                <th>New Ride</th>
-            </tr>
-            <tr>
-                <th>
-                </th>
-            </tr>
-            <tr><th></th></tr>
-            <a href="rides">
-            <div class="circle">
-                        <div class="dropdown two" >
-                        <div onclick="myfunction()" class = "arrow"></div>
-                        <div id="myDropdown" class="dropdown-content two">
-                                <div>
-                                            <p>Rides</p>
-                                            <p for="Destination">Destination: St. Louis, Ohio
-                                            <button class="btn" id="Edit1">Edit</button><br></p>
-                                            <p for="Origin">Pick Up Location: West Laffayte, Indiana
-                                            <button class="btn" id="Edit2">Edit</button><br></p>
-                                            <p for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019
-                                            <button class="btn" id="Edit3">Edit</button><br></p>
-                                            <p for="Filled Seats">Filled Seats: 3
-                                            <button class="btn" id="Edit4">Edit</button><br></p>
-                                            <p for="CarMake">Car Make: Ferrari
-                                            <button class="btn" id="Edit5">Edit</button><br></p>
-                                            <p for="CarModel">Car Model: Enzo
-                                            <button class="btn" id="Edit6">Edit</button><br></p>
-                                            <p for="CarYear">Car year: 2018
-                                            <button class="btn" id="Edit7">Edit</button><br></p>
-                                            <button class="btn" id="Delete">Delete</button>
-
-                                            {% for request in rideRequests %}
-                                            <p for="Destination">Destination: {{request.arrivalLoc}}
-                                            <button class="btn" id="Edit1">Edit</button><br></p>
-                                            <p for="Origin">Pick Up Location: {{request.departLoc}}
-                                            <button class="btn" id="Edit2">Edit</button><br></p>
-                                            <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
-                                            <button class="btn" id="Edit3">Edit</button><br></p>
-                                            <p for="Filled Seats">Filled Seats: {{request.numOfSeats}}
-                                            <button class="btn" id="Edit4">Edit</button><br></p>
-                                            <button class="btn" id="Delete">Delete</button>
-                                            {% endfor %}
-                                        </div>
-                        </div>
-                    </div>
-            </div>
-            </a>
-            <tr>
-                <th></th>
-            </tr>
-            <tr>
-                <th> My Rides</th>
-            </tr>
+                    <table>
+                        <form id="rideEditForm" action="updateride">
+                        <tr id="myrides">
+                                {% for request in driveRequests %}
+                                <div class="pls">
+                                <input type="text" name="id" value="{{request.ID}}" style="display:none">
+                                <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
+                                <br>
+                                <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
+                                <br>
+                                <p id="2" for="Origin">Pick Up Location: <input type="text" style="color: black" name="departLoc" value="{{request.departLoc}}">
+                                <p id="two" for="Destination">Destination: <input type="text" style="color: black" name="arrivalLoc" value="{{request.arrivalLoc}}">
+                                <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" style="color: black" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
+                                <p id="4" for="Filled Seats">Filled Seats: <input type="number" style="color: black" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">
+                                <p id="5" for="Baggage">Baggage: <input type="number" style="color: black" name="baggage" value="{{request.baggageNeeded}}" min="0" max="5">
+                                    <br>
+                                    <br>
+                                <button class="btn1" id="Delete2" style="float: left">Request Ride</button>
+                                    <br>
+                                    <br>
+                                </div>
+                                <br>
+                                {% endfor %}
+                        </tr>
+                        </form>
         </table>
-        <!-- <table id="ride">
-                <tr>
-                    <th>New Ride</th>
-                </tr>
-                <tr>
-                    <th>
-                    </th>
-                </tr>
-                <tr><th></th></tr>
-                <div class="circle">
-                        <button class="arrow Driver"id="viewRideBtn"></button>
-                        <div class="driver-contents">
-                            <button id="rideBtn">Ride 1</button><br>
-                        </div>
                 </div>
-                <div id="rideModal" class="modal">
-                        Modal content -->
-                        <!-- <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <p>Ride Info</p>
-                          <label for="Destination">Destination: St. Louis, Ohio</label>
-                          <button class="btn" id="Edit1">Edit</button><br>
-                          <label for="Origin">Pick Up Location: West Laffayte, Indiana</label>
-                          <button class="btn" id="Edit2">Edit</button><br>
-                          <label for="Pick Up Time">Pick Up Time: 3:00 p.m. 2/22/2019</label>
-                          <button class="btn" id="Edit3">Edit</button><br>
-                          <label for="Filled Seats">Filled Seats: 3</label>
-                          <button class="btn" id="Edit4">Edit</button><br>
-                        </div>
-                    </div>
-                    <tr>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th> View Rides</th
-                    </tr>
-                </table>
-               -->
-        <form id="deets" action="" method = "post">
-            {%csrf_token%}
-                <div id="myModal" class="modal">
+                    
+        <script>
+            var departDate = document.getElementById('departDate');
+            departDate.required=false;
+            // Get the button that opens the modal
+           // var filters = document.getElementById("filters");
+            // Get the <span> element that closes the modal
+            filters.onchange = function(){
+                if(filters.value=="date"){
+                    departDate.style.display = "block";
+                }else{
+                    departDate.style.display = "none";
+                }
 
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <div class="form">
-                                <div class="tab-content">
-                                        <p>
-                                            <label>
-                                                Enter Departure Location
-                                            </label>
-                                            <br>
-                                            <input id="departure" type="text" required autocomplete="off" size="50" name="departLoc" required />
-                                        </p>
-                                        <p>
-                                            <label>
-                                            Enter Arrival Location
-                                            </label>
-                                            <br>
-                                            <input type="text"required autocomplete="off" size="50" name="arrivalLoc" required />
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p>
-                                       <label> Estimate Pickup: Date/Time </label>
-                                       <br>
-                                            <input type = "datetime-local" name = "pickupTime" required />
-                                        </p>
-                                    <div>
-                                            <p>
-                                           <label> Estimate DropOff: Date/Time</label>
-                                           <br>
-                                                <input type = "datetime-local" name = "dropTime" required />
-                                            </p>
-                                    </div>
-                                    <!-- <div>
-                                        <p>
-                                            <label>Special Instructions</label>
-                                            <br>
-                                            <textarea rows="4" cols="50" name="comments" maxlength="500"></textarea>
-                                        </p>
-                                    </div> -->
-                                    <div>
-                                        <table id="formz">
-                                            <tr>
-                                                <td>
-                                                        <p>
-                                                                <label>Seats Needed</label>
-                                                                <br>
-                                                             <input type="number" id ="Seats" name = "seats" min = "0" max = "10" >
-                                                        </p>
-                                                </td>
-                                                <td>
-                                                        <p>
-                                                                <label>Baggage space</label>
-                                                                <br>
-                                                                <input type="number" id = "Baggage" name = "baggage" min = "0" max = "10">
-                                                        </p>
-                                                </td>
-                                            </tr>
-                                           
-                                        </table>
-                                    </div>
-                                   <!-- <div>
-                                        <fieldset>
-                                            <legend>Extra Accomodations</legend>
-                                            <p><label> <input type="checkbox" name="extras" value="baby"> Baby Seat Accessable </label></p>
-                                            <p><label> <input type="checkbox" name="extras" value="wheelchair"> Wheelchair Accessable </label></p>
-                                        </fieldset>
-                                    </div> -->
-                        </div>
-                        <button id="btn" type="submit" >  Submit </button>
-                        <!--<button id="btn" type="submit"  <a href="/rider"> Start a ride </button>
-                        <button id="btn" type="submit"  <a href="/driver"> Driver Page </button>-->
-                      </div>
-        </form>
-        </div>
+            }
+        </script>
 
     </body>
     <script>
-            var modal = document.getElementById('myModal');
+
+        var modal = document.getElementById('myModal');
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
         // Get the <span> element that closes the modal
@@ -283,7 +136,10 @@
             } else {
                 x.style.display = "none";
             }
+        
+            
         }
 
-            </script>
+    </script>
+    
 </html>
