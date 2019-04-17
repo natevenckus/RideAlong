@@ -25,6 +25,8 @@ def index(request):
         print(request.POST['dropTime'])
         print(request.POST['seats'])
         print(request.POST['baggage'])
+        print(request.POST['originID'])
+        print(request.POST['destID'])
         departLoc = request.POST['departLoc']
         arrivalLoc = request.POST['arrivalLoc']
         pickupTime = request.POST['pickupTime']
