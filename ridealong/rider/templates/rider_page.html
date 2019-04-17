@@ -46,9 +46,7 @@
                 <div class="list">
                     <h1 id="header" >My Rides</h1>
 
-                    <table>
-                        <form id="rideEditForm" action="updateride">
-                        <tr id="myrides">
+
                                 {% for request in driveRequests %}
                                 <div class="pls">
                                 <input type="text" name="id" value="{{request.ID}}" style="display:none">
@@ -56,22 +54,20 @@
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                 <br>
-                                <p id="2" for="Origin">Pick Up Location: <input type="text" style="color: black" name="departLoc" value="{{request.departLoc}}">
-                                <p id="two" for="Destination">Destination: <input type="text" style="color: black" name="arrivalLoc" value="{{request.arrivalLoc}}">
-                                <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" style="color: black" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
-                                <p id="4" for="Filled Seats">Filled Seats: <input type="number" style="color: black" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">
-                                <p id="5" for="Baggage">Baggage: <input type="number" style="color: black" name="baggage" value="{{request.baggageNeeded}}" min="0" max="5">
+                                    <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}</p>
+                                    <p id="two" for="Destination">Destination: {{request.arrivalLoc}}</p>
+                                    <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime|date:'Y-m-d\Th:i'}}</p>
+                                    <p id="4" for="Filled Seats">Filled Seats: {{request.seatsNeeded}}</p>
+                                    <p id="5" for="Baggage">Baggage: {{request.baggageNeeded}}</p>
                                     <br>
                                     <br>
-                                <button class="btn1" id="Delete2" style="float: left">Request Ride</button>
+                                <input type="submit" class="btn1" id="Delete2" style="float: left" value="Request Ride"></input>
                                     <br>
                                     <br>
                                 </div>
                                 <br>
                                 {% endfor %}
-                        </tr>
-                        </form>
-        </table>
+
                 </div>
                     
         <script>
