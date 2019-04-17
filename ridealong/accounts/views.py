@@ -104,6 +104,12 @@ def index(request):
 def loginpage(request):
     return render(request,'login.html')
 
+def reviews(request): 
+    return render(request, 'reviews.html')
+
+def viewReviews(request):
+    return render(reqeust, 'viewReviews.html')
+
 def registerPage(request):
     return render(request,'register.html')
 
