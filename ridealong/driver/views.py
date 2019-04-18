@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .models import DriveRequest, Car
+from .models import DriveRequest, Car, RiderLink
 from accounts.models import Profile
 from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models.functions import Cast
@@ -112,7 +112,8 @@ def rides(request):
     if not request.user.is_authenticated:
         return redirect('loginpage')
     driveRequests = DriveRequest.objects.filter(Rider = request.user)
-    return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
+    links = RiderLink.objects.filter(DriveRequest__in = driveRequests)
+    return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests, 'rideRequests': links})
 
 def driverSearch(request):
     #ex. query http://localhost:8000/driver/search?searchLocation=West&filter=location

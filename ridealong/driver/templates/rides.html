@@ -71,10 +71,13 @@
                                                             </td>
                                                             <td>
                                                                 <div class="pls2">
-                                                                        <p> <b>Passengers:</b> </p>
-                                                                        <p>Rider 1: </p>
+                                                                        <p> <b>Passengers</b> </p>
+                                                                        {% for riders in rideRequests %}
+                                                                            {% if riders.DriveRequest == request %}
+                                                                                    <p> Rider: {{riders.Rider}} </p>
+                                                                            {% endif %}
+                                                                        {% endfor %}
                                                                         <br>
-                                                                        <p>Rider 2: </p>
                                                                         <br><br><br><br><br><br><br><br><br><br>
                                                                         <!-- <p id="passengers"></p> -->
                                                                         
