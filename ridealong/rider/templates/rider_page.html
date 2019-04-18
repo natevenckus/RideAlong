@@ -22,30 +22,18 @@
                             <a href = "{% url 'driverpage' %}"> Driver </a>
                         </div>
                 </div>
-
-                <sup id="from" >From: </sup> <input class="stylez" type="text" name="originLocation" id="input">
-                
-                <sup id="from" >To: </sup> <input class="stylez" type="text" name="destLocation" id="input2">
-               
-
-
+                <input type="text" name="searchLocation" id="input">
                 <input style="display:none;" type = "date" id="departDate" name = "departDate" required />
             <select name="filter" id="filters">
               <option value="location">Location</option>
-              <option value="location">Price</option>
-              <option value="location">Date</option>
-              <option value="location">Passengers</option>
-              
+              <option id="dateSelection" value="date">Date</option>
+              <option value="price">Price</option>
+              <option value="luggage">Number of Bags</option>
+              <option value="passenger">Number of Passengers</option>
             </select>
             <input id="seachVal" type="submit" name="searchButton" value="Search">
             <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
-                <div class="dropdown three"">
-                <i id="bell" class="fa fa-bell" style="font-size:36px">
-                <div class="dropdown-content three">
-                    <a href = "{% url 'ridernotifications' %}">View Notifications</a>
-                </div>
-                </i>
-                </div>
+                    <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
                     <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
@@ -54,42 +42,40 @@
                     </div> -->
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
-                </form>
-                <table id="tablz">
-                        <tr>
-                            <th>
-                                <div class="rangeslider">
-                                        <input type="range" min="1" max="10" value="10"
-                                        class="myslider" id="sliderRange" >
-                                </div>
-                                   
-                            </th>
-                            
-                            <th>
-                                    <div id="move" > Distance: <span id="demo"></span> miles </div>   
-                            </th>
-                        </tr>
-                        
-                    </table>
-                    <div id="map"></div>
-                    <div id="map2"></div>                                       
-                                
                 <div class="list">
                     {% if requestSuccess %}
                         Your request was successful!
                     {% endif %}
+                    <h1 id="header" >Requested Rides</h1>
+                        {% for rl in riderLinks %}
+                                <div class="pls">
+                                <p id="1" for="Destination">TRIP TO: {{rl.DriveRequest.arrivalLoc}}
+                                <br>
+                                <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
+                                <br>
+                                    <p id="2" for="Origin">Pick Up Location: {{rl.DriveRequest.departLoc}}</p>
+                                    <p id="two" for="Destination">Destination: {{rl.DriveRequest.arrivalLoc}}</p>
+                                    <p id="3" for="Pick Up Time">Pick Up Time: {{rl.DriveRequest.pickupTime|date:'Y-m-d\Th:i'}}</p>
+                                    <p id="4" for="Filled Seats">Filled Seats: {{rl.DriveRequest.seatsNeeded}}</p>
+                                    <p id="5" for="Baggage">Baggage: {{rl.DriveRequest.baggageNeeded}}</p>
+                                    <br>
+                                    <br>
+                                <button type="submit" class="btn1" style="float: left; opacity: 0.7;" value="{{rl.DriveRequest.ID}}" disabled>Requested</button>
+                                <button type="submit" class="btn1" style="float: left; margin-left: 1em;" name="removeRequestButton" value="{{rl.ID}}">Remove</button>
+                                    <br>
+                                    <br>
+                                </div>
+                                <br>
+                                {% endfor %}
                     <h1 id="header" >Available Rides</h1>
 
-                        <table>
-                            <form id="rideEditForm" action="updateride">
-                                <tr id="myrides" class="table">
-                                    {% for request in driveRequests %}
+
+                                {% for request in driveRequests %}
                                 <div class="pls">
                                 <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                 <br>
-                                    <p id="one" for="Origin">Driver:  {{request.Rider}}</p>
                                     <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}</p>
                                     <p id="two" for="Destination">Destination: {{request.arrivalLoc}}</p>
                                     <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime|date:'Y-m-d\Th:i'}}</p>
@@ -102,11 +88,10 @@
                                     <br>
                                 </div>
                                 <br>
-                                    {% endfor %}
-                            </tr>
-                        </form>
-                    </table>
+                                {% endfor %}
+
                 </div>
+                </form>
                     
         <script>
             var departDate = document.getElementById('departDate');
@@ -122,156 +107,10 @@
                 }
 
             }
-            
-
-
         </script>
 
     </body>
     <script>
-
-        var rangeslider = document.getElementById("sliderRange"); 
-        var output2 = document.getElementById("demo"); 
-        output2.innerHTML = rangeslider.value; 
-  
-        rangeslider.oninput = function() { 
-        output2.innerHTML = this.value; 
-        }
-
-        function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          
-        });
-        var card = document.getElementById('pac-card');
-        var input = document.getElementById('input');
-        var input2 = document.getElementById('input2');
-        var types = document.getElementById('type-selector');
-        var strictBounds = document.getElementById('strict-bounds-selector');
-
-        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        var autocomplete2 = new google.maps.places.Autocomplete(input2);
-
-        // Bind the map's bounds (viewport) property to the autocomplete object,
-        // so that the autocomplete requests use the current map bounds for the
-        // bounds option in the request.
-        autocomplete.bindTo('bounds', map);
-
-
-        // Set the data fields to return when the user selects a place.
-        autocomplete.setFields(
-            ['address_components', 'geometry', 'icon', 'name']);
-
-        var infowindow = new google.maps.InfoWindow();
-        var infowindowContent = document.getElementById('infowindow-content');
-        infowindow.setContent(infowindowContent);
-        var marker = new google.maps.Marker({
-          map: map,
-          anchorPoint: new google.maps.Point(0, -29)
-        });
-
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-          }
-
-          // If the place has a geometry, then present it on a map.
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
-          }
-          marker.setPosition(place.geometry.location);
-          marker.setVisible(true);
-
-          var address = '';
-          
-
-         
-        });
-
-        // Sets a listener on a radio button to change the filter type on Places
-        // Autocomplete.
-        
-
-       
-      }
-
- function initMap2() {
-        var map = new google.maps.Map(document.getElementById('map2'), {
-          
-        });
-        var card = document.getElementById('pac-card');
-        var input = document.getElementById('input-test');
-        var types = document.getElementById('type-selector');
-        var strictBounds = document.getElementById('strict-bounds-selector');
-
-        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-
-        var autocomplete = new google.maps.places.Autocomplete(input2);
-
-        // Bind the map's bounds (viewport) property to the autocomplete object,
-        // so that the autocomplete requests use the current map bounds for the
-        // bounds option in the request.
-        autocomplete.bindTo('bounds', map);
-
-        // Set the data fields to return when the user selects a place.
-        autocomplete.setFields(
-            ['address_components', 'geometry', 'icon', 'name']);
-
-        var infowindow = new google.maps.InfoWindow();
-        var infowindowContent = document.getElementById('infowindow-content');
-        infowindow.setContent(infowindowContent);
-        var marker = new google.maps.Marker({
-          map: map,
-          anchorPoint: new google.maps.Point(0, -29)
-        });
-
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-          }
-
-          // If the place has a geometry, then present it on a map.
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
-          }
-          marker.setPosition(place.geometry.location);
-          marker.setVisible(true);
-
-          var address = '';
-          
-
-         
-        });
-
-        // Sets a listener on a radio button to change the filter type on Places
-        // Autocomplete.
-        
-
-       
-      }
-
-
-
-
 
         var modal = document.getElementById('myModal');
         // Get the button that opens the modal
@@ -316,11 +155,10 @@
             } else {
                 x.style.display = "none";
             }
+        
+            
         }
-   
+
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk&libraries=places&callback=initMap"
-    async defer></script>
-   
     
 </html>

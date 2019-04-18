@@ -12,16 +12,30 @@ def index(request):
     if not request.user.is_authenticated:
         return redirect('loginpage')
 
-    driveRequests = DriveRequest.objects.order_by("-RequestTime")[:30]
+    riderLinks = RiderLink.objects.filter(Rider = request.user)
+    driveRequests = DriveRequest.objects.exclude(pk__in = riderLinks.values_list("DriveRequest", flat=True)).order_by("-RequestTime")[:30]
+    
     if request.method == "GET":
         if request.GET.get("searchButton") is not None:
             return riderSearch(request)
+        elif request.GET.get("removeRequestButton") is not None:
+            if RiderLink.objects.filter(ID = request.GET["removeRequestButton"]):
+                RiderLink.objects.get(ID = request.GET["removeRequestButton"]).delete()
+            
+            return render(request,"rider_page.html",{'riderLinks':riderLinks, 'driveRequests':driveRequests})
         elif request.GET.get("requestButton") is not None:
             driveRequest = DriveRequest.objects.get(ID = request.GET["requestButton"])
+            
+            
             #User wants to request ride with ID driveReqID
             #First, we need to check if they've already requested this ride (we should actually do this before rendering the page...)
             #If not, we need to create a new RiderLink and email the Rider and Driver. Then when the Rider loads this page again, they'll see
             #that they've requested the given ride, as well as if it's been accepted or denied. The driver will also see this stuff on their page.
+            
+            if RiderLink.objects.filter(DriveRequest = driveRequest):
+                #User has already requested this, so we just return to the page.
+                return render(request,"rider_page.html",{'isIndex':True,'riderLinks':riderLinks, 'driveRequests':driveRequests})
+            
             riderLink = RiderLink.objects.create(
                 Rider = request.user,
                 DriveRequest = driveRequest,
@@ -39,9 +53,14 @@ def index(request):
             print(recipient1)
             recipient_list = [recipient1,] 
             send_mail(subject1, message1, email_from1, recipient_list)
-            return render(request,"rider_page.html",{'requestSuccess':True,'driveRequests':driveRequests})
+            
+            riderLinks = RiderLink.objects.filter(Rider = request.user)
+            driveRequests = DriveRequest.objects.exclude(pk__in = riderLinks.values_list("DriveRequest", flat=True)).order_by("-RequestTime")[:30]
+    
+            return render(request,"rider_page.html",{'requestSuccess':True,'riderLinks':riderLinks, 'driveRequests':driveRequests})
     #print (times)
-    return render(request,"rider_page.html",{'isIndex':True,'driveRequests':driveRequests})
+    
+    return render(request,"rider_page.html",{'isIndex':True,'riderLinks':riderLinks, 'driveRequests':driveRequests})
 
 def rides1(request):
     rideRequests = RideRequest.objects.all()
