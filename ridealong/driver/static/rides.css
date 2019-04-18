@@ -135,6 +135,16 @@ img {
 
     
 }
+.deleteBtn{
+    padding:8px;
+    float:right;
+    border: none;
+    width:80px;
+    border-radius: 4px;
+    background-color:#0758A6;
+    color:white;
+   
+}
 .btn{
     padding:12px;
     float:left;
