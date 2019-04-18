@@ -7,6 +7,27 @@ from django.db.models.functions import Cast
 from django.db.models import CharField
 from . import views
 from django.views.decorators.csrf import csrf_exempt
+import json, requests
+
+#https://maps.googleapis.com/maps/api/place/details/output?parameters
+#https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=YOUR_API_KEY
+#https://maps.googleapis.com/maps/api/place/details/json?placeid=PLACE_ID&fields=geometry&key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk
+googleKey = 'AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk'
+
+#return geocoordinates [originLat, originLong, destLat, destLong]
+def getGeo(originID, destID):
+    coordinates=[]
+    originRequest = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + originID+'&fields=geometry&key='+googleKey
+    destRequest = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + destID+'&fields=geometry&key='+googleKey
+    originResponse = requests.get(originRequest)
+    destResponse = requests.get(destRequest)
+    origin_json = json.loads(originResponse.text)
+    dest_json = json.loads(destResponse.text)
+    coordinates.append(origin_json['result']['geometry']['location']['lat'])
+    coordinates.append(origin_json['result']['geometry']['location']['lng'])
+    coordinates.append(dest_json['result']['geometry']['location']['lat'])
+    coordinates.append(dest_json['result']['geometry']['location']['lng'])
+    return (coordinates)
 
 
 # Create your views here.
@@ -25,20 +46,31 @@ def index(request):
         print(request.POST['dropTime'])
         print(request.POST['seats'])
         print(request.POST['baggage'])
+        print(request.POST['originID'])
+        print(request.POST['destID'])
+        originID = request.POST['originID']
+        destID = request.POST['destID']
         departLoc = request.POST['departLoc']
         arrivalLoc = request.POST['arrivalLoc']
         pickupTime = request.POST['pickupTime']
         dropTime = request.POST['dropTime']
         numOfSeats = request.POST['seats']
         numOfBaggage = request.POST['baggage']
-        if departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
+        if destID and originID and departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
+            coordinates = getGeo(originID,destID)
+            print (coordinates)
             driveRequest_instance = DriveRequest.objects.create(
+                Rider = request.user,
                 departLoc = request.POST['departLoc'],
                 arrivalLoc = request.POST['arrivalLoc'],
                 pickupTime = request.POST['pickupTime'],
                 dropTime = request.POST['dropTime'],
                 numOfSeats = request.POST['seats'],
                 numOfBaggage = request.POST['baggage'],
+                FromLat = coordinates[0],
+                FromLong = coordinates[1],
+                ToLat = coordinates[2],
+                ToLong = coordinates[3]
             )
             driveRequest_instance.save()
         make = request.POST['carMake']
@@ -77,7 +109,9 @@ def index(request):
     return render(request,"driver_page.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def rides(request):
-    driveRequests = DriveRequest.objects.all()
+    if not request.user.is_authenticated:
+        return redirect('loginpage')
+    driveRequests = DriveRequest.objects.filter(Rider = request.user)
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests})
 
 def driverSearch(request):
@@ -116,7 +150,6 @@ def ridepopup(request):
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('loginpage')
-    
     profileSet = Profile.objects.filter(pk=request.user.profile.pk)
     return render(request,"profile.html",{'profilePage':profileSet})
 
@@ -129,8 +162,41 @@ def saveprofile(request):
     #prof.Car = request.GET['car']
     #print(request.GET['car']);
     prof.save()
-    
     return redirect('/driver/profile')
+
+def drivernotfications(request):
+    return render (request,'drivernotifications.html')
+
+
+def updateride(request):
+    id = request.GET['id']
+    departLoc = request.GET['departLoc']
+    arrivalLoc = request.GET['arrivalLoc']
+    pickupTime = request.GET['pickupTime']
+    seatsNeeded = request.GET['seats']
+    baggageNeeded = request.GET['baggage']
+    
+    print("THE DATE")
+    print(request.GET['pickupTime'])
+    
+    ride = DriveRequest.objects.filter(ID=id)[0]
+    
+    ride.departLoc = departLoc
+    ride.arrivalLoc = arrivalLoc
+    ride.pickupTime = pickupTime
+    ride.seatsNeeded = seatsNeeded
+    ride.baggageNeeded = baggageNeeded
+    
+    ride.save()
+    
+    return redirect('rides')
+
+def deleteride(request):
+    if not request.GET['id']:
+        return HttpResponse("No ID")
+    
+    DriveRequest.objects.filter(ID=request.GET['id']).delete()
+    return redirect('rides')
 
 
 #  def showRides(request):

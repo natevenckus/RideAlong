@@ -3,7 +3,7 @@
     <html>
         <head>
      <title>RideAlong</title>
-     <link href="{% static 'login2.css'  %}" rel="stylesheet">
+     <link href="{% static 'reviews.css'  %}" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -32,4 +32,37 @@
                     </div>
                 </div>
       </body>
+      <div class="rating" style='font-size:40px' allign="left">
+        <h1 allign="left">Option 1</h1>
+        <span allign="left">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </div>
+        <h1>Title:</h1>
+        <textarea rows="2" cols="50"></textarea>
+        <br> 
+        <h2>Summary:</h2>
+        <textarea rows="8" cols="70"></textarea>
+        <br>
+        <button type="submit" class="button button-block"/>Submit review</button>
+        <br>
+        <br>
+        <br>
+        <h1>Option 2</h1>
+        <div class="form" id="review">
+            <div class="top-row">
+                <div class="field-wrap">
+                    <label>
+                    Title<span class="req">*</span>
+                    </label>
+                    <input type="text" required autocomplete="off" />
+                </div>
+            
+                <div class="field-wrap">
+                    <label>
+                    Review<span class="req">*</span>
+                    </label>
+                    <input type="text"required autocomplete="off"/>
+                </div>
+                </div>
+            <button type="submit" class="button button-block"/>Submit review</button>
+        </div>
       

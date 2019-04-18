@@ -14,6 +14,7 @@ urlpatterns=[
     path('ridepopup', views.ridepopup, name='ridepopup'),
     path('forgotpass', views.forgotpass, name='forgotpass'),
     path('resetpass', views.resetpass, name="resetpass"),
+    path('notifications', views.notfications,name='notifications'),
     path('accounts/password_reset', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('accounts/password_reset/done', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),

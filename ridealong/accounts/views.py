@@ -77,7 +77,7 @@ def index(request):
             print(request.POST)
             
             if "remember_me" in request.POST.keys() and request.POST['remember_me']:
-                request.session.set_expiry(45)
+                request.session.set_expiry(900) #Expiry of 15 minutes
                 print(request.session.get_expiry_age())
             else:
                 request.session.flush()
@@ -104,11 +104,13 @@ def index(request):
 def loginpage(request):
     return render(request,'login.html')
 
+def notfications(request):
+    return render (request,'notifications.html')
 def reviews(request): 
     return render(request, 'reviews.html')
 
 def viewReviews(request):
-    return render(reqeust, 'viewReviews.html')
+    return render(request, 'viewReviews.html')
 
 def registerPage(request):
     return render(request,'register.html')

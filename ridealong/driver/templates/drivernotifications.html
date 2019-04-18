@@ -1,0 +1,44 @@
+{% load static %}
+<html>
+    <head>
+        <title>RideAlong</title>
+        <link rel="stylesheet" href="{% static 'drivePageNew3.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+    <body>
+            <div id="toolbar">
+                    <div class="form-group" align="middle">
+                        <div class="dropdown">
+                            <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                                <div class="dropdown-content">
+                                    <a href= "{% url 'riderpage' %}"> Rider </a>
+                                    <a href="{% url 'driverpage' %}"> Driver </a>
+                                </div>
+                        </div>
+                            <a href="/"><i id="home" class="fa fa-home" style="font-size:40px"></i></a>
+                            <div class="dropdown three">
+                                    <i id="bell" class="fa fa-bell" style="font-size:36px">
+                                    <div class="dropdown-content three">
+                                        <a href = "{%url 'drivernotifications' %}">View Notifications</a>
+                                    </div>
+                                    </i>
+                            </div>
+                            
+                            <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                            <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+        
+                    </div>
+                </div>
+
+                
+                  
+
+
+
+    </body>

@@ -125,6 +125,9 @@
     </div>
 
     <div id="map"></div>
+
+        <input type="hidden" name="originID" id="hiddenOriginID">
+        <input type="hidden" name="destID" id="hiddenDestID">
     <!--
     <p>
       <label>
@@ -301,9 +304,11 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(
     if (mode === 'ORIG') {
       me.originPlaceId = place.place_id;
       originPlaceID = place.place_id;
+      document.getElementById("hiddenOriginID").value = originPlaceID;
     } else {
       me.destinationPlaceId = place.place_id;
       destPlaceID = place.place_id;
+      document.getElementById("hiddenDestID").value = destPlaceID;
     }
     me.route();
   });
