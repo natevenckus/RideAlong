@@ -152,7 +152,7 @@ animation: dayNight  60s ease infinite;
 }
 .rating {
     size:40px;
-    float:left;
+    /*float:right;*/
     unicode-bidi: bidi-override;
     direction: rtl;
   }
