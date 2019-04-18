@@ -13,32 +13,25 @@ def index(request):
         return redirect('loginpage')
 
     driveRequests = DriveRequest.objects.order_by("-RequestTime")[:30]
-        
     if request.method == "GET":
         if request.GET.get("searchButton") is not None:
             return riderSearch(request)
         elif request.GET.get("requestButton") is not None:
             driveRequest = DriveRequest.objects.get(ID = request.GET["requestButton"])
-            
             #User wants to request ride with ID driveReqID
-            
             #First, we need to check if they've already requested this ride (we should actually do this before rendering the page...)
-            
             #If not, we need to create a new RiderLink and email the Rider and Driver. Then when the Rider loads this page again, they'll see
             #that they've requested the given ride, as well as if it's been accepted or denied. The driver will also see this stuff on their page.
-            
             riderLink = RiderLink.objects.create(
                 Rider = request.user,
                 DriveRequest = driveRequest,
             )
-            
             subject1 = 'Request Received.'
             message1 = 'Your ride request has been received, and the drive has been notified!'
             email_from1 = settings.EMAIL_HOST_USER
             recipient1 = request.user.profile.ContactEmail
             recipient_list = [recipient1,] 
             send_mail(subject1, message1, email_from1, recipient_list)
-            
             subject1 = 'Someone wants to ride with you!'
             message1 = 'A user has requested to ride with you. Check the site for more details!'
             email_from1 = settings.EMAIL_HOST_USER
@@ -46,10 +39,7 @@ def index(request):
             print(recipient1)
             recipient_list = [recipient1,] 
             send_mail(subject1, message1, email_from1, recipient_list)
-            
             return render(request,"rider_page.html",{'requestSuccess':True,'driveRequests':driveRequests})
-            
-    #times = DriveRequest.objects.all().values_list('pickupTime',flat=True)
     #print (times)
     return render(request,"rider_page.html",{'isIndex':True,'driveRequests':driveRequests})
 
@@ -65,7 +55,7 @@ def riderSearch(request):
     if request.method == "GET":
         print (request.GET)
         if request.GET['filter'] == 'location':
-            searchResult = DriveRequest.objects.filter(departLoc__search=request.GET['searchLocation'])
+            searchResult = DriveRequest.objects.filter(departLoc__search=request.GET['originLocation'],arrivalLoc__search=request.GET['destLocation'])
         elif request.GET['filter'] == 'date':
             date = request.GET['departDate'].split('-')
             searchResult = DriveRequest.objects.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
