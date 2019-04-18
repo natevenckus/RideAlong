@@ -38,14 +38,16 @@
        
                                 
                                 <div class="list">
-                                            <br>
+                                        <h1 id="header" >All Rides</h1>
+
                                             <table>
                                                 <form id="rideEditForm" action="updateride">
-                                                <tr id="myrides">
-                                                        <div>
+                                                <tr id="myrides" class="table">
+                                                        
                                                             {% if searchResult %}
-                                                                <p>All Rides</p>
+                                                           
                                                                 {% for request in searchResult %}
+                                                                <div class="pls">
                                                                 <p for="Destination">Destination: {{request.arrivalLoc}}
                                                                 <p for="Origin">Pick Up Location: {{request.departLoc}}
                                                                 <p for="Pick Up Time">Pick Up Time: {{request.pickupTime}}
@@ -58,13 +60,14 @@
                                                                 <button class="btn" id="Delete" style="width:110px;">Request Ride</button>
                                                                 <br>
                                                                 <br>
+                                                            </div>
                                                                 {% endfor %}
                                                             
                                                             {% else %}
                                                                 <p>Currently no rides are available that meet your specifications. Try Again Later!</p>
                                                             
                                                             {% endif %}
-                                                        </div>
+                                                      
                                                 </tr>
                                                 </form>
                                             </table>

@@ -9,7 +9,17 @@
   text-decoration: none;
   cursor: pointer;
 }
-
+.pls{
+    
+    background-color: #1a4461;
+    color: white;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px; 
+     
+ }
+ 
 
 /*dropdown for Driving contents/View Rides*/
 .Driver {
