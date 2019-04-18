@@ -60,8 +60,14 @@
                                     <p id="5" for="Baggage">Baggage: {{rl.DriveRequest.baggageNeeded}}</p>
                                     <br>
                                     <br>
-                                <button type="submit" class="btn1" style="float: left; opacity: 0.7;" value="{{rl.DriveRequest.ID}}" disabled>Requested</button>
-                                <button type="submit" class="btn1" style="float: left; margin-left: 1em;" name="removeRequestButton" value="{{rl.ID}}">Remove</button>
+                                {% if not rl.Confirmed and not rl.Denied %}
+                                    <button type="submit" class="btn1" style="float: left; opacity: 0.7;" value="{{rl.DriveRequest.ID}}" disabled>Requested</button>
+                                    <button type="submit" class="btn1" style="float: left; margin-left: 1em;" name="removeRequestButton" value="{{rl.ID}}">Remove</button>
+                                {% elif rl.Confirmed %}
+                                    <button type="submit" class="btn1" style="float: left; opacity: 0.7; background: green;" value="{{rl.DriveRequest.ID}}" disabled>Confirmed</button>
+                                {% elif rl.Denied %}
+                                    <button type="submit" class="btn1" style="float: left; opacity: 0.7; background: red;" value="{{rl.DriveRequest.ID}}" disabled>Denied</button>
+                                {% endif %}
                                     <br>
                                     <br>
                                 </div>
