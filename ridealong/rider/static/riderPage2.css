@@ -164,8 +164,10 @@ table {
 #home{
     float:right;
     position: absolute;
-    margin-top: 2px;
+    margin-top: 5px;
     margin-left: 300px;
+    /*margin-top: 2px;
+    margin-left: 300px;*/
     background-color: transparent;
     padding:15px 15px;
     cursor: pointer;
@@ -176,8 +178,10 @@ table {
     color: black;
     float:right;
     position: absolute;
-    margin-top:-20px;
-    margin-left: 390px;
+    margin-top: -10px;
+    margin-left: 220px;
+    /*margin-top:-20px;
+    margin-left: 390px;*/
     background-color: transparent;
     cursor: pointer;
 
@@ -188,8 +192,8 @@ img {
     height: 40px;
     vertical-align: middle;
     cursor: pointer;
-    margin-top: 5px;
-    margin-left: 180px;
+    margin-top: 15px;
+    margin-left: 400px;
 
     
 }
