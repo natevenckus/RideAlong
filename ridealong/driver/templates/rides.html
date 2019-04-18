@@ -45,13 +45,16 @@
                                                 <tr id="myrides" class="table">
                                                   
                                                             {% for request in driveRequests %}
+                                                            <td>
+
+                                                            
                                                             <div class="pls">
                                                             <input type="text" name="id" value="{{request.ID}}" style="display:none">
-                                                            <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
+                                                            
+                                                            
                                                             <br>
                                                             <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                                             <br>
-                                                            <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p>
                                                             <p id="2" for="Origin">Pick Up Location: <input type="text" style="color: black" name="departLoc" value="{{request.departLoc}}">
                                                             <p id="two" for="Destination">Destination: <input type="text" style="color: black" name="arrivalLoc" value="{{request.arrivalLoc}}">
                                                             <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" style="color: black" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
@@ -59,15 +62,33 @@
                                                             <p id="5" for="Baggage">Room for Baggage: <input type="number" style="color: black" name="baggage" value="{{request.numOfBaggage}}" min="0" max="5">
                                                                 <br>
                                                                 <br>
-                                                            <button class="btn1" id="Delete2" style="float: left" =""><a href="deleteride?id={{request.ID}}">Delete</a></button>
+                                                                <input type="submit" class="btn" id="Update" value="Save"><a href="updateride"></a><br></p>
+                                                                <br>
+                                                                <button class="btn1"><a href="deleteride?id={{request.ID}}">Delete</a></button>
+
                                                                 <br>
                                                                 <br>
+                                                            </td>
+                                                            <td>
+                                                                <div class="pls2">
+                                                                        <p> <b>Passengers:</b> </p>
+                                                                        <p>Rider 1: </p>
+                                                                        <p>Rider 2: </p>
+                                                                        <!-- <p id="passengers"></p> -->
+                                                                        
+                                                                </div>
+                                                            </td>
+                                                
+                                                            </tr>
+                                                           
                                                     </div>
+                                                    
                                                     <br>
                                                             {% endfor %}
                                                     
                                                         
-                                                </tr>
+                                                
+                                                
                                                 </form>
                                             </table>
                                             
@@ -78,6 +99,14 @@
         
     </body>
     <script>
+
+        // var text = "";
+        // var i;
+        // for (i = 1; i < 6; i++) {
+        // text += "Rider " + i + ": <br>";
+        // }
+        // document.getElementById("passengers").innerHTML = text;
+
         function show(){
             document.getElementById("one").hidden = true;
             document.getElementById("two").hidden = true;
