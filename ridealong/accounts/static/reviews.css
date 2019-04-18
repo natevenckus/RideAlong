@@ -1,9 +1,29 @@
 #toolbar{
-    background-color : rgba(184, 229, 250, 0.2);
+    background-color : rgba(184, 229, 250, 0.1);
     border-color: transparent;
     margin: 0px;
     padding: 2px;
 }
+#write{
+    color:white;
+}
+#header{
+    padding: 5px;
+}
+.buttonz{
+    padding:8px;
+    border: none;
+    width:160px;
+    border-radius: 4px;
+    background-color: #7cadd0;
+    color:black;
+    float: left;
+
+}
+.outline{
+    color: white;
+}
+
 #input{
     padding: 8px; 
     position: relative;
@@ -12,6 +32,7 @@
     width: 700px; 
     border-color: #0758A6;
 }
+
 #power{
     margin-left: 20px;
     cursor: pointer;
@@ -167,3 +188,31 @@ animation: dayNight  60s ease infinite;
      content: "\2605";
      position: absolute;
   }
+ 
+.image2{
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 45px;
+    margin-top:35%;
+}
+.block1{
+    background-color:#D3D3D3;
+}
+.starz{
+    margin-left: 24%;
+
+}
+.starz > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+  }
+.starz > span:hover:before,
+  .starz > span:hover ~ span:before {
+      color:orange;
+     content: "\2605";
+     position: absolute;
+  }
+  
