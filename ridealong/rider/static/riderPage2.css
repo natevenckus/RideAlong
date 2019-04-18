@@ -40,14 +40,90 @@
     margin: 0px;
     padding: 2px;
 }
-#input{
-    padding: 8px; 
+.stylez{
+    padding: 4px; 
     position: relative;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 10px;
-    width: 750px; 
-    border-color: #0758A6;
+    margin-bottom: .8%;
+    width: 20%;
 }
+#input{
+    padding: 4px; 
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: .8%;
+    width: 20%;
+    
+}
+#input2{
+    padding: 4px; 
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: .8%;
+    width: 20%;
+}
+#from{
+    color:white;
+    margin-left: 20px;
+    
+}
+
+
+
+/* #move{
+    margin-left: 30%;
+    color: white;
+} */
+/* .slidecontainer {
+    width: 20%;
+  } */
+
+  
+  .rangeslider{ 
+    width: 60%; 
+} 
+  
+.myslider { 
+    margin-left: 120px;
+    -webkit-appearance: none; 
+    background: #779BCA  ; 
+    width: 50%; 
+    height: 10px; 
+    opacity: 2; 
+    border-radius: 4px;
+   } 
+  
+  
+.myslider::-webkit-slider-thumb { 
+    -webkit-appearance: none; 
+    cursor: pointer; 
+    background: white; 
+    width: 6%; 
+    height: 18px; 
+    border-radius:  100%;
+    border-color:white;
+} 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin-bottom: 5px;
+  }
+  
+  td, th {
+    text-align: left;
+    color: white;
+    padding-bottom: 2px;
+  }
+ 
+  
+  
+  
+
+  
 #power{
     margin-left: 20px;
     cursor: pointer;
@@ -95,20 +171,6 @@ img {
 
     
 }
-.pls{
-    background-color: #1a4461;
-    color: white;
-    padding: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 10px; 
-     
- }
- #header{
-    color:black;
-    padding: 10px;
-    margin:10px;
-}
 .btn{
     padding:12px;
     float:right;
@@ -118,15 +180,6 @@ img {
     background-color:#0758A6;
     color:white;
    
-}
-.btn1 {
-    padding:8px;
-    float:right;
-    border: none;
-    width:130px;
-    border-radius: 4px;
-    background-color:#7cadd0;
-    color:white;
 }
 .btn:hover{
     background-color:#65B1FB;
