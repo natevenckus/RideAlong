@@ -95,6 +95,7 @@ def deleteride(request):
 
 #def driver(request):
     #return render(request,'driver_page.html')
+
     
 def updateride(request):
     id = request.GET['id']
@@ -118,4 +119,7 @@ def updateride(request):
     ride.save()
     
     return redirect('rides')
+
+def ridernotfications(request):
+    return render (request,'ridernotifications.html')
     
