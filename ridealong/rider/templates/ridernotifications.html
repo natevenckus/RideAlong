@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'driverPageNew3.css' %}">
+        <link rel="stylesheet" href="{% static 'notifs.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -13,68 +13,101 @@
     </head>
     <body>
             <div id="toolbar">
-                    <div class="form-group" align="middle">
-                        <div class="dropdown">
-                            <i id="power" class="fa fa-car" style="font-size:20px"></i>
-                                <div class="dropdown-content">
-                                    <a href= "{% url 'riderpage' %}"> Rider </a>
-                                    <a href="{% url 'driverpage' %}"> Driver </a>
+                    <div class="form-group" align="left">
+                            <div id="leftToolbarDiv" align="left">
+                                <div class="dropdown">
+                                        <i id="power" class="fa fa-car" style="font-size:20px"></i>
+                                            <div class="dropdown-content">
+                    `                           <a href= "{% url 'riderpage' %}"> Riders </a>
+                                                <a href= "{% url 'driverpage' %}"> Driver </a>
+                                            </div>
                                 </div>
-                        </div>
-                            <a href="/"><i id="home" class="fa fa-home" style="font-size:40px"></i></a>
-                            <div class="dropdown three">
-                                    <i id="bell" class="fa fa-bell" style="font-size:36px">
-                                    <div class="dropdown-content three">
-                                        <a href = "{%url 'ridernotifications' %}">View Notifications</a>
-                                    </div>
-                                    </i>
+                                <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px; float: left;"> </i></a>
+                            <!-- <i id="bell2" class="fa fa-bell" style="font-size:36px"></i> -->
                             </div>
-                            
-                            <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
-                            <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
+                            <div id="rightToolbarDiv" style="float:right; margin-top: -40px;">
+                                <div class="dropdown three">
+                                        <i id="bell2" class="fa fa-bell" style="font-size:36px">
+                                        <div class="dropdown-content three">
+                                            <a href = "{% url 'drivernotifications' %}">View Notifications</a>
+                                        </div>
+                                        </i>
+                                </div>
+                                <a href="{% url 'profile' %}"><img src="{% static 'tempPic.png' %}" ></a>
         
+                                <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                                    <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
+                                    {{user.username}}
+                                    </div> -->
+                                <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a> -->
+                                <button class="btn" id="login" style="margin-left:30px; margin-top: 5px;"><a href="{% url 'logout' %}">Logout</a></button>
+                            </div>
                     </div>
+                </div>
+                <div>
                 </div>
                 <table>
                         <div class="list">
-                            <h1 id="header" >NOTIFICATIONS</h1>
+                            <h1 id="header1" >NOTIFICATIONS</h1>
+                            <br><br>
+                            <table class="table3">
+                                <tr>
+                                    <th>
+                                            <h2 id = "header">Unattended Rides</h2>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                            {%for riders in rideRequestsR%}        
+                                            {%if riders.Confirmed == False%}
+                                                {%if riders.Denied == False%}
+                                                    
+                                                    <p>To: {{riders.DriveRequest.arrivalLoc}} From: {{riders.DriveRequest.departLoc}} </p>  
+                                                {%endif%}
+                                            {%endif%}
+                                    {%endfor%}
+                                    </td>
+                                </tr>
+                            </table>
+                    <br><br>
+                    <table class="table1">
+                        <tr>
+                            <th>
+                                    <h2 id = "header">Confirmed Rides</h2>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                    {%for riders in rideRequestsR%}
+                                    {%if riders.Confirmed == True%}
+        
+                                    <p>To: {{riders.DriveRequest.arrivalLoc}} From: {{riders.DriveRequest.departLoc}} Confirmed Time: {{riders.ConfirmedTime}}</p>
+        
+                                    {%endif%}   
+                            
+                            {%endfor%}
+                            </td>
+                        </tr>
+                    </table>
+                    <br><br>
+                   <table class="table2">
+                        <tr>
+                            <th>
+                                    <h2 id = "header">Denied Rides</h2>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                    {%for riders in rideRequestsR%}
+                                    {%if riders.Denied == True%}
+                                    <p>To {{riders.DriveRequest.arrivalLoc}} From {{riders.DriveRequest.departLoc}} Denied Time: {{riders.DeniedTime}}</p>    
+                                    {%endif%}
+                            {%endfor%}
+                            </td>
+                        </tr>
+                   </table>
 
-                {% for request in driveRequestsR %}
-                    {%for riders in rideRequestsR%}
-                        {%if riders.Rider == currUser%}
-                            {%if riders.Confirmed == False%}
-                                {%if riders.Denied == False%}
-                                    <h2 id = "header">Unconfirmed Rides</h2>
-                                    <p>To: {{riders.DriveRequest.arrivalLoc}} From:{{riders.DriveRequest.departLoc}} </p>  
-                                {%endif%}
-                            {%endif%}
-                        {%endif%}
-                    {%endfor%}
-                {%endfor%}
-
-
-                {% for request in driveRequestsR %}
-                    {%for riders in rideRequestsR%}
-                        {%if riders.Rider == currUser%}
-                            {%if riders.Confirmed == True%}
-                            <h2 id = "header">Confirmed Rides</h2>
-                            <p>To: {{riders.DriveRequest.arrivalLoc}} From: {{riders.DriveRequest.departLoc}} Confirmed Time: {{riders.ConfirmedTime}}</p> 
-                            {%endif%}   
-                        {%endif%}
-                    
-                    {%endfor%}
-                {%endfor%}
-
-            {% for request in driveRequestsR %}
-                {%for riders in rideRequestsR%}
-                    {%if riders.Rider == currUser%}
-                        {%if riders.Denied == True%}
-                        <h2 id = "header">Denied Rides</h2>
-                        <p>To {{riders.DriveRequest.arrivalLoc}} From {{riders.DriveRequest.departLoc}} Denied Time: {{riders.DeniedTime}}</p>    
-                        {%endif%}
-                    {%endif%}
-                {%endfor%}
-            {%endfor%}
+               
      </table>
             </div>
 
