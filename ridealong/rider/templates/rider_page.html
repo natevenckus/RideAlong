@@ -113,8 +113,9 @@
                                     <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}</p>
                                     <p id="two" for="Destination">Destination: {{request.arrivalLoc}}</p>
                                     <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime|date:'Y-m-d\Th:i'}}</p>
-                                    <p id="4" for="Filled Seats">Filled Seats: {{request.seatsNeeded}}</p>
-                                    <p id="5" for="Baggage">Baggage: {{request.baggageNeeded}}</p>
+                                    <p id="4" for="Filled Seats">Filled Seats: {{request.numOfSeats}}</p>
+                                    <p id="5" for="Baggage">Baggage: {{request.numOfBaggage}}</p>
+                                    <p id="6" for="Price">Price: {{request.PriceOffer}}</p>
                                     <br>
                                     <br>
                                 <button type="submit" class="btn1" name="requestButton" style="float: left" value="{{request.ID}}">Request Ride</button>

@@ -57,6 +57,7 @@ def index(request):
         dropTime = request.POST['dropTime']
         numOfSeats = request.POST['seats']
         numOfBaggage = request.POST['baggage']
+        priceOffer = request.POST['Price']
         if destID and originID and departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
             coordinates = getGeo(originID,destID)
             print (coordinates)
@@ -68,6 +69,7 @@ def index(request):
                 dropTime = request.POST['dropTime'],
                 numOfSeats = request.POST['seats'],
                 numOfBaggage = request.POST['baggage'],
+                PriceOffer = reqeust.POST['Price'],
                 FromLat = coordinates[0],
                 FromLong = coordinates[1],
                 ToLat = coordinates[2],
