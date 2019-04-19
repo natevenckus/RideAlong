@@ -76,6 +76,7 @@
                         {% for rl in riderLinks %}
                                 <div class="pls">
                                 <p id="1" for="Destination">TRIP TO: {{rl.DriveRequest.arrivalLoc}}
+                                <p id="one" for="DriverName">DRIVER: {{rl.DriveRequest.Rider.profile.FullName}}
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                 <br>
@@ -105,7 +106,8 @@
                                 {% for request in driveRequests %}
                                 <div class="pls">
                                 <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
-                                        <p id="one" for="Origin">Driver:  {{request.Rider}}</p>
+                                        <p id="one" for="Origin">Driver Username: {{request.Rider}}</p>
+                                        <p id = "one2"for="Origin">Driver: {{request.Rider.profile.FullName}}</p>
 
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
