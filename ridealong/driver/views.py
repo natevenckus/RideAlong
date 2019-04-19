@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import DriveRequest, Car, RiderLink
 from accounts.models import Profile
+from django.core.mail import send_mail
+from django.conf import settings
 from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models.functions import Cast
 from django.db.models import CharField
@@ -132,13 +134,25 @@ def rides(request):
                 rl.Denied = False
                 rl.ConfirmedTime = datetime.now()
                 rl.save()
-                
+                subject1 = 'Your Ride was Accepted!'
+                message1 = 'Congratulations! Your ride was accepted!Log into the RideAlong website for more details!- RideAlong Team'
+                email_from1 = settings.EMAIL_HOST_USER
+                recipient1 = rl.Rider.profile.ContactEmail
+                recipient_list = [recipient1,]
+                send_mail(subject1, message1, email_from1, recipient_list)
+
             elif request.GET["Choice"] == "Decline":
                 print("DECLINE")
                 rl.Denied = True
                 rl.Confirmed = False
                 rl.DeniedTime = datetime.now()
                 rl.save()
+                subject1 = 'Your Ride was Declined'
+                message1 = 'I am sorry. Your ride was declined. Please log into RideAlong website to find another ride. We apologize for the inconvenience - RideAlong Team '
+                email_from1 = settings.EMAIL_HOST_USER
+                recipient1 = rl.Rider.profile.ContactEmail
+                recipient_list = [recipient1,]
+                send_mail(subject1, message1, email_from1, recipient_list)
     
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests, 'rideRequests': links})
 
