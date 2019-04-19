@@ -209,7 +209,7 @@ animation: dayNight  60s ease infinite;
      display: inline-block;
      position: relative;
      background-color: #f1f1f1;
-     color: #666;
+     color: white;
      top: 10px;
      height: 30px;
      width: 30px;
@@ -230,11 +230,11 @@ animation: dayNight  60s ease infinite;
 }
 .form-radio:hover
 {
-     background-color: #f7f7f7;
+     background-color: #7ad689;
 }
 .form-radio:checked
 {
-     background-color: #f1f1f1;
+     background-color: #7ad689;
 }
 label
 {
