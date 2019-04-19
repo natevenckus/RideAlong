@@ -33,7 +33,11 @@
                     </div>
                 </div>
       </body>
-
+        
+      {% if reviewSuccess %}
+            <h1>Your review was successful.</h1>
+      {% else %}
+        
       <div class="block1">
         <div class="prof" ><p style="float: left;"> <img src="{% static 'tempPic.png' %}" class="image2" align="top"></p>
             
@@ -74,7 +78,7 @@
       <br>
       
     </form>
-
+    {% endif %}
     
 </html>
 

@@ -76,7 +76,7 @@
                         {% for rl in riderLinks %}
                                 <div class="pls">
                                 <p id="1" for="Destination">TRIP TO: {{rl.DriveRequest.arrivalLoc}}
-                                <p id="one" for="DriverName">DRIVER: {{rl.DriveRequest.Rider.profile.FullName}}
+                                <p id="one" for="DriverName">DRIVER: <a href="/profile/{{rl.DriveRequest.Rider}}">{{rl.DriveRequest.Rider}}</a>
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                 <br>
