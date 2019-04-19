@@ -75,6 +75,7 @@
                                                                         <p> <b>Passengers</b> </p>
                                                                         {% for riders in rideRequests %}
                                                                             {% if riders.DriveRequest == request %}
+                                                                            <br>
                                                                                     <p> Rider: {{riders.Rider}} </p>
                                                                                     
                                                                                     {% if riders.Confirmed %}
@@ -85,7 +86,6 @@
                                                                                     <input type="radio" name="Choice" value="Accept" id="Accept"> Accept</label>
                                                                                     
                                                                                     <input type="radio" name="Choice" value="Decline" id="Decline"> Decline</label>
-
                                                                                     <button class="accept" name="choiceSubmit" value="{{riders.ID}}" > Submit </button>
                                                                                     {% endif %}
 

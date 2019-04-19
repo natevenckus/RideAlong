@@ -28,7 +28,7 @@ input, select {
 }
 .pls2{
     background-color:#7cadd0;
-    padding: 14px;
+    padding: 8px;
     font-size: 16px;
     width: 100%;
     height: 100%;
@@ -55,10 +55,7 @@ table {
 
   }
   
-  tr:nth-child(even) {
-   
-
-  }
+ 
 
 
 /*dropdown for Driving contents/View Rides*/
@@ -141,9 +138,43 @@ img {
 }
 .accept{
     color: black;
-    padding: 2px;
+    padding: 4px;
     margin-left: 20%;
-    border-radius: 8px;
+    border-radius: 6px;
+   
+}
+.form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: white;
+     top: 10px;
+     height: 30px;
+     width: 30px;
+     border: 0;
+     border-radius: 50px;
+     cursor: pointer;     
+     margin-right: 7px;
+     outline: none;
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 13px/1 'Open Sans', sans-serif;
+     left: 11px;
+     top: 7px;
+     content: '\02143';
+     transform: rotate(40deg);
+     
+}
+
+.form-radio:checked
+{
+     background-color: #7ad689;
 }
 .deleteBtn{
     padding:8px;
