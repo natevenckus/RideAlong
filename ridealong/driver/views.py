@@ -136,7 +136,6 @@ def driverSearch(request):
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
         elif request.GET['filter'] == 'passenger':
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
-
     return render(request,"driver_page.html",{'isIndex':False,'searchResult':searchResult})
 
 def ridepopup(request):
@@ -166,8 +165,12 @@ def saveprofile(request):
     return redirect('/driver/profile')
 
 def drivernotfications(request):
-    return render (request,'drivernotifications.html')
-
+    driveRequests2 = DriveRequest.objects.filter(Rider = request.user)
+    rideRequests2 = RiderLink.objects.filter(DriveRequest__in = driveRequests2)
+   #rideRequests2Confirmed = rideRequests2.objects.filter(Confirmed = True)
+    #rideRequests2Denied = rideRequests2.objects.filter(Denied = True)
+    #return render(request,"drivernotifications.html",{'isIndex':False,'driveRequests2':driveRequests2,'rideRequests2': rideRequests2,'confirmed2':rideRequests2Confirmed,'denied2':rideRequests2Denied})
+    return render(request,"drivernotifications.html",{'isIndex':False,'driveRequests2':driveRequests2,'rideRequests2': rideRequests2})
 
 def updateride(request):
     id = request.GET['id']
