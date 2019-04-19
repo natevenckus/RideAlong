@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class RideRequest(models.Model):
     ID = models.AutoField(primary_key=True)
     Rider = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True)
