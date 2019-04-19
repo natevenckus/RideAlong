@@ -10,7 +10,7 @@
 #header{
     padding: 5px;
 }
-.buttonz{
+#rev{
     padding:8px;
     border: none;
     width:160px;
@@ -18,8 +18,10 @@
     background-color: #7cadd0;
     color:black;
     float: left;
+    margin-left: 40%;
 
 }
+
 .outline{
     color: white;
 }
