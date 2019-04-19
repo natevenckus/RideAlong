@@ -174,6 +174,14 @@ def forgotpass(request):
     return render(request, 'forgot-pass.html')
 def resetpass(request):
     return render (request, 'request-pass.html')
+def statProfSelf(request):
+    username = request.user.username
+    profileSet = User.objects.get(username = username).profile
+    reviewSet = Review.objects.filter(Reviewee = User.objects.get(username = username))
+    avgRating = reviewSet.aggregate(Avg('Rating')).get('Rating__avg')
+    isIndex = False
+    print(avgRating)
+    return render(request,"profile.html",{'isSelf': True, 'isIndex': True, 'profilePage':profileSet, 'uname': username, 'reviewSet': reviewSet, 'avgRating': avgRating})
 def statProf(request, username): 
     uname = username
     profileSet = User.objects.get(username = username).profile

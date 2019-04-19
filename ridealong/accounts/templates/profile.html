@@ -107,9 +107,9 @@
     <div class="block2">
         <br>
         <!--this button should allow user to review another user, link to post review page-->
-        {% if isIndex %}
+        {% if isIndex and not isSelf %}
         <button class="btn1" id="login"><a href= "/profile/{{ uname }}/reviews"> Write a Review</a></button>
-        {% else %}
+        {% elif not isSelf %}
         <button class="btn1" id="login"><a href= "{% url 'reviews' %}"> Write a Review</a></button>
         {% endif %}
         <!-- <button class="btn2" id="login"><a href= "{% url 'reviews' %}"> View Reviews</a></button> -->  
