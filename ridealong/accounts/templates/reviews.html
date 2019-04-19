@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
-    <html>
+    <html>   
         <head>
      <title>RideAlong</title>
-     <link href="{% static 'reviews.css'  %}" rel="stylesheet">
+     <link href="{% static 'reviewz.css'  %}" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -54,15 +54,19 @@
       <textarea name="message" rows="10" cols="100"></textarea>
       <br>
       <br>
+      <p ><div class="starz" style="font-size: 40px;">
+        
+        Rating:
+        
+        
+    </div>
+  
       <button class="buttonz" name="submitReview" value="{{request.ID}}" >Submit review</button>
       <br>
       <br>
-      <p ><div class="starz" style="font-size: 40px;">
-        Rating: <span allign="left">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p>
-    </div>
+      
     </form>
 
-      
     
 </html>
 
