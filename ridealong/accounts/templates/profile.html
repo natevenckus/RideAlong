@@ -40,6 +40,30 @@
         </div>
         <div class="block1">   
                 <div class="prof" ><p style="float: left;"> <img src="{% static 'tempPic.png' %}" class="image2" align="top"></p>
+                
+                    {% if isIndex %}
+                    <form id="profileform">
+
+                            
+        
+                            <br>
+        
+                            <input type="text" name="id" value="{{profilePage.id}}" style="display:none">
+        
+                            <h1 style="margin-top: 70px;" id="name"> Name: 
+                                <input type="text" name="name" value="{{profilePage.FullName}}"> <br> 
+                                School: 
+                                <input type="text" name="school" value="{{profilePage.SchoolName}}"><br>
+                            </h1>  
+                            <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                                    <label for="imageUpload"</label>
+                            </div>  
+                            
+        
+                    </form>
+                      
+                    {% else %}
                     <form action="saveprofile" id="profileform">
 
                     <input style="float: right" class="edit" type="submit" value="Save">
@@ -60,7 +84,9 @@
                     </div>  
                     {% endfor %}
 
-                </form>
+
+                    </form>
+                {% endif %}
                 </div>
         
                
