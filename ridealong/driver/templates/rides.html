@@ -39,6 +39,7 @@
                                 
                                 <div class="list">
                                     <h1 id="header" >My Rides</h1>
+                                    <br><br>
                                            
                                             <table>
                                                 <form id="rideEditForm" action="updateride">
@@ -70,12 +71,16 @@
                                                                 <br>
                                                             </td>
                                                             <td>
-                                                                <div class="pls2">
+                                                                <div class="pls2 scrollable">
                                                                         <p> <b>Passengers</b> </p>
                                                                         {% for riders in rideRequests %}
                                                                             {% if riders.DriveRequest == request %}
                                                                                     <p> Rider: {{riders.Rider}} </p>
                                                                                     
+                                                                                    <input id="accept" type="radio" name="Accept" value="Accept" id="Accept"> Accept</label>
+                                                                                    
+                                                                                    <input id="accept" type="radio" name="Accept" value="Accept" id="Accept"> Decline</label>
+
                                                                             {% endif %}
                                                                         {% endfor %}
                                                                         <br>
