@@ -17,6 +17,7 @@ from django.conf import settings
 from accounts.models import Profile
 from accounts.models import Review
 from datetime import datetime
+from django.db.models import Avg
 
 def index(request):
     formRegister = RegistrationForm()
@@ -177,8 +178,10 @@ def statProf(request, username):
     uname = username
     profileSet = User.objects.get(username = username).profile
     reviewSet = Review.objects.filter(Reviewee = User.objects.get(username = username))
+    avgRating = reviewSet.aggregate(Avg('Rating')).get('Rating__avg')
     isIndex = False
-    return render(request,"profile.html",{'isIndex': True, 'profilePage':profileSet, 'uname': username, 'reviewSet': reviewSet})
+    print(avgRating)
+    return render(request,"profile.html",{'isIndex': True, 'profilePage':profileSet, 'uname': username, 'reviewSet': reviewSet, 'avgRating': avgRating})
 def reviewProf(request, username):
     if not request.user.is_authenticated:
         return redirect('logout')
