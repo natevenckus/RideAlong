@@ -57,7 +57,8 @@ def index(request):
         dropTime = request.POST['dropTime']
         numOfSeats = request.POST['seats']
         numOfBaggage = request.POST['baggage']
-        if destID and originID and departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage:
+        priceOffer = request.POST['Price']
+        if destID and originID and departLoc and arrivalLoc and pickupTime and dropTime and numOfSeats and numOfBaggage and priceOffer:
             coordinates = getGeo(originID,destID)
             print (coordinates)
             driveRequest_instance = DriveRequest.objects.create(
@@ -68,11 +69,13 @@ def index(request):
                 dropTime = request.POST['dropTime'],
                 numOfSeats = request.POST['seats'],
                 numOfBaggage = request.POST['baggage'],
+                PriceOffer = request.POST['Price'],
                 FromLat = coordinates[0],
                 FromLong = coordinates[1],
                 ToLat = coordinates[2],
                 ToLong = coordinates[3]
             )
+            print (driveRequest_instance.FromLat)
             driveRequest_instance.save()
         make = request.POST['carMake']
         model = request.POST['carModel']

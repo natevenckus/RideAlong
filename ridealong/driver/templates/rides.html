@@ -77,11 +77,17 @@
                                                                             {% if riders.DriveRequest == request %}
                                                                                     <p> Rider: {{riders.Rider}} </p>
                                                                                     
+                                                                                    {% if riders.Confirmed %}
+                                                                                        Confirmed
+                                                                                    {% elif riders.Denied %}
+                                                                                        Denied
+                                                                                    {% else %}
                                                                                     <input type="radio" name="Choice" value="Accept" id="Accept"> Accept</label>
                                                                                     
                                                                                     <input type="radio" name="Choice" value="Decline" id="Decline"> Decline</label>
 
                                                                                     <button id="accept" name="choiceSubmit" value="{{riders.ID}}" > Submit </button>
+                                                                                    {% endif %}
 
                                                                             {% endif %}
                                                                         {% endfor %}
