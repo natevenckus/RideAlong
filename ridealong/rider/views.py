@@ -132,6 +132,6 @@ def updateride(request):
 def ridernotfications(request):
     driveRequestsR = DriveRequest.objects.filter(Rider = request.user)
     rideRequestsR = RiderLink.objects.filter(DriveRequest__in = driveRequestsR)
-    currentIdR = request.User
-    return render(request,"ridernotifications.html",{'isIndex':False,'driveRequestsR':driveRequestsR,'rideRequestsR': rideRequestsR})
+    currUser = request.user
+    return render(request,"ridernotifications.html",{'isIndex':False,'driveRequestsR':driveRequestsR,'rideRequestsR': rideRequestsR, 'currUser':currUser})
     
