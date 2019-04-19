@@ -77,10 +77,22 @@
         <br>
         <!--this button should allow user to review another user, link to post review page-->
         <button class="btn1" id="login"><a href= "{% url 'reviews' %}"> Write a Review</a></button>
-        <button class="btn2" id="login"><a href= "{% url 'reviews' %}"> View Reviews</a></button>
-        
+        <!-- <button class="btn2" id="login"><a href= "{% url 'reviews' %}"> View Reviews</a></button> -->  
+        <br><br><br>
+        <div>
+            <h1> <b>My Reviews </b></h1> 
+            <div>
+                {% for reviews in profReviews %}
+                    
+                    <div value="{{reviews.title}}" ></div>
+                    console.log(reviews.title)
+                {% endfor %}
+            </div>
+        </div>  
     </div>
+    
         </body>
+        
    <script>
     function myFunction() {
         var change = document.getElementById("edit");
