@@ -33,8 +33,13 @@
             </select>
             <input id="seachVal" type="submit" name="searchButton" value="Search">
             <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
-                    <i id="bell2" class="fa fa-bell" style="font-size:36px"></i>
-                    <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
+                <div class="dropdown three"">
+                    <i id="bell" class="fa fa-bell" style="font-size:36px">
+                        <div class="dropdown-content three">
+                            <a href = "{% url 'ridernotifications' %}">View Notifications</a>
+                        </div>
+                        </i>
+                </div>
                     
                     <!-- <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     <div id="personal" style="position:absolute; left:1257px; top:50px; color:whitesmoke;">
