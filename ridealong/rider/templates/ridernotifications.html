@@ -35,8 +35,50 @@
         
                     </div>
                 </div>
+                <table>
+                        <div class="list">
+                            <h1 id="header" >NOTIFICATIONS</h1>
+                            <h2 id = "header">Your Accepted/Declined Requests</h2>
 
-                <p>STATUS</p>
+                {%for request in driveRequestsR %}
+                    {%for riders in rideRequestsR%}
+                        {%if riders.Rider == request.user%}
+                            {%if riders.Confirmed == False%}
+                                {%if riders.Denied == False%}
+                                    <p>Unconfirmed Rides,waiting on Approval: {{riders.DriveRequest}} </p>  
+                                {%endif%}
+                            {%endif%}
+                        {%endif%}
+                    
+                    {%endfor%}
+                {%endfor%}
+
+                {% for request in driveRequestsR %}
+                    {%for riders in rideRequestsR%}
+                        {%if riders.Rider == request.user%}
+                            {%if riders.Confirmed == True%}
+                            <p>Confirmed Rides: {{riders.DriveRequest}} Confirmed Time: {{riders.ConfirmedTime}}</p> 
+                            {%endif%}   
+                        {%endif%}
+                    
+                    {%endfor%}
+                {%endfor%}
+
+            {% for request in driveRequestsR %}
+                {%for riders in rideRequestsR%}
+                    {%if riders.Rider == request.user%}
+                        {%if riders.Denied == True%}
+                        <p>Denied Rides: {{riders.DriveRequest}} Denied Time: {{riders.DeniedTime}}</p>    
+                        {%endif%}
+                    {%endif%}
+                {%endfor%}
+            {%endfor%}
+     </table>
+            </div>
+
+
+
+
                 
                   
 

@@ -84,6 +84,8 @@
                                     <p id="3" for="Pick Up Time">Pick Up Time: {{rl.DriveRequest.pickupTime|date:'Y-m-d\Th:i'}}</p>
                                     <p id="4" for="Filled Seats">Filled Seats: {{rl.DriveRequest.seatsNeeded}}</p>
                                     <p id="5" for="Baggage">Baggage: {{rl.DriveRequest.baggageNeeded}}</p>
+                                    <p id="6" for="Price">Price: {{rl.DriveRequest.PriceOffer}}</p>
+
                                     <br>
                                     <br>
                                 {% if not rl.Confirmed and not rl.Denied %}
@@ -115,6 +117,7 @@
                                     <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime|date:'Y-m-d\Th:i'}}</p>
                                     <p id="4" for="Filled Seats">Filled Seats: {{request.seatsNeeded}}</p>
                                     <p id="5" for="Baggage">Baggage: {{request.baggageNeeded}}</p>
+                                    <p id="6" for="Price">Price: {{request.PriceOffer}}</p>
                                     <br>
                                     <br>
                                 <button type="submit" class="btn1" name="requestButton" style="float: left" value="{{request.ID}}">Request Ride</button>

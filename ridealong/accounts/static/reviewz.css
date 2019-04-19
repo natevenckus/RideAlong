@@ -10,7 +10,7 @@
 #header{
     padding: 5px;
 }
-.buttonz{
+#rev{
     padding:8px;
     border: none;
     width:160px;
@@ -18,8 +18,10 @@
     background-color: #7cadd0;
     color:black;
     float: left;
+    margin-left: 40%;
 
 }
+
 .outline{
     color: white;
 }
@@ -199,5 +201,51 @@ animation: dayNight  60s ease infinite;
      content: "\2605";
      position: absolute;
   }
+  .form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: white;
+     top: 10px;
+     height: 30px;
+     width: 30px;
+     border: 0;
+     border-radius: 50px;
+     cursor: pointer;     
+     margin-right: 7px;
+     outline: none;
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 13px/1 'Open Sans', sans-serif;
+     left: 11px;
+     top: 7px;
+     content: '\02143';
+     transform: rotate(40deg);
+}
+.form-radio:hover
+{
+     background-color: #7ad689;
+}
+.form-radio:checked
+{
+     background-color: #7ad689;
+}
+label
+{
+     color: white;
+     padding: 10px;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     cursor: pointer;
+} 
+#stylezz{
+    margin-left: 25%;
+}
 
   
