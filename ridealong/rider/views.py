@@ -41,7 +41,7 @@ def index(request):
                 DriveRequest = driveRequest,
             )
             subject1 = 'Request Received.'
-            message1 = 'Your ride request has been received, and the drive has been notified!'
+            message1 = 'Your ride request has been received, and the driver has been notified!'
             email_from1 = settings.EMAIL_HOST_USER
             recipient1 = request.user.profile.ContactEmail
             recipient_list = [recipient1,] 
