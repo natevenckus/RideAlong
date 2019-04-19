@@ -52,6 +52,22 @@
                     <a href="{% url 'profile' %}" > <img src="{% static 'tempPic.png' %}" ></a>
                     <button class="btn" id="login"><a href="{% url 'logout' %}">Logout</a></button>
                     <br>
+                    <table id="tablz">
+                            <tr>
+                                <th>
+                                    <div class="rangeslider">
+                                            <input type="range" min="1" max="10" value="10"
+                                            class="myslider" id="sliderRange" >
+                                    </div>
+                                       
+                                </th>
+                                
+                                <th>
+                                        <div id="move" > Distance: <span id="demo"></span> miles </div>   
+                                </th>
+                            </tr>
+                            
+                        </table>
                 <div class="list">
                     {% if requestSuccess %}
                         Your request was successful!
@@ -89,6 +105,8 @@
                                 {% for request in driveRequests %}
                                 <div class="pls">
                                 <p id="1" for="Destination">TRIP TO: {{request.arrivalLoc}}
+                                        <p id="one" for="Origin">Driver:  {{request.Rider}}</p>
+
                                 <br>
                                 <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                 <br>
