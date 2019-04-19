@@ -63,7 +63,7 @@
                                         {% if riders.DriveRequest == request2%}
                                             {%if riders.Confirmed == False%}
                                                 {%if riders.Denied == False%}
-                                                    <p>New Riders: {{riders.Rider}}</p>
+                                                    <p>New Riders: {{riders.Rider}} Rider:{{riders.Rider.profile.FullName}} Rider Email:{{riders.Rider.profile.ContactEmail}} Rider Phone Number:{{riders.Rider.profile.PhoneNum}}</p>
                                                 {%endif%}
                                             {%endif%}   
                                         {% endif %}
@@ -85,7 +85,7 @@
                                         {%for confRiders in rideRequests2%}
                                             {%if confRiders.DriveRequest == request2%}
                                                 {%if confRiders.Confirmed == True%}
-                                                    <p> Confirmed Riders: {{confRiders.Rider}} Confirmed Time: {{confRiders.ConfirmedTime}}</p>
+                                                    <p> Confirmed Riders: {{confRiders.Rider}} Confirmed Time: {{confRiders.ConfirmedTime}} Rider:{{confRiders.Rider.profile.FullName}} Rider Email:{{confRiders.Rider.profile.ContactEmail}} Rider Phone Number:{{confRiders.Rider.profile.PhoneNum}}</p>
                                                 {% endif %}
                                             {% endif %}
                                         {%endfor%}
@@ -108,7 +108,7 @@
                                         {%for denRiders in rideRequests2%}
                                             {%if denRiders.DriveRequest == request2%}
                                                 {%if denRiders.Denied == True%}
-                                                    <p> Denied Riders: {{denRiders.Rider}} Denied Time: {{confRiders.DeniedTime}}</p>
+                                                    <p> Denied Riders: {{denRiders.Rider}} Denied Time: {{confRiders.DeniedTime}} Rider:{{denRiders.Rider.profile.FullName}} Rider Email:{{denRiders.Rider.profile.ContactEmail}} Rider Phone Number:{{denRiders.Rider.profile.PhoneNum}}</p>
                                                 {% endif %}
                                              {% endif %}
                                         {%endfor%}
