@@ -132,6 +132,7 @@ def rides(request):
                 rl.Denied = False
                 rl.ConfirmedTime = datetime.now()
                 rl.save()
+                
             elif request.GET["Choice"] == "Decline":
                 print("DECLINE")
                 rl.Denied = True
