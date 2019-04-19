@@ -24,7 +24,7 @@ def index(request):
     print(request.POST)
     print("Expiry age")
     print(num)
-    profReviews = Review.objects.all();
+    profReviews = Review.objects.all()
     
 
     
@@ -98,6 +98,7 @@ def index(request):
                 driveRequests = DriveRequest.objects.all()
                 print("HELLO DRIVER/RIDER")
                 print(driveRequests)
+
                 return render(request, 'login.html', {'isIndex':True,'form': formLogin, 'driveRequests':driveRequests})
             
     else:
@@ -113,6 +114,13 @@ def loginpage(request):
 def notfications(request):
     return render (request,'notifications.html')
 def reviews(request): 
+    if request.GET.get('submitReview') is not None:
+        msgs = request.GET.get('message')
+        title = request.GET.get('title')
+        print("PRINTING MESSAGES")
+        print(title)
+        print(msgs)
+        
     return render(request, 'reviews.html')
 
 def viewReviews(request):

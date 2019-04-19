@@ -42,21 +42,19 @@
 
       </div> 
       <br>
-      <form>
-
-  
+      <form method="GET" action="">
       <label id="write" >
             Title: <span class="req"></span>
             </label>
             <br>
-            <input id="title" type="text" required autocomplete="off" />
+            <input id="title" type="text" name="title" required autocomplete="off" />
             <br>
             <br>
       <p id="write" ><b> Write a review: </b>  </p>
       <textarea name="message" rows="10" cols="100"></textarea>
       <br>
       <br>
-      <button class="buttonz" >Submit review</button>
+      <button class="buttonz" name="submitReview" value="{{request.ID}}" >Submit review</button>
       <br>
       <br>
       <p ><div class="starz" style="font-size: 40px;">
