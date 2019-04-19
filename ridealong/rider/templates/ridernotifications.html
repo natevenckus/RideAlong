@@ -62,7 +62,11 @@
                                             {%if riders.Confirmed == False%}
                                                 {%if riders.Denied == False%}
                                                     
-                                                    <p>To:{{riders.DriveRequest.arrivalLoc}} From:{{riders.DriveRequest.departLoc}} Driver:{{riders.DriveRequest.Rider.profile.FullName}} Driver Email:{{riders.DriveRequest.Rider.profile.ContactEmail}} Driver Phone Number:{{riders.DriveRequest.Rider.profile.PhoneNum}} </p>  
+                                                    <p><b>Driver: {{riders.DriveRequest.Rider.profile.FullName}}</b><br>
+                                                        To: {{riders.DriveRequest.arrivalLoc}} <br>
+                                                        From: {{riders.DriveRequest.departLoc}} <br>
+                                                         Driver Email: {{riders.DriveRequest.Rider.profile.ContactEmail}} <br>
+                                                         Driver Phone Number: {{riders.DriveRequest.Rider.profile.PhoneNum}} </p>  
                                                 {%endif%}
                                             {%endif%}
                                     {%endfor%}
@@ -81,7 +85,13 @@
                                     {%for riders in rideRequestsR%}
                                     {%if riders.Confirmed == True%}
         
-                                    <p>To:{{riders.DriveRequest.arrivalLoc}} From:{{riders.DriveRequest.departLoc}} Confirmed Time:{{riders.ConfirmedTime}} Driver:{{riders.DriveRequest.Rider.Profile.FullName}} Driver Email:{{riders.DriveRequest.Rider.Profile.ContactEmail}} Driver Phone Number:{{riders.DriveRequest.Rider.Profile.PhoneNum}} </p>
+                                    <p><b>Driver: {{riders.DriveRequest.Rider.Profile.FullName}} </b> <br>
+                                        To:{{riders.DriveRequest.arrivalLoc}} <br>
+                                        From:{{riders.DriveRequest.departLoc}} <br>
+                                        Confirmed Time:{{riders.ConfirmedTime}} <br>
+                                        Driver Email:{{riders.DriveRequest.Rider.Profile.ContactEmail}} <br>
+                                        Driver Phone Number:{{riders.DriveRequest.Rider.Profile.PhoneNum}} </p>
+                                        <br>
         
                                     {%endif%}   
                             
@@ -100,7 +110,12 @@
                             <td>
                                     {%for riders in rideRequestsR%}
                                     {%if riders.Denied == True%}
-                                    <p>To:{{riders.DriveRequest.arrivalLoc}} From:{{riders.DriveRequest.departLoc}} Denied Time:{{riders.DeniedTime}} Driver:{{riders.DriveRequest.Rider.Profile.FullName}}</p>    
+                                    <p><b>Driver: {{riders.DriveRequest.Rider.Profile.FullName}}</b><br>
+                                        To:{{riders.DriveRequest.arrivalLoc}} <br>
+                                        From:{{riders.DriveRequest.departLoc}} <br>
+                                        Denied Time:{{riders.DeniedTime}} <br>
+                                        Driver:{{riders.DriveRequest.Rider.Profile.FullName}}</p>   
+                                        <br> 
                                     {%endif%}
                             {%endfor%}
                             </td>
