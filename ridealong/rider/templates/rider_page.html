@@ -35,7 +35,7 @@
             </select>
             <input id="seachVal" type="submit" name="searchButton" value="Search">
             <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
-                <div class="dropdown three"">
+                <div class="dropdown three">
                     <i id="bell2" class="fa fa-bell" style="font-size:36px">
                         <div class="dropdown-content three">
                             <a href = "{% url 'ridernotifications' %}">View Notifications</a>
@@ -56,7 +56,7 @@
                             <tr>
                                 <th>
                                     <div class="rangeslider">
-                                            <input type="range" min="1" max="10" value="10"
+                                            <input name="radius" type="range" min="1" max="10" value="10"
                                             class="myslider" id="sliderRange" >
                                     </div>
                                        
@@ -190,6 +190,7 @@
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
+          document.getElementById("hiddenOriginID").value = place.place_id;
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
@@ -254,6 +255,9 @@
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
+    console.log("yuuuh");
+          document.getElementById("hiddenDestID").value = place.place_id;
+
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.

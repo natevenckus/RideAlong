@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchVectorField
 from datetime import datetime
 
+
 class DriveRequest(models.Model):
     ID = models.AutoField(primary_key=True)
     Rider = models.ForeignKey(User, on_delete=models.CASCADE, blank=False,null=False)
