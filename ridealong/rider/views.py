@@ -17,7 +17,6 @@ def withinRadius(xLat,xLong,yLat,yLong,radius):
     response = requests.get(requestURL)
     json_response = json.loads(response.text)
     distance = json_response['rows'][0]['elements'][0]['distance']['text']
-    print (distance)
     radius = float(radius)
     if distance[-2:] == 'ft':
         return True
@@ -105,18 +104,19 @@ def riderSearch(request):
     #ex. query for date http://localhost:8000/driver/search?searchYear=2222&searchMonth=2&searchDay=2&filter=date
     #filter options: location,date,price,luggage,passengershttp://localhost:8000/driver/search?Filter=Price
     if request.method == "GET":
-        print (request.GET)
         if request.GET['filter'] == 'location':
-            searchResult = DriveRequest.objects.filter(departLoc__search=request.GET['originLocation'],arrivalLoc__search=request.GET['destLocation'])
             radius = request.GET['radius']
-            radius = 5
             riderLinks = RiderLink.objects.filter(Rider = request.user)
             driveRequests = DriveRequest.objects.exclude(pk__in = riderLinks.values_list("DriveRequest", flat=True)).order_by("-RequestTime")
             coordinatesSearch = getGeo(request.GET['originLocation'],request.GET['destLocation'])
+            validRequest=[]
             for drive in driveRequests:
                 if drive.FromLat is not None:
                     distanceOrigin = withinRadius(coordinatesSearch[0],coordinatesSearch[1],float(drive.FromLat),float(drive.FromLong),radius)
                     distanceDest = withinRadius(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong),radius)
+                    if distanceOrigin and distanceDest:
+                        validRequest.append(drive.ID)
+            searchResult = DriveRequest.objects.filter(ID__in=validRequest)
         elif request.GET['filter'] == 'date':
             date = request.GET['departDate'].split('-')
             searchResult = DriveRequest.objects.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
