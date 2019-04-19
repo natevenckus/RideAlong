@@ -75,6 +75,7 @@ def index(request):
                 ToLat = coordinates[2],
                 ToLong = coordinates[3]
             )
+            print (driveRequest_instance.FromLat)
             driveRequest_instance.save()
         make = request.POST['carMake']
         model = request.POST['carModel']
