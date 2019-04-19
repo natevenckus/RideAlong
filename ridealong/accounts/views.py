@@ -176,8 +176,9 @@ def resetpass(request):
 def statProf(request, username): 
     uname = username
     profileSet = User.objects.get(username = username).profile
+    reviewSet = Review.objects.filter(Reviewee = User.objects.get(username = username))
     isIndex = False
-    return render(request,"profile.html",{'isIndex': True, 'profilePage':profileSet, 'uname': username})
+    return render(request,"profile.html",{'isIndex': True, 'profilePage':profileSet, 'uname': username, 'reviewSet': reviewSet})
 def reviewProf(request, username):
     if not request.user.is_authenticated:
         return redirect('logout')

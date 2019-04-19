@@ -116,10 +116,10 @@
         <div>
             <h1> <b>My Reviews </b></h1> 
             <div>
-                {% for reviews in profReviews %}
-                    
-                    <div value="{{reviews.title}}" ></div>
-                    console.log(reviews.title)
+                {% for review in reviewSet %}
+                    <div>{{review.Rating}}</div>
+                    <div>{{review.Title}}</div>
+                    <div>{{review.ReviewText}}</div>
                 {% endfor %}
             </div>
         </div>  
