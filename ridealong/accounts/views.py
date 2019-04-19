@@ -161,8 +161,10 @@ def forgotpass(request):
 def resetpass(request):
     return render (request, 'request-pass.html')
 def statProf(request, username): 
+    uname = username
     profileSet = User.objects.get(username = username).profile
     isIndex = False
-    return render(request,"profile.html",{'isIndex': True, 'profilePage':profileSet})
+    return render(request,"profile.html",{'isIndex': True, 'profilePage':profileSet, 'uname': username})
 def reviewProf(request, username): 
-    return render(request, 'login.html')
+
+    return render(request, "reviews.html")
