@@ -16,7 +16,10 @@ def withinRadius(xLat,xLong,yLat,yLong,radius):
     requestURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+str(xLat)+","+str(xLong)+"&destinations="+str(yLat)+","+str(yLong)+"&key="+googleKey
     response = requests.get(requestURL)
     json_response = json.loads(response.text)
-    distance = json_response['rows'][0]['elements'][0]['distance']['text']
+    try:
+        distance = json_response['rows'][0]['elements'][0]['distance']['text']
+    except KeyError:
+        return False
     radius = float(radius)
     if distance[-2:] == 'ft':
         return True
@@ -113,6 +116,8 @@ def riderSearch(request):
                 if drive.FromLat is not None:
                     distanceOrigin = withinRadius(coordinatesSearch[0],coordinatesSearch[1],float(drive.FromLat),float(drive.FromLong),radius)
                     distanceDest = withinRadius(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong),radius)
+                    print (distanceOrigin)
+                    print (distanceDest)
                     if distanceOrigin and distanceDest:
                         validRequest.append(drive.ID)
             searchResult = DriveRequest.objects.filter(ID__in=validRequest).order_by('PriceOffer')
