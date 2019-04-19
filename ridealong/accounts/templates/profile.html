@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'profile2.css' %}">
+        <link rel="stylesheet" href="{% static 'profile.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -117,9 +117,12 @@
             <h1> <b>My Reviews </b></h1> 
             <div>
                 {% for review in reviewSet %}
-                    <div>{{review.Rating}}</div>
-                    <div>{{review.Title}}</div>
+                <div class="review" >
+                    <div ><b>{{review.Title}}</b></div>
                     <div>{{review.ReviewText}}</div>
+                    <div >Rating: {{review.Rating}}</div>
+                </div>
+                   
                 {% endfor %}
             </div>
         </div>  

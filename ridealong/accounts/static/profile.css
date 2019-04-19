@@ -45,6 +45,11 @@
     margin-left: 20px;
     cursor: pointer;
 }
+.review{
+    background-color: white;
+    
+    overflow-y: scroll;
+}
 #home{
     float:right;
     position: absolute;
