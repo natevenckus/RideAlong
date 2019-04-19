@@ -103,31 +103,33 @@
                 <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
                 <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span> -->
                 <h2>Average Rating: <b><span style="font-size: 35px; color: yellow" id=stars></span></b></h2>
+
+                <div class="block2">
+                        <br>
+                        <!--this button should allow user to review another user, link to post review page-->
+                        {% if isIndex and not isSelf %}
+                        <button class="btn1" id="login"><a href= "/profile/{{ uname }}/reviews"> Write a Review</a></button>
+                        {% elif not isSelf %}
+                        <button class="btn1" id="login"><a href= "{% url 'reviews' %}"> Write a Review</a></button>
+                        {% endif %}
+                        <!-- <button class="btn2" id="login"><a href= "{% url 'reviews' %}"> View Reviews</a></button> -->  
+                        <br><br><br>
+                        <div class="review2">
+                            <h1> <b>My Reviews </b></h1> 
+                            <div>
+                                {% for review in reviewSet %}
+                                <div class="review" >
+                                    <div ><b>{{review.Title}}</b></div>
+                                    <div>{{review.ReviewText}}</div>
+                                    <div >Rating: {{review.Rating}}</div>
+                                </div>
+                                   
+                                {% endfor %}
+                            </div>
+                        </div>  
+                    </div>
         </div>
-    <div class="block2">
-        <br>
-        <!--this button should allow user to review another user, link to post review page-->
-        {% if isIndex and not isSelf %}
-        <button class="btn1" id="login"><a href= "/profile/{{ uname }}/reviews"> Write a Review</a></button>
-        {% elif not isSelf %}
-        <button class="btn1" id="login"><a href= "{% url 'reviews' %}"> Write a Review</a></button>
-        {% endif %}
-        <!-- <button class="btn2" id="login"><a href= "{% url 'reviews' %}"> View Reviews</a></button> -->  
-        <br><br><br>
-        <div>
-            <h1> <b>My Reviews </b></h1> 
-            <div>
-                {% for review in reviewSet %}
-                <div class="review" >
-                    <div ><b>{{review.Title}}</b></div>
-                    <div>{{review.ReviewText}}</div>
-                    <div >Rating: {{review.Rating}}</div>
-                </div>
-                   
-                {% endfor %}
-            </div>
-        </div>  
-    </div>
+    
     
         </body>
         
