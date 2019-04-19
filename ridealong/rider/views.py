@@ -106,24 +106,22 @@ def riderSearch(request):
     #ex. query for date http://localhost:8000/driver/search?searchYear=2222&searchMonth=2&searchDay=2&filter=date
     #filter options: location,date,price,luggage,passengershttp://localhost:8000/driver/search?Filter=Price
     if request.method == "GET":
-        if request.GET['filter'] == 'location':
-            radius = request.GET['radius']
-            riderLinks = RiderLink.objects.filter(Rider = request.user)
-            driveRequests = DriveRequest.objects.exclude(pk__in = riderLinks.values_list("DriveRequest", flat=True)).order_by("-RequestTime")
-            coordinatesSearch = getGeo(request.GET['originLocation'],request.GET['destLocation'])
-            validRequest=[]
-            for drive in driveRequests:
-                if drive.FromLat is not None:
-                    distanceOrigin = withinRadius(coordinatesSearch[0],coordinatesSearch[1],float(drive.FromLat),float(drive.FromLong),radius)
-                    distanceDest = withinRadius(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong),radius)
-                    print (distanceOrigin)
-                    print (distanceDest)
-                    if distanceOrigin and distanceDest:
-                        validRequest.append(drive.ID)
-            searchResult = DriveRequest.objects.filter(ID__in=validRequest).order_by('PriceOffer')
-        elif request.GET['filter'] == 'date':
+        radius = request.GET['radius']
+        riderLinks = RiderLink.objects.filter(Rider = request.user)
+        driveRequests = DriveRequest.objects.exclude(pk__in = riderLinks.values_list("DriveRequest", flat=True)).order_by("-RequestTime")
+        coordinatesSearch = getGeo(request.GET['originLocation'],request.GET['destLocation'])
+        validRequest=[]
+        for drive in driveRequests:
+            if drive.FromLat is not None:
+                distanceOrigin = withinRadius(coordinatesSearch[0],coordinatesSearch[1],float(drive.FromLat),float(drive.FromLong),radius)
+                distanceDest = withinRadius(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong),radius)
+                if distanceOrigin and distanceDest:
+                    validRequest.append(drive.ID)
+        searchResult = DriveRequest.objects.filter(ID__in=validRequest).order_by('PriceOffer')
+        if request.GET['filter'] == 'date':
             date = request.GET['departDate'].split('-')
-            searchResult = DriveRequest.objects.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
+            searchResult = searchResult.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
+            """
         elif request.GET['filter'] == 'price':
             q = SearchQuery(request.GET['searchPrice'])
             vector = SearchVector(Cast('PriceOffer', CharField()))
@@ -134,6 +132,7 @@ def riderSearch(request):
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
         elif request.GET['filter'] == 'passenger':
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
+            """
 
     return render(request,"show_rides.html",{'isIndex':False,'searchResult':searchResult})
 
