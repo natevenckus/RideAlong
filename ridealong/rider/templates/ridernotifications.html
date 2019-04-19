@@ -38,13 +38,14 @@
                 <table>
                         <div class="list">
                             <h1 id="header" >NOTIFICATIONS</h1>
+                            <h2 id = "header">Unconfirmed Rides</h2>
 
                 {% for request in driveRequestsR %}
+
                     {%for riders in rideRequestsR%}
                         {%if riders.Rider == currUser%}
                             {%if riders.Confirmed == False%}
                                 {%if riders.Denied == False%}
-                                    <h2 id = "header">Unconfirmed Rides</h2>
                                     <p>To: {{riders.DriveRequest.arrivalLoc}} From:{{riders.DriveRequest.departLoc}} </p>  
                                 {%endif%}
                             {%endif%}
@@ -52,12 +53,13 @@
                     {%endfor%}
                 {%endfor%}
 
+                <h2 id = "header">Confirmed Rides</h2>
 
                 {% for request in driveRequestsR %}
+
                     {%for riders in rideRequestsR%}
                         {%if riders.Rider == currUser%}
                             {%if riders.Confirmed == True%}
-                            <h2 id = "header">Confirmed Rides</h2>
                             <p>To: {{riders.DriveRequest.arrivalLoc}} From: {{riders.DriveRequest.departLoc}} Confirmed Time: {{riders.ConfirmedTime}}</p> 
                             {%endif%}   
                         {%endif%}
@@ -65,11 +67,12 @@
                     {%endfor%}
                 {%endfor%}
 
+                <h2 id = "header">Denied Rides</h2>
+
             {% for request in driveRequestsR %}
                 {%for riders in rideRequestsR%}
                     {%if riders.Rider == currUser%}
                         {%if riders.Denied == True%}
-                        <h2 id = "header">Denied Rides</h2>
                         <p>To {{riders.DriveRequest.arrivalLoc}} From {{riders.DriveRequest.departLoc}} Denied Time: {{riders.DeniedTime}}</p>    
                         {%endif%}
                     {%endif%}
