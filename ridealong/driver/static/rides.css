@@ -139,10 +139,11 @@ img {
 
     
 }
-#accept{
-    color: green;
+.accept{
+    color: black;
     padding: 2px;
     margin-left: 20%;
+    border-radius: 8px;
 }
 .deleteBtn{
     padding:8px;

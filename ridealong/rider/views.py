@@ -10,13 +10,23 @@ from django.conf import settings
 import json,requests
 from math import radians, sin, cos, acos
 
+#https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=40.4309891,%20-86.9169804&destinations=40.4003151,%20-86.8634453&key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk
 #calculate distance between two geocoordinates
-def getDistance(xLat,xLong,yLat,yLong):
-    distKm = 6371.01 * acos(sin(xLat)*sin(yLat) + cos(xLat)*cos(yLat)*cos(xLong - yLong))
-    distMiles = distKm * 0.621371
-    distMiles = float('%.3f'%(distMiles))
-    print (distKm)
-    return (distMiles)
+def withinRadius(xLat,xLong,yLat,yLong,radius):
+    requestURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+str(xLat)+","+str(xLong)+"&destinations="+str(yLat)+","+str(yLong)+"&key="+googleKey
+    response = requests.get(requestURL)
+    json_response = json.loads(response.text)
+    distance = json_response['rows'][0]['elements'][0]['distance']['text']
+    print (distance)
+    radius = float(radius)
+    if distance[-2:] == 'ft':
+        return True
+    try:
+        distance = float(distance[:-3])
+    except ValueError:
+        return False
+    if( distance < radius):
+        return True
 
 
 #https://maps.googleapis.com/maps/api/geocode/json?address=1600%20Amphitheatre%20Pkwy,%20Mountain%20View,%20CA%2094043,%20USA&key=AIzaSyAwAf6GdGjSHj7yjhWXaFdr7F6T09PPMJk
@@ -99,17 +109,14 @@ def riderSearch(request):
         if request.GET['filter'] == 'location':
             searchResult = DriveRequest.objects.filter(departLoc__search=request.GET['originLocation'],arrivalLoc__search=request.GET['destLocation'])
             radius = request.GET['radius']
+            radius = 5
             riderLinks = RiderLink.objects.filter(Rider = request.user)
             driveRequests = DriveRequest.objects.exclude(pk__in = riderLinks.values_list("DriveRequest", flat=True)).order_by("-RequestTime")
             coordinatesSearch = getGeo(request.GET['originLocation'],request.GET['destLocation'])
             for drive in driveRequests:
                 if drive.FromLat is not None:
-                    distanceOrigin = getDistance(coordinatesSearch[0],coordinatesSearch[1],float(drive.FromLat),float(drive.FromLong))
-                    distanceDest = getDistance(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong))
-                    print(drive.departLoc)
-                    print(drive.arrivalLoc)
-                    print(distanceOrigin)
-                    print(distanceDest)
+                    distanceOrigin = withinRadius(coordinatesSearch[0],coordinatesSearch[1],float(drive.FromLat),float(drive.FromLong),radius)
+                    distanceDest = withinRadius(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong),radius)
         elif request.GET['filter'] == 'date':
             date = request.GET['departDate'].split('-')
             searchResult = DriveRequest.objects.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
