@@ -120,6 +120,23 @@ def reviews(request):
         print("PRINTING MESSAGES")
         print(title)
         print(msgs)
+    
+    rater = request.GET.get('rate')
+    print(rater)
+    if rater == 'rate1' is not None: 
+        rate = 1
+    elif rater == 'rate2' is not None: 
+        rate = 2
+    elif rater == 'rate3' is not None: 
+        rate = 3
+    elif rater == 'rate4' is not None: 
+        rate = 4
+    elif rater == 'rate5' is not None: 
+        rate = 5
+    else: 
+        rate = 0
+        
+    print(rate)
         
     return render(request, 'reviews.html')
 

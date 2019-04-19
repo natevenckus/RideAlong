@@ -35,7 +35,7 @@
             </select>
             <input id="seachVal" type="submit" name="searchButton" value="Search">
             <a href= "/"><i id="home" class="fa fa-home" style="font-size:40px"> </i></a>
-                <div class="dropdown three"">
+                <div class="dropdown three">
                     <i id="bell2" class="fa fa-bell" style="font-size:36px">
                         <div class="dropdown-content three">
                             <a href = "{% url 'ridernotifications' %}">View Notifications</a>
@@ -56,7 +56,7 @@
                             <tr>
                                 <th>
                                     <div class="rangeslider">
-                                            <input type="range" min="1" max="10" value="10"
+                                            <input name="radius" type="range" min="1" max="10" value="10"
                                             class="myslider" id="sliderRange" >
                                     </div>
                                        
@@ -113,8 +113,9 @@
                                     <p id="2" for="Origin">Pick Up Location: {{request.departLoc}}</p>
                                     <p id="two" for="Destination">Destination: {{request.arrivalLoc}}</p>
                                     <p id="3" for="Pick Up Time">Pick Up Time: {{request.pickupTime|date:'Y-m-d\Th:i'}}</p>
-                                    <p id="4" for="Filled Seats">Filled Seats: {{request.seatsNeeded}}</p>
-                                    <p id="5" for="Baggage">Baggage: {{request.baggageNeeded}}</p>
+                                    <p id="4" for="Filled Seats">Filled Seats: {{request.numOfSeats}}</p>
+                                    <p id="5" for="Baggage">Baggage: {{request.numOfBaggage}}</p>
+                                    <p id="6" for="Price">Price: {{request.PriceOffer}}</p>
                                     <br>
                                     <br>
                                 <button type="submit" class="btn1" name="requestButton" style="float: left" value="{{request.ID}}">Request Ride</button>
@@ -190,6 +191,7 @@
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
+          document.getElementById("hiddenOriginID").value = place.place_id;
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
@@ -254,6 +256,9 @@
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
+    console.log("yuuuh");
+          document.getElementById("hiddenDestID").value = place.place_id;
+
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
