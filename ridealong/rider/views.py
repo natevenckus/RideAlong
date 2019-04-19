@@ -32,7 +32,7 @@ def index(request):
             #If not, we need to create a new RiderLink and email the Rider and Driver. Then when the Rider loads this page again, they'll see
             #that they've requested the given ride, as well as if it's been accepted or denied. The driver will also see this stuff on their page.
             
-            if RiderLink.objects.filter(DriveRequest = driveRequest):
+            if RiderLink.objects.filter(DriveRequest = driveRequest).filter(Rider = request.user):
                 #User has already requested this, so we just return to the page.
                 return render(request,"rider_page.html",{'isIndex':True,'riderLinks':riderLinks, 'driveRequests':driveRequests})
             
