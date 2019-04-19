@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>RideAlong</title>
-        <link rel="stylesheet" href="{% static 'rides2.css' %}">
+        <link rel="stylesheet" href="{% static 'rides.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -50,7 +50,7 @@
                                                         <!-- <input type="button" value="Edit" class="btn" id="Edit1" onclick="myFunction2()"></button><br></p> -->
                                                         <br>
                                                         <input type="submit" class="btn" id="Update" value="Save"><a href="updateride">Update</a></button><br></p>
-                                                        <p id="2" for="Origin">Pick Up Location: <input type="text" name="departLoc" value="{{request.departLoc}}">
+                                                        <p id="2" for="Origin">Pick Up Location: <input id="size" type="text" name="departLoc" value="{{request.departLoc}}">
                                                         <p id="two" for="Destination">Destination: <input type="text" name="arrivalLoc" value="{{request.arrivalLoc}}">
                                                         <p id="3" for="Pick Up Time">Pick Up Time: <input type="datetime-local" name="pickupTime" value="{{request.pickupTime|date:'Y-m-d\Th:i'}}">
                                                         <p id="4" for="Filled Seats">Filled Seats: <input type="number" name="seats" value="{{request.seatsNeeded}}" min="0" max="5">

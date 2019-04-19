@@ -35,10 +35,56 @@
         
                     </div>
                 </div>
-                 
+                <table>
+                    <div class="list">
+                        <h1 id="header" >NOTIFICATIONS</h1>
+                        <h2 id = "header">Your New Requests</h2>
+                        {% for request2 in driveRequests2 %}
+
+                            {%for riders in rideRequests2%}
+
+                            {% if riders.DriveRequest == request2%}
+                                {%if riders.Confirmed == False%}
+                                    {%if riders.Denied == False%}
+                                        <p>New Riders: {{riders.Rider}}</p>
+                                    {%endif%}
+
+                                {%endif%}
+                                
+
+                                
+                            {% endif %}
+
+                            {% endfor %}
+                        
+                        {% endfor %}
+
+                        <h3 id = "header"> Your Confirmed Riders</h3>
+                        {%for request2 in driveRequests2%}
+                            {%for confRiders in rideRequests2%}
+                                {%if confRiders.DriveRequest == request2%}
+                                    {%if confRiders.Confirmed == True%}
+                                        <p> Confirmed Riders: {{confRiders.Rider}} Confirmed Time: {{confRiders.ConfirmedTime}}</p>
+                                    {% endif %}
+                                {% endif %}
+                            {%endfor%}
+                        {%endfor%}
+
+                        
+                        <h3 id = "header"> Your Denied Riders</h3>
+                        {%for request2 in driveRequests2%}
+                            {%for denRiders in rideRequests2%}
+                                {%if denRiders.DriveRequest == request2%}
+                                    {%if denRiders.Denied == True%}
+                                        <p> Denied Riders: {{denRiders.Rider}} Denied Time: {{confRiders.DeniedTime}}</p>
+                                    {% endif %}
+                                 {% endif %}
+                            {%endfor%}
+                        {%endfor%}    
+                    </div>
+                 </table>
                 
-                  
-
-
+                 
 
     </body>
+</html>

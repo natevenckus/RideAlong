@@ -39,10 +39,10 @@
                                 
                                 <div class="list">
                                     <h1 id="header" >My Rides</h1>
-                                    <br><br>
+                                    <br><br><br>
                                            
                                             <table>
-                                                <form id="rideEditForm" action="updateride">
+                                                <form id="rideEditForm">
                                                 <tr id="myrides" class="table">
                                                   
                                                             {% for request in driveRequests %}
@@ -63,7 +63,7 @@
                                                             <p id="5" for="Baggage">Room for Baggage: <input type="number" style="color: black" name="baggage" value="{{request.numOfBaggage}}" min="0" max="5">
                                                                 <br>
                                                                 <br>
-                                                                <input type="submit" class="btn" id="Update" value="Save"><a href="updateride"></a><br></p>
+                                                                <button class="btn" id="Update" name="Update" value="{{request.ID}}">Update</button><br></p>
                                                                 <br>
                                                                 <button class="btn1"><a href="deleteride?id={{request.ID}}">Delete</a></button>
 
@@ -77,9 +77,17 @@
                                                                             {% if riders.DriveRequest == request %}
                                                                                     <p> Rider: {{riders.Rider}} </p>
                                                                                     
-                                                                                    <input id="accept" type="radio" name="Accept" value="Accept" id="Accept"> Accept</label>
+                                                                                    {% if riders.Confirmed %}
+                                                                                        Confirmed
+                                                                                    {% elif riders.Denied %}
+                                                                                        Denied
+                                                                                    {% else %}
+                                                                                    <input type="radio" name="Choice" value="Accept" id="Accept"> Accept</label>
                                                                                     
-                                                                                    <input id="accept" type="radio" name="Accept" value="Accept" id="Accept"> Decline</label>
+                                                                                    <input type="radio" name="Choice" value="Decline" id="Decline"> Decline</label>
+
+                                                                                    <button id="accept" name="choiceSubmit" value="{{riders.ID}}" > Submit </button>
+                                                                                    {% endif %}
 
                                                                             {% endif %}
                                                                         {% endfor %}

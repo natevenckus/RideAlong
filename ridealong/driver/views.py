@@ -6,6 +6,7 @@ from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.db.models.functions import Cast
 from django.db.models import CharField
 from . import views
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 import json, requests
 
@@ -114,6 +115,28 @@ def rides(request):
         return redirect('loginpage')
     driveRequests = DriveRequest.objects.filter(Rider = request.user)
     links = RiderLink.objects.filter(DriveRequest__in = driveRequests)
+    
+    if request.method == "GET":
+        if request.GET.get("Update") is not None:
+            print("UPDATING")
+            return updateride(request)
+        if request.GET.get("choiceSubmit") is not None:
+            linkID = request.GET["choiceSubmit"]
+            rl = RiderLink.objects.get(ID = linkID)
+                
+            if request.GET["Choice"] == "Accept":
+                print("ACCEPT")
+                rl.Confirmed = True
+                rl.Denied = False
+                rl.ConfirmedTime = datetime.now()
+                rl.save()
+            elif request.GET["Choice"] == "Decline":
+                print("DECLINE")
+                rl.Denied = True
+                rl.Confirmed = False
+                rl.DeniedTime = datetime.now()
+                rl.save()
+    
     return render(request,"rides.html",{'isIndex':True,'driveRequests':driveRequests, 'rideRequests': links})
 
 def driverSearch(request):
@@ -137,7 +160,6 @@ def driverSearch(request):
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
         elif request.GET['filter'] == 'passenger':
             searchResult=DriveRequest.objects.annotate(search=vector).filter(search=q)
-
     return render(request,"driver_page.html",{'isIndex':False,'searchResult':searchResult})
 
 def ridepopup(request):
@@ -167,11 +189,16 @@ def saveprofile(request):
     return redirect('/driver/profile')
 
 def drivernotfications(request):
-    return render (request,'drivernotifications.html')
-
+    driveRequests2 = DriveRequest.objects.filter(Rider = request.user)
+    rideRequests2 = RiderLink.objects.filter(DriveRequest__in = driveRequests2)
+   #rideRequests2Confirmed = rideRequests2.objects.filter(Confirmed = True)
+    #rideRequests2Denied = rideRequests2.objects.filter(Denied = True)
+    #return render(request,"drivernotifications.html",{'isIndex':False,'driveRequests2':driveRequests2,'rideRequests2': rideRequests2,'confirmed2':rideRequests2Confirmed,'denied2':rideRequests2Denied})
+    return render(request,"drivernotifications.html",{'isIndex':False,'driveRequests2':driveRequests2,'rideRequests2': rideRequests2})
 
 def updateride(request):
-    id = request.GET['id']
+    id = request.GET['Update']
+    print(id)
     departLoc = request.GET['departLoc']
     arrivalLoc = request.GET['arrivalLoc']
     pickupTime = request.GET['pickupTime']
@@ -181,7 +208,7 @@ def updateride(request):
     print("THE DATE")
     print(request.GET['pickupTime'])
     
-    ride = DriveRequest.objects.filter(ID=id)[0]
+    ride = DriveRequest.objects.get(ID=id)
     
     ride.departLoc = departLoc
     ride.arrivalLoc = arrivalLoc
