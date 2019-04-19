@@ -34,17 +34,6 @@ class Car(models.Model):
     Model = models.CharField(max_length=30)
     Year = models.IntegerField()
 
-class Review(models.Model):
-    ID = models.AutoField(primary_key=True)
-    Reviewer = models.ForeignKey(User, related_name="reviewer_user", on_delete=models.CASCADE, blank=True,null=True)
-    Reviewee = models.ForeignKey(User, related_name="reviewee_user", on_delete=models.CASCADE, blank=True,null=True)
-    Ride = models.ForeignKey("RiderLink", on_delete=models.CASCADE, blank=True,null=True)
-    Rating = models.DecimalField(decimal_places=1, max_digits = 2, blank=True, null=True)
-    Title = models.CharField(max_length=100)
-    ReviewText = models.CharField(max_length = 500)
-    Anon = models.BooleanField(blank=True, null=True)
-    ReviewTime = models.DateTimeField(blank=True, null=True)
-
 class RiderLink(models.Model):
     ID = models.AutoField(primary_key=True)
     Rider = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True)

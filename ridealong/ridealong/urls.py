@@ -27,6 +27,7 @@ urlpatterns = [
     path('driver/',include('driver.urls'), name = 'driver'),
     path('rider/',include('rider.urls'), name = 'rider'),
     path('notifications/',include('notifications.urls')),
+    path('testing/',include('testing.urls'), name = 'testing'),
 ]
 
 if settings.DEBUG:

@@ -43,8 +43,9 @@
 
       </div> 
       <br>
-      <form method="GET" action="">
-      <label id="write" >
+      <form method="post">
+      {% csrf_token %}
+      <label id="write">
             Title: <span class="req"></span>
             </label>
             <br>

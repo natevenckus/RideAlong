@@ -15,7 +15,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 from accounts.models import Profile
-from driver.models import Review
+from accounts.models import Review
 
 def index(request):
     formRegister = RegistrationForm()
@@ -25,9 +25,6 @@ def index(request):
     print("Expiry age")
     print(num)
     profReviews = Review.objects.all()
-    
-
-    
 
     if request.user.is_authenticated and num is not 0:
         driveRequests = DriveRequest.objects.all()
@@ -114,29 +111,31 @@ def loginpage(request):
 def notfications(request):
     return render (request,'notifications.html')
 def reviews(request): 
-    if request.GET.get('submitReview') is not None:
-        msgs = request.GET.get('message')
-        title = request.GET.get('title')
+    if request.POST.get('submitReview') is not None:
+        msgs = request.POST['message']
+        title = request.POST['title']
         print("PRINTING MESSAGES")
         print(title)
         print(msgs)
     
-    rater = request.GET.get('rate')
-    print(rater)
-    if rater == 'rate1' is not None: 
-        rate = 1
-    elif rater == 'rate2' is not None: 
-        rate = 2
-    elif rater == 'rate3' is not None: 
-        rate = 3
-    elif rater == 'rate4' is not None: 
-        rate = 4
-    elif rater == 'rate5' is not None: 
-        rate = 5
-    else: 
-        rate = 0
+        rater = request.POST['rate']
+        print(rater)
+        if rater == 'rate1' is not None: 
+            rate = 1
+        elif rater == 'rate2' is not None: 
+            rate = 2
+        elif rater == 'rate3' is not None: 
+            rate = 3
+        elif rater == 'rate4' is not None: 
+            rate = 4
+        elif rater == 'rate5' is not None: 
+            rate = 5
+        else: 
+            rate = 0
+            
+        print(rate)
         
-    print(rate)
+        
         
     return render(request, 'reviews.html')
 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from driver.models import RiderLink
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -18,6 +19,17 @@ class Profile(models.Model):
 	EduVerified = models.BooleanField(default=False, null=True, blank=True)
 	EduVerifyTime = models.DateTimeField(null=True, blank=True)
 
+class Review(models.Model):
+    ID = models.AutoField(primary_key=True)
+    Reviewer = models.ForeignKey(User, related_name="reviewer_user", on_delete=models.CASCADE, blank=True,null=True)
+    Reviewee = models.ForeignKey(User, related_name="reviewee_user", on_delete=models.CASCADE, blank=True,null=True)
+    Ride = models.ForeignKey("driver.RiderLink", on_delete=models.CASCADE, blank=True,null=True)
+    Rating = models.DecimalField(decimal_places=1, max_digits = 2, blank=True, null=True)
+    Title = models.CharField(max_length=100)
+    ReviewText = models.CharField(max_length = 500)
+    Anon = models.BooleanField(blank=True, null=True)
+    ReviewTime = models.DateTimeField(blank=True, null=True)
+    
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created: #means new record was created in database
