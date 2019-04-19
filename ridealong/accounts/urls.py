@@ -15,6 +15,7 @@ urlpatterns=[
     path('forgotpass', views.forgotpass, name='forgotpass'),
     path('resetpass', views.resetpass, name="resetpass"),
     path('notifications', views.notfications,name='notifications'),
+    path('driver/profile', views.statProfSelf, name='profile'),
     path('profile/<username>/', views.statProf, name='statProf'),
     path('profile/<username>/reviews/', views.reviewProf, name='reviewProf'),
     path('accounts/password_reset', auth_views.PasswordResetView.as_view(), name='password_reset'),

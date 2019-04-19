@@ -5,7 +5,6 @@ urlpatterns=[
     path('',views.index,name='driverpage'),
     path('search',views.driverSearch,name='driversearch'),
     path('ridepopup',views.ridepopup,name='ridepopup'),
-    path('profile', views.profile, name = 'profile'),
     path('saveprofile', views.saveprofile, name='saveprofile'),
     path('drivernotifications',views.drivernotfications,name = 'drivernotifications'),
     path('updateride', views.updateride, name='updateride'),
