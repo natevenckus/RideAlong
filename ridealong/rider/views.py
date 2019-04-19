@@ -67,7 +67,6 @@ def index(request):
             #First, we need to check if they've already requested this ride (we should actually do this before rendering the page...)
             #If not, we need to create a new RiderLink and email the Rider and Driver. Then when the Rider loads this page again, they'll see
             #that they've requested the given ride, as well as if it's been accepted or denied. The driver will also see this stuff on their page.
-            
             if RiderLink.objects.filter(DriveRequest = driveRequest).filter(Rider = request.user):
                 #User has already requested this, so we just return to the page.
                 return render(request,"rider_page.html",{'isIndex':True,'riderLinks':riderLinks, 'driveRequests':driveRequests})
@@ -116,7 +115,7 @@ def riderSearch(request):
                     distanceDest = withinRadius(coordinatesSearch[2],coordinatesSearch[3],float(drive.ToLat),float(drive.ToLong),radius)
                     if distanceOrigin and distanceDest:
                         validRequest.append(drive.ID)
-            searchResult = DriveRequest.objects.filter(ID__in=validRequest)
+            searchResult = DriveRequest.objects.filter(ID__in=validRequest).order_by('PriceOffer')
         elif request.GET['filter'] == 'date':
             date = request.GET['departDate'].split('-')
             searchResult = DriveRequest.objects.filter(pickupTime__year=int(date[0]), pickupTime__month=int(date[1]),pickupTime__day=int(date[2]))
@@ -167,4 +166,3 @@ def ridernotfications(request):
     rideRequestsR = RiderLink.objects.filter(Rider = request.user)
     currUser = request.user
     return render(request,"ridernotifications.html",{'isIndex':False,'rideRequestsR': rideRequestsR, 'currUser':currUser})
-    
