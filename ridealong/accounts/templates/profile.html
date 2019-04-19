@@ -96,12 +96,13 @@
                
     
         <br>
-        <h2> Average Rating: {{avgRating}}</h2>
+                
+                <!-- <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
                 <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
                 <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
                 <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
-                <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
-                <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span>
+                <span class="star" style='font-size:30px; color: yellow;'>&#9733;</span> -->
+                <h2>Average Rating: <b><span style="font-size: 35px; color: yellow" id=stars></span></b></h2>
         </div>
     <div class="block2">
         <br>
@@ -131,6 +132,7 @@
         </body>
         
    <script>
+       
     function myFunction() {
         var change = document.getElementById("edit");
         document.getElementById("name").contentEditable = true;
@@ -143,6 +145,28 @@
 
         }
     }
+    document.getElementById("stars").innerHTML = getStars({{avgRating}});
+
+function getStars(rating) {
+
+  // Round to nearest half
+  rating = Math.round(rating * 2) / 2;
+  let output = [];
+
+  // Append all the filled whole stars
+  for (var i = rating; i >= 1; i--)
+    output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  // If there is a half a star, append it
+  if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  // Fill the empty stars
+  for (let i = (5 - rating); i >= 1; i--)
+    output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  return output.join('');
+
+}
 
    </script>
 </html>

@@ -1,107 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <style>
-  .rating {
-  display: inline-block;
-  position: relative;
-  height: 50px;
-  line-height: 50px;
-  font-size: 50px;
-}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-.rating label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  cursor: pointer;
-}
+    <b>Rating: <span id=stars></span></b>
 
-.rating label:last-child {
-  position: static;
-}
+    <script>
+    document.getElementById("stars").innerHTML = getStars(3.6);
 
-.rating label:nth-child(1) {
-  z-index: 5;
-}
+function getStars(rating) {
 
-.rating label:nth-child(2) {
-  z-index: 4;
-}
+  // Round to nearest half
+  rating = Math.round(rating * 2) / 2;
+  let output = [];
 
-.rating label:nth-child(3) {
-  z-index: 3;
-}
+  // Append all the filled whole stars
+  for (var i = rating; i >= 1; i--)
+    output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
 
-.rating label:nth-child(4) {
-  z-index: 2;
-}
+  // If there is a half a star, append it
+  if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
 
-.rating label:nth-child(5) {
-  z-index: 1;
-}
+  // Fill the empty stars
+  for (let i = (5 - rating); i >= 1; i--)
+    output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
 
-.rating label input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
+  return output.join('');
 
-.rating label .icon {
-  float: left;
-  color: transparent;
 }
-
-.rating label:last-child .icon {
-  color: #000;
-}
-
-.rating:not(:hover) label input:checked ~ .icon,
-.rating:hover label:hover input ~ .icon {
-  color: yellow;
-}
-
-.rating label input:focus:not(:checked) ~ .icon:last-child {
-  color: #000;
-  text-shadow: 0 0 5px yellow;
-}
-</style>
-    <form class="rating">
-        <label>
-          <input type="radio" name="stars" value="1" />
-          <span class="icon">★</span>
-        </label>
-        <label>
-          <input type="radio" name="stars" value="2" />
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-        </label>
-        <label>
-          <input type="radio" name="stars" value="3" />
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-          <span class="icon">★</span>   
-        </label>
-        <label>
-          <input type="radio" name="stars" value="4" />
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-        </label>
-        <label>
-          <input type="radio" name="stars" value="5" />
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-          <span class="icon">★</span>
-        </label>
-      </form>
-      <script>
-      $(':radio').change(function() {
-  console.log('New star rating: ' + this.value);
-});
-</script>
+    </script>
 </html>
