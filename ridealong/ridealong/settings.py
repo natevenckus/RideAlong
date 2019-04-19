@@ -29,7 +29,7 @@ SECRET_KEY = '=m7gc(y_#mglwd#a8v4nl*m1+4(!3+=h7ciafndgi&v*j##0k6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []#['127.0.0.1', 'localhost', 'testserver']
 
 SITE_ID = 1
 
