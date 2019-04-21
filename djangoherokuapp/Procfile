@@ -1,0 +1,1 @@
+web: gunicorn ridealong.wsgi --log-file -
