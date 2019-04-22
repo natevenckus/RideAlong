@@ -9,7 +9,11 @@ def index(request):
     print("in loginTestCase")
     c = Client()
     response = c.post('', {'username': 'sougz7', 'password': 'ridealong678', 'remember_me': 'true', 'login': 'Login'})
-    if response.status_code == 200:
+    print (response.status_code)
+    if response.status_code == 400:
         print("passed loginTestCase")
-        return True
+        return HttpResponse("passed loginTestCase")
+    else:
+        print("failed loginTestCase")
+        return HttpResponse("failed loginTestCase")
     return HttpResponse("testing page")
