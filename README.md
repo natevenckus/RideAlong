@@ -1,25 +1,8 @@
-# To-Do
-- [ ] Build model for account app
-- [ ] Fix homepage button functionality
-- [ ] Move login/register button to middle
-- [ ] Implement authentication with django templat
-- [ ] emit http request from front end from login/register
-- [ ] Retrieve data from login/register on server side
+# What is RideAlong?
+RideAlong was the subject of an 18 week-long agile-based group project during the Spring of 2019. The team consisted of 8 members, and the goal of the project was to build a platform for university students to easily carpool across the country to their destinations. The main way in which this is is currently done is using Facebook rideshare groups. This process is very slow and manual in nature and begs to be automated in various respects, which is exactly what RideAlong intended to do.
 
+# What Technologies Were Used?
+We chose Django for our backend as it allows for quick development with Python and streamlines many of the tedious tasks that often accompany backend web development, such as linking forms and variables to the database, easily sharing modules across pages, easily routing users between pages, and more. We used PostgreSQL for the database, and our frontend was all vanilla JavaScript with the assistance of Bootstrap for styling.
 
-
-# Documentation
-
-Initial setup:
-
-1)install pip3 and postgres
-
-3)pip3 install virtualenv
-
-4)run virtualenv -p python3 envname in order create isolated python environment. Place in the parent directoy of the git repo
-
-5)source envname/bin/activate in order to activate env
-
-6)pip install django psycopg2
-
-7)python manage.py runserver in ridealong directory
+# What Was Accomplished?
+We managed to successfully build a web platform where users could log in and either submit rides or search for rides that had been submitted by others, based on various parameters like location, date, price, and more. This process was accompanied by a Google Maps integration to visually assist users with this process. Once a match was found, it was up to the users to contact one another via the various contact methods that they exposed in their profiles. All in all, the process that we created was far more efficient than the existing "Facebook page method" used by many. Throughout this 18 week cycle, we followed principles closely, which allowed for efficiency, smooth communication, and dynamic changes.
